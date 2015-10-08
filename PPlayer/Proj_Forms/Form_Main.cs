@@ -27,7 +27,10 @@ namespace PPlayer
         private string AboutInfo = "Парнас плеер";
         private string AboutVersion;        
 
-        // Переменные
+        // Переменные     
+        public string v_dir_program = Directory.GetCurrentDirectory();
+        public string v_dir_log;
+        private string v_file_log;   
         internal bool? v_initDefaultDevice;   // канал вывода звука        
         bool v_RTEdit_is_focused = false;     // фокус на окне текста песни
         bool v_RTEdit_no_resize = false;     // не масштабировать текст
@@ -40,7 +43,7 @@ namespace PPlayer
         double v_Text_Width_koef = 0.94;      // коэфициент увеличения текста / Пример: 1 - 100% ширины, 0.5 - 50%
         int v_Logo_NoActions_Time = 0;
         string v_Name_HotList = "H";          //Заголовок горячего плейлиста
-        private int v_MainWindowTread = Thread.CurrentThread.ManagedThreadId; // ID главного потока
+        private int v_MainWindowTread = Thread.CurrentThread.ManagedThreadId; // ID главного потока              
 
         //string v_PlaingFileName;                                  // название проигрываемого трека                
         Working            FWorking = new Working();              // Отображение статуса выполнения
@@ -71,7 +74,8 @@ namespace PPlayer
         float[] level_max = new float[2];
         float[] level_min = new float[2];
         string[] v_arg_pl;                  // плейлист, переданный в параметрах запуска (cmd)
-                
+
+
         #region Scroll DLL init
 
         // SCROLL
@@ -168,6 +172,9 @@ namespace PPlayer
             v_arg_pl = Parse_arguments_PL(args); // поиск плейлистов
 
             Init_Icon();
+
+            // Лог воспроизведения
+            Init_PlayLog();
         }
 
         #region Проверка обновлений
@@ -500,6 +507,17 @@ namespace PPlayer
                 FIcon.Associate("Плейлист для Парнас Плеера", Path.GetDirectoryName(Application.ExecutablePath) + "\\pm_file.ico");
             }
         }
+        
+        // Лог воспроизведения
+        private void Init_PlayLog()
+        {
+            v_dir_program = System.IO.Directory.GetCurrentDirectory(); // текущая папка программы;
+            v_dir_log = v_dir_program + "\\Log"; // папка для созранения логов
+
+            if (!Directory.Exists(v_dir_log)) Directory.CreateDirectory(v_dir_log);
+
+            v_file_log = String.Format("{0}\\Log_play_{1}{2}", v_dir_log,System.DateTime.Now.ToString("yyyy.MM.dd"),".txt");
+        }
         #endregion
 
         #region Операции с файлом плейлиста
@@ -518,6 +536,18 @@ namespace PPlayer
             All_PlayLists[max_pl].dt_ListData.Rows.Add(LRow.ItemArray);
 
             All_PlayLists[max_pl].dt_ListData.Rows[row_max]["Date"] = System.DateTime.Now;
+                        
+            System.IO.File.AppendAllText(v_file_log,
+                                         String.Format("{0} {1}\r\n",System.DateTime.Now.ToString(),LRow[0].ToString()),
+                                         System.Text.Encoding.GetEncoding(1251));
+            
+            //FileInfo file_log = new FileInfo(v_file_log);
+            //if (!file_log.Exists) file_log.Create();
+
+            //StreamWriter sw = new StreamWriter(v_file_log); //(@".\arSYCalendars.txt")
+            //StreamWriter sw = file_log.AppendText();
+            //sw.WriteLine("{0}  {1}\n", System.DateTime.Now.ToString(), LRow[0].ToString());
+            //sw.Close();
         }
 
         private void gv_PlayList_KeyDown(object sender, KeyEventArgs e)
@@ -822,6 +852,31 @@ namespace PPlayer
             ((TextEdit)sender).Text = value.ToString();
         }
 
+        // Перейти на последний запущенный трек
+        private void sbt_show_cur_play(object sender, EventArgs e)
+        {
+            if (MainStream != null && MainStream.v_FileName !="")
+            {
+                if (MainStream.v_PL_List_ID_played == 0 && xTabCtrl_PlayLists.TabPages[0].PageVisible == false)
+                {
+                    panelControl_Hot_PL.Focus();
+                    All_PlayLists[0].gv_PlayList.Focus();
+                    v_play_list_id_active = 0;
+                }
+                else // меняем ативную вкладку ПЛ 
+                {
+                    xTabCtrl_PlayLists.SelectedTabPageIndex = MainStream.v_PL_List_ID_played;
+                }
+
+                int Row_Handle = All_PlayLists[MainStream.v_PL_List_ID_played].gv_PlayList.GetRowHandle(MainStream.v_PL_Row_ID);
+                All_PlayLists[MainStream.v_PL_List_ID_played].gv_PlayList.FocusedRowHandle = Row_Handle;
+                
+                
+                Update_Visual_List_Color();
+
+                All_PlayLists[MainStream.v_PL_List_ID_played].Focused_Row_Blink(3);
+            }
+        }
         #endregion
 
         #region Трекеры / ползунки

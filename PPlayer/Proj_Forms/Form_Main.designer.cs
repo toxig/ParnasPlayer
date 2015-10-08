@@ -1366,6 +1366,7 @@
             this.sbt_status_plist.Appearance.Options.UseTextOptions = true;
             this.sbt_status_plist.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.sbt_status_plist.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.sbt_status_plist.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sbt_status_plist.ImageIndex = 5;
             this.sbt_status_plist.ImageList = this.imageCollection_20;
             this.sbt_status_plist.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
@@ -1376,6 +1377,7 @@
             this.sbt_status_plist.TabIndex = 14;
             this.sbt_status_plist.Text = "1";
             this.sbt_status_plist.ToolTip = "Плейлист с играющим треком";
+            this.sbt_status_plist.Click += new System.EventHandler(this.sbt_show_cur_play);
             // 
             // imageCollection_20
             // 

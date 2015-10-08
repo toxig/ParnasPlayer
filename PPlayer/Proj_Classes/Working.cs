@@ -59,7 +59,8 @@ namespace PPlayer
         private void FW_ShowDialog()
         {
             FW_Form.Visible = false;
-            FW_Form.ShowDialog();            
+            try { FW_Form.ShowDialog(); }
+            catch { this.Abort(); }
         }
 
         /// <summary>Запуск диалогового окна</summary>

@@ -102,7 +102,7 @@ namespace PPlayer
         public bool v_Check_Tags = false;      // проверять тэги в файлах   
         public bool v_Check_Exist = true;      // проверять наличие файлов на диске        
         
-        public Change_History Сhange_history = new Change_History(); // История изменений
+        public Change_History PLog_history = new Change_History(); // История изменений
         private bool _is_Changed = false;    // Наличие изменений
         public bool is_Changed
         {
@@ -115,7 +115,7 @@ namespace PPlayer
                 _is_Changed = value;
                 if (value == false)
                 {
-                    Сhange_history.clear(); 
+                    PLog_history.clear(); 
                 }                
             }
         }
@@ -479,10 +479,18 @@ namespace PPlayer
                 tooltip_text = "Нет муз файла";
             }
 
-            tooltip_wait_dt = DateTime.Now.AddMilliseconds(tooltip_wait_ms - timer_tooltip.Interval);
-            tooltip_hide_dt = tooltip_wait_dt.AddMilliseconds(tooltip_hide_ms);
-            tooltip_started = false;
-            timer_tooltip.Start();
+            if (color_type == 3) // поиск текущего трека
+            {
+                tooltip_text = "";
+                color_type = 0;
+            }
+            else
+            {
+                tooltip_wait_dt = DateTime.Now.AddMilliseconds(tooltip_wait_ms - timer_tooltip.Interval);
+                tooltip_hide_dt = tooltip_wait_dt.AddMilliseconds(tooltip_hide_ms);
+                tooltip_started = false;
+                timer_tooltip.Start();
+            }
 
             timer_add_row.Enabled = false;
             timer_ticks = timer_ticks_count;
@@ -642,7 +650,7 @@ namespace PPlayer
         {
             Init_Table_Data();
             is_Changed = true;
-            Сhange_history.add("Список [ОЧИЩЕН]");
+            PLog_history.add("Список [ОЧИЩЕН]");
         }
 
         // набор данных для сохранения в формате PM
@@ -656,10 +664,10 @@ namespace PPlayer
                 {
                     Data[i] += dt_ListData.Rows[i][0] + "|"; // MuzFile   
                     Data[i] += dt_ListData.Rows[i][1] + "|"; // TextFile
-                    Data[i] += (dt_ListData.Rows[i][2] == "" ? "0:0:0:0:0:0:0:0:0:0:0:" : dt_ListData.Rows[i][2]) + "|"; // EqLines
-                    Data[i] += (dt_ListData.Rows[i][3] == "" ? "0" : dt_ListData.Rows[i][3]) + "|";  // EqPreamp
-                    Data[i] += (dt_ListData.Rows[i][4] == "" ? "5" : dt_ListData.Rows[i][4]) + "|";  // Volume
-                    Data[i] += (dt_ListData.Rows[i][5] == "" ? "10" : dt_ListData.Rows[i][5]) + "|"; // LRBalance
+                    Data[i] += (dt_ListData.Rows[i][2].ToString() == "" ? "0:0:0:0:0:0:0:0:0:0:0:" : dt_ListData.Rows[i][2]) + "|"; // EqLines
+                    Data[i] += (dt_ListData.Rows[i][3].ToString() == "" ? "0" : dt_ListData.Rows[i][3]) + "|";  // EqPreamp
+                    Data[i] += (dt_ListData.Rows[i][4].ToString() == "" ? "5" : dt_ListData.Rows[i][4]) + "|";  // Volume
+                    Data[i] += (dt_ListData.Rows[i][5].ToString() == "" ? "10" : dt_ListData.Rows[i][5]) + "|"; // LRBalance
                     Data[i] += dt_ListData.Rows[i][6] + "|";
                     Data[i] += dt_ListData.Rows[i][7];
 
@@ -864,7 +872,7 @@ namespace PPlayer
             if (RowHandle > dt_ListData.Rows.Count - 1) return;
 
             is_Changed = true;
-            Сhange_history.add("Муз [удален]: \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
+            PLog_history.add("Муз [удален]: \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
 
             dt_ListData.Rows[RowHandle].Delete();
             dt_FileData.Rows[RowHandle].Delete();            
@@ -873,9 +881,9 @@ namespace PPlayer
         // Удаление текста
         public void PL_DelText(int RowHandle)
         {
-            if (RowHandle > dt_ListData.Rows.Count - 1 || RowHandle < 0 || dt_ListData.Rows[RowHandle]["TextFile"] == "") return;
+            if (RowHandle > dt_ListData.Rows.Count - 1 || RowHandle < 0 || dt_ListData.Rows[RowHandle]["TextFile"].ToString() == "") return;
 
-            Сhange_history.add("Текст [удален]: \"" + Path.GetFileName(dt_ListData.Rows[RowHandle]["TextFile"].ToString()) +
+            PLog_history.add("Текст [удален]: \"" + Path.GetFileName(dt_ListData.Rows[RowHandle]["TextFile"].ToString()) +
                                "\" для Муз \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
 
             is_Changed = true;
@@ -890,7 +898,7 @@ namespace PPlayer
         {
             if (RowHandle > dt_ListData.Rows.Count - 1 || RowHandle < 0) return;
 
-            Сhange_history.add("Экв [изменен]: муз \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
+            PLog_history.add("Экв [изменен]: муз \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
             is_Changed = true;
         }
 
@@ -899,7 +907,7 @@ namespace PPlayer
         {
             if (RowHandle > dt_ListData.Rows.Count - 1 || RowHandle < 0) return;
 
-            Сhange_history.add("Текст [добавлен]: \"" + Path.GetFileName(FilePath) + "\"" +
+            PLog_history.add("Текст [добавлен]: \"" + Path.GetFileName(FilePath) + "\"" +
                                "\" для Муз \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
             is_Changed = true;
 
@@ -958,7 +966,7 @@ namespace PPlayer
 
             Check_Exists_Row(dt_ListData.Rows.Count - 1);
 
-            Сhange_history.add("Муз [добавлен]: \"" + DrowL["Name"] + "\"");
+            PLog_history.add("Муз [добавлен]: \"" + DrowL["Name"] + "\"");
             is_Changed = true;
         }
 
@@ -992,7 +1000,7 @@ namespace PPlayer
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             string ex;
 
-            int files_group = 0;
+            //int files_group = 0;
             int file_playlist = 0;
             int file_text = 0;
             int file_music = 0;
@@ -1092,7 +1100,7 @@ namespace PPlayer
 
                 FChangeLog = new Form_History();
                 FChangeLog.v_list_name = playlist_name;
-                FChangeLog.v_list_change_log = Сhange_history.info();
+                FChangeLog.v_list_change_log = PLog_history.info();
                 FChangeLog.v_init_dir = pl_FolderPath;
 
                 FChangeLog.v_resault = 0;
@@ -1126,15 +1134,15 @@ namespace PPlayer
     // Класс - История изменений списка
     public class Change_History
     {
-
         string[] hist = new string[2000]; // список изменений
         int rows = 0; // кол-во строк истории
 
         public void add(string info)
         {
             hist[rows] = info;
-            rows++;
+            rows++;                 
         }
+
 
         public string info()
         {
