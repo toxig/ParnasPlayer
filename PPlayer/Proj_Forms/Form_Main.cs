@@ -119,7 +119,7 @@ namespace PPlayer
 
             FWorking.Start(); // Запуск потока оповещений            
             
-            Thread.SpinWait(1500);
+            Thread.SpinWait(2000);
 
             try
             {

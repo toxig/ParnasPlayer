@@ -32,7 +32,7 @@ namespace PPlayer
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            param_Form_Cansel = true;
+            param_Form_Close = true;
             this.Hide();
         }
 
@@ -63,7 +63,8 @@ namespace PPlayer
             if (param_Form_Close)
             {//Недопустимая операция в нескольких потоках: попытка доступа к элементу управления "Form_Working" не из того потока, в котором он был создан.
                 timer1.Stop();
-                this.Hide();                
+                this.Close();
+                return;
             }
             else
                 if (param_Operation_Text != Operation_OLD_Text)

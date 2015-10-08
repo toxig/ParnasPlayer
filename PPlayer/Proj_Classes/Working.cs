@@ -121,8 +121,10 @@ namespace PPlayer
             FW_Form.param_Operation_Text = Text;
             FW_Form.val_max = val_max;
             FW_Form.val_min = val_cur;
-            FW_Form.StartPosition = pos; 
+            FW_Form.StartPosition = pos;
 
+            if (FW_Thread != null && FW_Thread.ThreadState != System.Threading.ThreadState.Aborted) 
+                FW_Thread.Abort();
             FW_Thread = new Thread(new ThreadStart(FW_ShowDialog));
             FW_Thread.Start();
         }
@@ -130,6 +132,8 @@ namespace PPlayer
         /// <summary>Остановить показ уведомлений</summary>
         public void Abort()
         {
+            FW_Form.param_Form_Close = true;
+
             if (FW_Thread.ThreadState == System.Threading.ThreadState.Running)
             {
                 FW_Thread.Abort("Остановка окна информации");

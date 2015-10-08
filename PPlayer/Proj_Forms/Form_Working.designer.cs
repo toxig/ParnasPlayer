@@ -47,13 +47,12 @@ namespace PPlayer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.marqueeProgressBarControl1.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.marqueeProgressBarControl1.EditValue = "подключение";
-            this.marqueeProgressBarControl1.Location = new System.Drawing.Point(18, 93);
-            this.marqueeProgressBarControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.marqueeProgressBarControl1.Location = new System.Drawing.Point(12, 64);
             this.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1";
             this.marqueeProgressBarControl1.Properties.MarqueeAnimationSpeed = 40;
             this.marqueeProgressBarControl1.Properties.ProgressAnimationMode = DevExpress.Utils.Drawing.ProgressAnimationMode.Cycle;
             this.marqueeProgressBarControl1.Properties.ProgressViewStyle = DevExpress.XtraEditors.Controls.ProgressViewStyle.Solid;
-            this.marqueeProgressBarControl1.Size = new System.Drawing.Size(392, 31);
+            this.marqueeProgressBarControl1.Size = new System.Drawing.Size(261, 21);
             this.marqueeProgressBarControl1.TabIndex = 0;
             // 
             // simpleButton1
@@ -63,10 +62,9 @@ namespace PPlayer
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.simpleButton1.Location = new System.Drawing.Point(102, 134);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.simpleButton1.Location = new System.Drawing.Point(68, 92);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(221, 40);
+            this.simpleButton1.Size = new System.Drawing.Size(147, 27);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "отмена";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -80,10 +78,9 @@ namespace PPlayer
             this.label_Operatipon.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.label_Operatipon.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.label_Operatipon.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label_Operatipon.Location = new System.Drawing.Point(18, 12);
-            this.label_Operatipon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.label_Operatipon.Location = new System.Drawing.Point(12, 8);
             this.label_Operatipon.Name = "label_Operatipon";
-            this.label_Operatipon.Size = new System.Drawing.Size(392, 71);
+            this.label_Operatipon.Size = new System.Drawing.Size(261, 49);
             this.label_Operatipon.TabIndex = 2;
             this.label_Operatipon.Text = "Текущая операция";
             // 
@@ -96,18 +93,16 @@ namespace PPlayer
             this.panelControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(424, 185);
+            this.panelControl1.Size = new System.Drawing.Size(283, 135);
             this.panelControl1.TabIndex = 3;
             // 
             // progressBarControl1
             // 
-            this.progressBarControl1.Location = new System.Drawing.Point(18, 91);
-            this.progressBarControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBarControl1.Location = new System.Drawing.Point(12, 62);
             this.progressBarControl1.Name = "progressBarControl1";
             this.progressBarControl1.Properties.ShowTitle = true;
-            this.progressBarControl1.Size = new System.Drawing.Size(391, 32);
+            this.progressBarControl1.Size = new System.Drawing.Size(261, 22);
             this.progressBarControl1.TabIndex = 3;
             this.progressBarControl1.Visible = false;
             // 
@@ -117,15 +112,14 @@ namespace PPlayer
             // 
             // Form_Working
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 185);
+            this.ClientSize = new System.Drawing.Size(283, 135);
             this.Controls.Add(this.panelControl1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.LookAndFeel.SkinName = "Office 2010 Blue";
             this.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form_Working";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
