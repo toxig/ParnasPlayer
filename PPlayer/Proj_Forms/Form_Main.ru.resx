@@ -149,8 +149,8 @@
   <data name="bar1.BarAppearance.Disabled.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <assembly alias="DevExpress.Data.v11.2" name="DevExpress.Data.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=8b4b93d130d1cced" />
-  <data name="barDockControlTop.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <assembly alias="DevExpress.Data.v12.2" name="DevExpress.Data.v12.2, Version=12.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="barDockControlTop.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="barDockControlTop.Appearance.GradientMode" type="System.Drawing.Drawing2D.LinearGradientMode, System.Drawing">
@@ -165,11 +165,11 @@
   <data name="barDockControlTop.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <assembly alias="DevExpress.Utils.v11.2" name="DevExpress.Utils.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=8b4b93d130d1cced" />
-  <data name="barDockControlTop.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <assembly alias="DevExpress.Utils.v12.2" name="DevExpress.Utils.v12.2, Version=12.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="barDockControlTop.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="barDockControlBottom.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="barDockControlBottom.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="barDockControlBottom.Appearance.GradientMode" type="System.Drawing.Drawing2D.LinearGradientMode, System.Drawing">
@@ -184,10 +184,10 @@
   <data name="barDockControlBottom.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="barDockControlBottom.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="barDockControlBottom.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="barDockControlLeft.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="barDockControlLeft.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="barDockControlLeft.Appearance.GradientMode" type="System.Drawing.Drawing2D.LinearGradientMode, System.Drawing">
@@ -202,10 +202,10 @@
   <data name="barDockControlLeft.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="barDockControlLeft.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="barDockControlLeft.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="barDockControlRight.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="barDockControlRight.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="barDockControlRight.Appearance.GradientMode" type="System.Drawing.Drawing2D.LinearGradientMode, System.Drawing">
@@ -220,19 +220,19 @@
   <data name="barDockControlRight.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="barDockControlRight.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="barDockControlRight.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="$this.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="$this.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
-  <data name="panelControl_All.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="panelControl_All.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
-  <data name="panelControl_Left.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="panelControl_Left.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
-  <data name="RTBox_TextFile.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="RTBox_TextFile.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="RTBox_TextFile.Title" xml:space="preserve">
@@ -241,10 +241,10 @@
   <data name="RTBox_TextFile.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="RTBox_TextFile.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="RTBox_TextFile.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="panelControl_EQ.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="panelControl_EQ.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="panelControl_EQ.Title" xml:space="preserve">
@@ -253,7 +253,7 @@
   <data name="panelControl_EQ.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelControl_EQ.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="panelControl_EQ.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
   <data name="panelControl_Left.Title" xml:space="preserve">
@@ -262,10 +262,10 @@
   <data name="panelControl_Left.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelControl_Left.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="panelControl_Left.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="splitterControl.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="splitterControl.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="splitterControl.Title" xml:space="preserve">
@@ -274,13 +274,13 @@
   <data name="splitterControl.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="splitterControl.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="splitterControl.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="panelControl_Right.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="panelControl_Right.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
-  <data name="panelControl_PlayList.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="panelControl_PlayList.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="xTabCtrl_PlayLists.AppearancePage.Header.GradientMode" type="System.Drawing.Drawing2D.LinearGradientMode, System.Drawing">
@@ -295,7 +295,7 @@
   <data name="xTabCtrl_PlayLists.AppearancePage.HeaderActive.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="imageCollection1.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v11.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="imageCollection1.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v12.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLlV0aWxzLnYxMS4yLCBWZXJzaW9uPTExLjIu
         NS4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPThiNGI5M2QxMzBkMWNjZWQMAwAAAFFT
@@ -559,10 +559,10 @@
   <data name="panelControl_PlayList.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelControl_PlayList.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="panelControl_PlayList.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="panelControl_PlayBack.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="panelControl_PlayBack.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="spinEdit1.Properties.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
@@ -575,8 +575,8 @@
   <data name="spinEdit1.Properties.AutoHeight" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="DevExpress.XtraEditors.v11.2" name="DevExpress.XtraEditors.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=8b4b93d130d1cced" />
-  <data name="spinEdit1.Properties.Mask.AutoComplete" type="DevExpress.XtraEditors.Mask.AutoCompleteType, DevExpress.XtraEditors.v11.2">
+  <assembly alias="DevExpress.XtraEditors.v12.2" name="DevExpress.XtraEditors.v12.2, Version=12.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="spinEdit1.Properties.Mask.AutoComplete" type="DevExpress.XtraEditors.Mask.AutoCompleteType, DevExpress.XtraEditors.v12.2">
     <value>Default</value>
   </data>
   <data name="spinEdit1.Properties.Mask.BeepOnError" type="System.Boolean, mscorlib">
@@ -588,7 +588,7 @@
   <data name="spinEdit1.Properties.Mask.IgnoreMaskBlank" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="spinEdit1.Properties.Mask.MaskType" type="DevExpress.XtraEditors.Mask.MaskType, DevExpress.XtraEditors.v11.2">
+  <data name="spinEdit1.Properties.Mask.MaskType" type="DevExpress.XtraEditors.Mask.MaskType, DevExpress.XtraEditors.v12.2">
     <value>Numeric</value>
   </data>
   <data name="spinEdit1.Properties.Mask.PlaceHolder" type="System.Char, mscorlib" xml:space="preserve">
@@ -648,10 +648,10 @@
   <data name="panelControl_PlayBack.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelControl_PlayBack.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="panelControl_PlayBack.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
-  <data name="panelControl_PlayInfo.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
+  <data name="panelControl_PlayInfo.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v12.2">
     <value>Default</value>
   </data>
   <data name="Label_InfoLine.Appearance.DisabledImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
@@ -735,7 +735,7 @@
   <data name="panelControl_PlayInfo.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelControl_PlayInfo.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="panelControl_PlayInfo.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
   <data name="panelControl_Right.Title" xml:space="preserve">
@@ -744,7 +744,7 @@
   <data name="panelControl_Right.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelControl_Right.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="panelControl_Right.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
   <data name="panelControl_All.Title" xml:space="preserve">
@@ -753,7 +753,7 @@
   <data name="panelControl_All.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="panelControl_All.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="panelControl_All.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -1200,7 +1200,7 @@
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="$this.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
+  <data name="$this.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v12.2">
     <value>None</value>
   </data>
   <data name="barToolbarsListItem1.MenuAppearance.AppearanceMenu.Disabled.GradientMode" type="System.Drawing.Drawing2D.LinearGradientMode, System.Drawing">

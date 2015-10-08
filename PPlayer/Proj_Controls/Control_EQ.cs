@@ -457,6 +457,8 @@ namespace PPlayer
         // массив в поток
         public void Eq_array_to_stream()
         {
+            if (MainStream == null) return;
+
             fl_eqLoading = true; // флаг загрузки            
 
             if (fx != null)
@@ -473,8 +475,7 @@ namespace PPlayer
 
             // громкость для потока
             MainStream.v_stream_volume = (float)eq_volume / pbc_equal_main.Properties.Maximum;
-            Bass.BASS_ChannelSetAttribute(v_stream, BASSAttribute.BASS_ATTRIB_VOL, MainStream.v_stream_volume);
-            
+            Bass.BASS_ChannelSetAttribute(v_stream, BASSAttribute.BASS_ATTRIB_VOL, MainStream.v_stream_volume);                        
 
             // Баланс для потока                        
             int max = trackBar_balance.Properties.Maximum;

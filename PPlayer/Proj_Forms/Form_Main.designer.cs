@@ -122,7 +122,6 @@
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl_Hot_PL = new DevExpress.XtraEditors.PanelControl();
             this.panelControl_PlayBack = new DevExpress.XtraEditors.PanelControl();
             this.textEdit_FadeTime = new DevExpress.XtraEditors.TextEdit();
@@ -172,7 +171,6 @@
             this.panelControl_lists.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xTabCtrl_PlayLists)).BeginInit();
             this.xTabCtrl_PlayLists.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_Hot_PL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_PlayBack)).BeginInit();
             this.panelControl_PlayBack.SuspendLayout();
@@ -465,15 +463,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(1196, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1025, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 658);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 535);
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1196, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1025, 0);
             // 
             // barDockControlLeft
             // 
@@ -481,15 +479,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 658);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 535);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1156, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(989, 0);
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(40, 658);
+            this.barDockControlRight.Size = new System.Drawing.Size(36, 535);
             // 
             // dockManager1
             // 
@@ -956,11 +954,11 @@
             this.panelControl_Right.Controls.Add(this.panelControl_PlayBack);
             this.panelControl_Right.Controls.Add(this.panelControl_PlayInfo);
             this.panelControl_Right.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl_Right.Location = new System.Drawing.Point(823, 2);
+            this.panelControl_Right.Location = new System.Drawing.Point(703, 2);
             this.panelControl_Right.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_Right.Name = "panelControl_Right";
             this.barManager.SetPopupContextMenu(this.panelControl_Right, this.popup_MainMenu);
-            this.panelControl_Right.Size = new System.Drawing.Size(331, 654);
+            this.panelControl_Right.Size = new System.Drawing.Size(284, 531);
             this.panelControl_Right.TabIndex = 5;
             this.panelControl_Right.SizeChanged += new System.EventHandler(this.panelControl_Right_SizeChanged);
             // 
@@ -970,32 +968,31 @@
             this.panelControl_PlayList.Controls.Add(this.panelControl_lists);
             this.panelControl_PlayList.Controls.Add(this.panelControl_Hot_PL);
             this.panelControl_PlayList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl_PlayList.Location = new System.Drawing.Point(2, 198);
+            this.panelControl_PlayList.Location = new System.Drawing.Point(2, 161);
             this.panelControl_PlayList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_PlayList.Name = "panelControl_PlayList";
-            this.panelControl_PlayList.Size = new System.Drawing.Size(327, 454);
+            this.panelControl_PlayList.Size = new System.Drawing.Size(280, 368);
             this.panelControl_PlayList.TabIndex = 0;
             // 
             // splitterControl1
             // 
             this.splitterControl1.Cursor = System.Windows.Forms.Cursors.NoMoveVert;
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitterControl1.Location = new System.Drawing.Point(2, 151);
+            this.splitterControl1.Location = new System.Drawing.Point(2, 123);
             this.splitterControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(323, 6);
+            this.splitterControl1.Size = new System.Drawing.Size(276, 6);
             this.splitterControl1.TabIndex = 0;
             this.splitterControl1.TabStop = false;
             // 
             // panelControl_lists
             // 
             this.panelControl_lists.Controls.Add(this.xTabCtrl_PlayLists);
-            this.panelControl_lists.Controls.Add(this.panelControl1);
             this.panelControl_lists.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl_lists.Location = new System.Drawing.Point(2, 151);
+            this.panelControl_lists.Location = new System.Drawing.Point(2, 123);
             this.panelControl_lists.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_lists.Name = "panelControl_lists";
-            this.panelControl_lists.Size = new System.Drawing.Size(323, 301);
+            this.panelControl_lists.Size = new System.Drawing.Size(276, 243);
             this.panelControl_lists.TabIndex = 1;
             // 
             // xTabCtrl_PlayLists
@@ -1007,11 +1004,10 @@
             this.xTabCtrl_PlayLists.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xTabCtrl_PlayLists.HeaderOrientation = DevExpress.XtraTab.TabOrientation.Horizontal;
             this.xTabCtrl_PlayLists.Images = this.imageCollection_16;
-            this.xTabCtrl_PlayLists.Location = new System.Drawing.Point(2, 7);
-            this.xTabCtrl_PlayLists.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.xTabCtrl_PlayLists.Location = new System.Drawing.Point(2, 2);
             this.xTabCtrl_PlayLists.Name = "xTabCtrl_PlayLists";
             this.xTabCtrl_PlayLists.SelectedTabPage = this.xtraTabPage1;
-            this.xTabCtrl_PlayLists.Size = new System.Drawing.Size(319, 292);
+            this.xTabCtrl_PlayLists.Size = new System.Drawing.Size(272, 239);
             this.xTabCtrl_PlayLists.TabIndex = 3;
             this.xTabCtrl_PlayLists.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1028,10 +1024,9 @@
             this.xtraTabPage1.Appearance.PageClient.BackColor = System.Drawing.Color.DarkGray;
             this.xtraTabPage1.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraTabPage1.ImageIndex = 4;
-            this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.PageVisible = false;
-            this.xtraTabPage1.Size = new System.Drawing.Size(313, 259);
+            this.xtraTabPage1.Size = new System.Drawing.Size(266, 208);
             this.xtraTabPage1.Text = "[!]";
             // 
             // xtraTabPage2
@@ -1040,35 +1035,35 @@
             this.xtraTabPage2.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(313, 259);
+            this.xtraTabPage2.Size = new System.Drawing.Size(266, 204);
             this.xtraTabPage2.Text = "[1]";
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(313, 259);
+            this.xtraTabPage3.Size = new System.Drawing.Size(266, 204);
             this.xtraTabPage3.Text = "[2]";
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(313, 259);
+            this.xtraTabPage4.Size = new System.Drawing.Size(266, 204);
             this.xtraTabPage4.Text = "[3]";
             // 
             // xtraTabPage5
             // 
             this.xtraTabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(313, 259);
+            this.xtraTabPage5.Size = new System.Drawing.Size(266, 204);
             this.xtraTabPage5.Text = "[4]";
             // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(313, 259);
+            this.xtraTabPage6.Size = new System.Drawing.Size(266, 204);
             this.xtraTabPage6.Text = "[5]";
             // 
             // xtraTabPage7
@@ -1076,17 +1071,8 @@
             this.xtraTabPage7.ImageIndex = 24;
             this.xtraTabPage7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(313, 259);
+            this.xtraTabPage7.Size = new System.Drawing.Size(266, 204);
             this.xtraTabPage7.Text = "[H]";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(2, 2);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(319, 5);
-            this.panelControl1.TabIndex = 6;
             // 
             // panelControl_Hot_PL
             // 
@@ -1095,7 +1081,7 @@
             this.panelControl_Hot_PL.Location = new System.Drawing.Point(2, 2);
             this.panelControl_Hot_PL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_Hot_PL.Name = "panelControl_Hot_PL";
-            this.panelControl_Hot_PL.Size = new System.Drawing.Size(323, 149);
+            this.panelControl_Hot_PL.Size = new System.Drawing.Size(276, 121);
             this.panelControl_Hot_PL.TabIndex = 0;
             this.panelControl_Hot_PL.Tag = "hot";
             // 
@@ -1110,10 +1096,10 @@
             this.panelControl_PlayBack.Controls.Add(this.sbtn_Stop);
             this.panelControl_PlayBack.Controls.Add(this.progressBarControl_PlayPosition);
             this.panelControl_PlayBack.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl_PlayBack.Location = new System.Drawing.Point(2, 112);
+            this.panelControl_PlayBack.Location = new System.Drawing.Point(2, 91);
             this.panelControl_PlayBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_PlayBack.Name = "panelControl_PlayBack";
-            this.panelControl_PlayBack.Size = new System.Drawing.Size(327, 86);
+            this.panelControl_PlayBack.Size = new System.Drawing.Size(280, 70);
             this.panelControl_PlayBack.TabIndex = 53;
             // 
             // textEdit_FadeTime
@@ -1121,7 +1107,7 @@
             this.textEdit_FadeTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit_FadeTime.Cursor = System.Windows.Forms.Cursors.NoMoveVert;
             this.textEdit_FadeTime.EditValue = "2";
-            this.textEdit_FadeTime.Location = new System.Drawing.Point(59, 38);
+            this.textEdit_FadeTime.Location = new System.Drawing.Point(51, 31);
             this.textEdit_FadeTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textEdit_FadeTime.Name = "textEdit_FadeTime";
             this.textEdit_FadeTime.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1129,7 +1115,7 @@
             this.textEdit_FadeTime.Properties.Appearance.Options.UseTextOptions = true;
             this.textEdit_FadeTime.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.textEdit_FadeTime.Properties.ReadOnly = true;
-            this.textEdit_FadeTime.Size = new System.Drawing.Size(42, 40);
+            this.textEdit_FadeTime.Size = new System.Drawing.Size(36, 34);
             this.textEdit_FadeTime.TabIndex = 101;
             this.textEdit_FadeTime.Tag = "Fader";
             this.textEdit_FadeTime.ToolTip = "Изменение интервала фейдера";
@@ -1150,10 +1136,10 @@
             this.sbt_FadeTime_Up.ImageIndex = 5;
             this.sbt_FadeTime_Up.ImageList = this.imageList_32;
             this.sbt_FadeTime_Up.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbt_FadeTime_Up.Location = new System.Drawing.Point(104, 37);
+            this.sbt_FadeTime_Up.Location = new System.Drawing.Point(89, 30);
             this.sbt_FadeTime_Up.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbt_FadeTime_Up.Name = "sbt_FadeTime_Up";
-            this.sbt_FadeTime_Up.Size = new System.Drawing.Size(35, 22);
+            this.sbt_FadeTime_Up.Size = new System.Drawing.Size(30, 18);
             this.sbt_FadeTime_Up.TabIndex = 100;
             this.sbt_FadeTime_Up.Tag = "1";
             this.sbt_FadeTime_Up.ToolTip = "Фейдер (+)";
@@ -1177,10 +1163,10 @@
             this.sbt_FadeTime_Down.ImageIndex = 4;
             this.sbt_FadeTime_Down.ImageList = this.imageList_32;
             this.sbt_FadeTime_Down.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbt_FadeTime_Down.Location = new System.Drawing.Point(104, 60);
+            this.sbt_FadeTime_Down.Location = new System.Drawing.Point(89, 49);
             this.sbt_FadeTime_Down.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbt_FadeTime_Down.Name = "sbt_FadeTime_Down";
-            this.sbt_FadeTime_Down.Size = new System.Drawing.Size(35, 21);
+            this.sbt_FadeTime_Down.Size = new System.Drawing.Size(30, 17);
             this.sbt_FadeTime_Down.TabIndex = 99;
             this.sbt_FadeTime_Down.Tag = "-1";
             this.sbt_FadeTime_Down.ToolTip = "Фейдер (-)";
@@ -1195,10 +1181,10 @@
             this.sbtn_Repeat.ImageIndex = 5;
             this.sbtn_Repeat.ImageList = this.imageCollection_30;
             this.sbtn_Repeat.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_Repeat.Location = new System.Drawing.Point(145, 39);
+            this.sbtn_Repeat.Location = new System.Drawing.Point(124, 32);
             this.sbtn_Repeat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtn_Repeat.Name = "sbtn_Repeat";
-            this.sbtn_Repeat.Size = new System.Drawing.Size(37, 39);
+            this.sbtn_Repeat.Size = new System.Drawing.Size(32, 32);
             this.sbtn_Repeat.TabIndex = 7;
             this.sbtn_Repeat.Tag = "0";
             this.sbtn_Repeat.ToolTip = "Нонстоп (отключен)";
@@ -1225,10 +1211,10 @@
             this.sbtn_FadeNow.ImageIndex = 6;
             this.sbtn_FadeNow.ImageList = this.imageCollection_30;
             this.sbtn_FadeNow.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_FadeNow.Location = new System.Drawing.Point(190, 39);
+            this.sbtn_FadeNow.Location = new System.Drawing.Point(163, 32);
             this.sbtn_FadeNow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtn_FadeNow.Name = "sbtn_FadeNow";
-            this.sbtn_FadeNow.Size = new System.Drawing.Size(37, 39);
+            this.sbtn_FadeNow.Size = new System.Drawing.Size(32, 32);
             this.sbtn_FadeNow.TabIndex = 0;
             this.sbtn_FadeNow.ToolTip = "Фейдер (Ctrl + X)";
             this.sbtn_FadeNow.ToolTipController = this.toolTipController;
@@ -1242,10 +1228,10 @@
             this.sbtn_Pause.ImageIndex = 0;
             this.sbtn_Pause.ImageList = this.imageCollection_30;
             this.sbtn_Pause.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_Pause.Location = new System.Drawing.Point(234, 39);
+            this.sbtn_Pause.Location = new System.Drawing.Point(201, 32);
             this.sbtn_Pause.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtn_Pause.Name = "sbtn_Pause";
-            this.sbtn_Pause.Size = new System.Drawing.Size(37, 39);
+            this.sbtn_Pause.Size = new System.Drawing.Size(32, 32);
             this.sbtn_Pause.TabIndex = 1;
             this.sbtn_Pause.ToolTip = "Play/Pause";
             this.sbtn_Pause.ToolTipController = this.toolTipController;
@@ -1259,10 +1245,10 @@
             this.sbtn_Stop.ImageIndex = 2;
             this.sbtn_Stop.ImageList = this.imageCollection_30;
             this.sbtn_Stop.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_Stop.Location = new System.Drawing.Point(279, 39);
+            this.sbtn_Stop.Location = new System.Drawing.Point(239, 32);
             this.sbtn_Stop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtn_Stop.Name = "sbtn_Stop";
-            this.sbtn_Stop.Size = new System.Drawing.Size(37, 39);
+            this.sbtn_Stop.Size = new System.Drawing.Size(32, 32);
             this.sbtn_Stop.TabIndex = 2;
             this.sbtn_Stop.ToolTip = "Стоп";
             this.sbtn_Stop.ToolTipController = this.toolTipController;
@@ -1270,10 +1256,10 @@
             // 
             // progressBarControl_PlayPosition
             // 
-            this.progressBarControl_PlayPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarControl_PlayPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBarControl_PlayPosition.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.progressBarControl_PlayPosition.Location = new System.Drawing.Point(7, 6);
+            this.progressBarControl_PlayPosition.Location = new System.Drawing.Point(6, 5);
             this.progressBarControl_PlayPosition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBarControl_PlayPosition.MenuManager = this.barManager;
             this.progressBarControl_PlayPosition.Name = "progressBarControl_PlayPosition";
@@ -1282,7 +1268,7 @@
             this.progressBarControl_PlayPosition.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.progressBarControl_PlayPosition.Properties.PercentView = false;
             this.progressBarControl_PlayPosition.Properties.ShowTitle = true;
-            this.progressBarControl_PlayPosition.Size = new System.Drawing.Size(313, 27);
+            this.progressBarControl_PlayPosition.Size = new System.Drawing.Size(268, 22);
             this.progressBarControl_PlayPosition.TabIndex = 5;
             this.progressBarControl_PlayPosition.MouseMove += new System.Windows.Forms.MouseEventHandler(this.progressBarControl_PlayPosition_MouseMove);
             this.progressBarControl_PlayPosition.MouseUp += new System.Windows.Forms.MouseEventHandler(this.progressBarControl_PlayPosition_MouseUp);
@@ -1299,9 +1285,8 @@
             this.panelControl_PlayInfo.Controls.Add(this.lbc_time);
             this.panelControl_PlayInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl_PlayInfo.Location = new System.Drawing.Point(2, 2);
-            this.panelControl_PlayInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelControl_PlayInfo.Name = "panelControl_PlayInfo";
-            this.panelControl_PlayInfo.Size = new System.Drawing.Size(327, 110);
+            this.panelControl_PlayInfo.Size = new System.Drawing.Size(280, 89);
             this.panelControl_PlayInfo.TabIndex = 6;
             // 
             // pbc_analizer_L
@@ -1309,7 +1294,7 @@
             this.pbc_analizer_L.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbc_analizer_L.Cursor = System.Windows.Forms.Cursors.HSplit;
             this.pbc_analizer_L.EditValue = 1000;
-            this.pbc_analizer_L.Location = new System.Drawing.Point(59, 26);
+            this.pbc_analizer_L.Location = new System.Drawing.Point(51, 21);
             this.pbc_analizer_L.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbc_analizer_L.Name = "pbc_analizer_L";
             this.pbc_analizer_L.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
@@ -1322,8 +1307,7 @@
             this.pbc_analizer_L.Properties.ProgressKind = DevExpress.XtraEditors.Controls.ProgressKind.Vertical;
             this.pbc_analizer_L.Properties.StartColor = System.Drawing.Color.Chartreuse;
             this.pbc_analizer_L.Properties.Step = 100;
-            this.pbc_analizer_L.Properties.UseParentBackground = true;
-            this.pbc_analizer_L.Size = new System.Drawing.Size(24, 80);
+            this.pbc_analizer_L.Size = new System.Drawing.Size(21, 65);
             this.pbc_analizer_L.TabIndex = 1000;
             this.pbc_analizer_L.Tag = "11";
             this.pbc_analizer_L.ToolTipController = this.toolTipController;
@@ -1333,7 +1317,7 @@
             this.pbc_analizer_R.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbc_analizer_R.Cursor = System.Windows.Forms.Cursors.HSplit;
             this.pbc_analizer_R.EditValue = 1000;
-            this.pbc_analizer_R.Location = new System.Drawing.Point(85, 26);
+            this.pbc_analizer_R.Location = new System.Drawing.Point(73, 21);
             this.pbc_analizer_R.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbc_analizer_R.Name = "pbc_analizer_R";
             this.pbc_analizer_R.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
@@ -1346,8 +1330,7 @@
             this.pbc_analizer_R.Properties.ProgressKind = DevExpress.XtraEditors.Controls.ProgressKind.Vertical;
             this.pbc_analizer_R.Properties.StartColor = System.Drawing.Color.Chartreuse;
             this.pbc_analizer_R.Properties.Step = 100;
-            this.pbc_analizer_R.Properties.UseParentBackground = true;
-            this.pbc_analizer_R.Size = new System.Drawing.Size(24, 80);
+            this.pbc_analizer_R.Size = new System.Drawing.Size(21, 65);
             this.pbc_analizer_R.TabIndex = 67;
             this.pbc_analizer_R.Tag = "11";
             this.pbc_analizer_R.ToolTipController = this.toolTipController;
@@ -1364,10 +1347,10 @@
             this.sbt_status_plist.ImageIndex = 5;
             this.sbt_status_plist.ImageList = this.imageCollection_20;
             this.sbt_status_plist.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbt_status_plist.Location = new System.Drawing.Point(146, 81);
+            this.sbt_status_plist.Location = new System.Drawing.Point(125, 66);
             this.sbt_status_plist.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbt_status_plist.Name = "sbt_status_plist";
-            this.sbt_status_plist.Size = new System.Drawing.Size(24, 25);
+            this.sbt_status_plist.Size = new System.Drawing.Size(21, 20);
             this.sbt_status_plist.TabIndex = 14;
             this.sbt_status_plist.Text = "1";
             this.sbt_status_plist.ToolTip = "Плейлист с играющим треком";
@@ -1390,10 +1373,10 @@
             this.sbt_status_play.ImageIndex = 2;
             this.sbt_status_play.ImageList = this.imageCollection_20;
             this.sbt_status_play.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbt_status_play.Location = new System.Drawing.Point(176, 82);
+            this.sbt_status_play.Location = new System.Drawing.Point(151, 67);
             this.sbt_status_play.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbt_status_play.Name = "sbt_status_play";
-            this.sbt_status_play.Size = new System.Drawing.Size(24, 25);
+            this.sbt_status_play.Size = new System.Drawing.Size(21, 20);
             this.sbt_status_play.TabIndex = 13;
             this.sbt_status_play.ToolTip = "Состояние трека";
             // 
@@ -1403,24 +1386,22 @@
             this.lbc_time_minus.Appearance.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Bold);
             this.lbc_time_minus.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lbc_time_minus.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lbc_time_minus.Location = new System.Drawing.Point(104, 26);
-            this.lbc_time_minus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbc_time_minus.Location = new System.Drawing.Point(89, 21);
             this.lbc_time_minus.Name = "lbc_time_minus";
-            this.lbc_time_minus.Size = new System.Drawing.Size(19, 53);
+            this.lbc_time_minus.Size = new System.Drawing.Size(16, 43);
             this.lbc_time_minus.TabIndex = 12;
             // 
             // Label_InfoLine
             // 
-            this.Label_InfoLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label_InfoLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_InfoLine.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.Label_InfoLine.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.Label_InfoLine.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.Label_InfoLine.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.Label_InfoLine.Location = new System.Drawing.Point(2, 6);
-            this.Label_InfoLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Label_InfoLine.Location = new System.Drawing.Point(2, 5);
             this.Label_InfoLine.Name = "Label_InfoLine";
-            this.Label_InfoLine.Size = new System.Drawing.Size(316, 18);
+            this.Label_InfoLine.Size = new System.Drawing.Size(271, 15);
             this.Label_InfoLine.TabIndex = 7;
             this.Label_InfoLine.Text = "загрузите треки";
             this.Label_InfoLine.ToolTipController = this.toolTipController1;
@@ -1438,10 +1419,9 @@
             this.lbc_time_back.Appearance.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold);
             this.lbc_time_back.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lbc_time_back.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lbc_time_back.Location = new System.Drawing.Point(215, 80);
-            this.lbc_time_back.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbc_time_back.Location = new System.Drawing.Point(184, 65);
             this.lbc_time_back.Name = "lbc_time_back";
-            this.lbc_time_back.Size = new System.Drawing.Size(107, 30);
+            this.lbc_time_back.Size = new System.Drawing.Size(92, 24);
             this.lbc_time_back.TabIndex = 11;
             this.lbc_time_back.Text = "-00:00";
             // 
@@ -1451,10 +1431,9 @@
             this.lbc_time.Appearance.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Bold);
             this.lbc_time.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lbc_time.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lbc_time.Location = new System.Drawing.Point(127, 26);
-            this.lbc_time.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbc_time.Location = new System.Drawing.Point(109, 21);
             this.lbc_time.Name = "lbc_time";
-            this.lbc_time.Size = new System.Drawing.Size(194, 53);
+            this.lbc_time.Size = new System.Drawing.Size(166, 43);
             this.lbc_time.TabIndex = 8;
             this.lbc_time.Text = "00:00";
             // 
@@ -1480,10 +1459,10 @@
             // 
             this.splitterControl.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz;
             this.splitterControl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitterControl.Location = new System.Drawing.Point(817, 2);
+            this.splitterControl.Location = new System.Drawing.Point(697, 2);
             this.splitterControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitterControl.Name = "splitterControl";
-            this.splitterControl.Size = new System.Drawing.Size(6, 654);
+            this.splitterControl.Size = new System.Drawing.Size(6, 531);
             this.splitterControl.TabIndex = 3;
             this.splitterControl.TabStop = false;
             // 
@@ -1497,7 +1476,7 @@
             this.panelControl_Left.Location = new System.Drawing.Point(2, 2);
             this.panelControl_Left.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_Left.Name = "panelControl_Left";
-            this.panelControl_Left.Size = new System.Drawing.Size(815, 654);
+            this.panelControl_Left.Size = new System.Drawing.Size(695, 531);
             this.panelControl_Left.TabIndex = 10;
             // 
             // RTBox_TextFile
@@ -1506,12 +1485,12 @@
             this.RTBox_TextFile.Cursor = System.Windows.Forms.Cursors.NoMoveVert;
             this.RTBox_TextFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RTBox_TextFile.HideSelection = false;
-            this.RTBox_TextFile.Location = new System.Drawing.Point(2, 276);
-            this.RTBox_TextFile.Margin = new System.Windows.Forms.Padding(50);
+            this.RTBox_TextFile.Location = new System.Drawing.Point(2, 224);
+            this.RTBox_TextFile.Margin = new System.Windows.Forms.Padding(43, 41, 43, 41);
             this.RTBox_TextFile.Name = "RTBox_TextFile";
             this.RTBox_TextFile.ReadOnly = true;
             this.RTBox_TextFile.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.RTBox_TextFile.Size = new System.Drawing.Size(811, 132);
+            this.RTBox_TextFile.Size = new System.Drawing.Size(691, 152);
             this.RTBox_TextFile.TabIndex = 52;
             this.RTBox_TextFile.Tag = "0";
             this.RTBox_TextFile.Text = "";
@@ -1525,10 +1504,10 @@
             // panelControl_EQ
             // 
             this.panelControl_EQ.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl_EQ.Location = new System.Drawing.Point(2, 408);
+            this.panelControl_EQ.Location = new System.Drawing.Point(2, 376);
             this.panelControl_EQ.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_EQ.Name = "panelControl_EQ";
-            this.panelControl_EQ.Size = new System.Drawing.Size(811, 244);
+            this.panelControl_EQ.Size = new System.Drawing.Size(691, 153);
             this.panelControl_EQ.TabIndex = 53;
             this.panelControl_EQ.Text = "Эквалайзер";
             // 
@@ -1536,14 +1515,14 @@
             // 
             this.Pic_Logo.Dock = System.Windows.Forms.DockStyle.Top;
             this.Pic_Logo.EditValue = ((object)(resources.GetObject("Pic_Logo.EditValue")));
-            this.Pic_Logo.Location = new System.Drawing.Point(2, 27);
+            this.Pic_Logo.Location = new System.Drawing.Point(2, 22);
             this.Pic_Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Pic_Logo.MenuManager = this.barManager;
             this.Pic_Logo.Name = "Pic_Logo";
             this.Pic_Logo.Properties.Appearance.BackColor = System.Drawing.Color.Black;
             this.Pic_Logo.Properties.Appearance.Options.UseBackColor = true;
             this.Pic_Logo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.Pic_Logo.Size = new System.Drawing.Size(811, 249);
+            this.Pic_Logo.Size = new System.Drawing.Size(691, 202);
             this.Pic_Logo.TabIndex = 0;
             // 
             // panelControl_TextEditor
@@ -1552,7 +1531,7 @@
             this.panelControl_TextEditor.Location = new System.Drawing.Point(2, 2);
             this.panelControl_TextEditor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_TextEditor.Name = "panelControl_TextEditor";
-            this.panelControl_TextEditor.Size = new System.Drawing.Size(811, 25);
+            this.panelControl_TextEditor.Size = new System.Drawing.Size(691, 20);
             this.panelControl_TextEditor.TabIndex = 54;
             this.panelControl_TextEditor.Visible = false;
             // 
@@ -1565,7 +1544,7 @@
             this.panelControl_All.Location = new System.Drawing.Point(0, 0);
             this.panelControl_All.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_All.Name = "panelControl_All";
-            this.panelControl_All.Size = new System.Drawing.Size(1156, 658);
+            this.panelControl_All.Size = new System.Drawing.Size(989, 535);
             this.panelControl_All.TabIndex = 54;
             // 
             // timer_playng
@@ -1574,6 +1553,10 @@
             this.timer_playng.Interval = 450;
             this.timer_playng.Tick += new System.EventHandler(this.timerForCurrentPosition_Tick);
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Multiselect = true;
+            // 
             // timer_peaklevel
             // 
             this.timer_peaklevel.Enabled = true;
@@ -1581,9 +1564,9 @@
             // 
             // Form_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1196, 658);
+            this.ClientSize = new System.Drawing.Size(1025, 535);
             this.Controls.Add(this.panelControl_All);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1597,6 +1580,7 @@
             this.Name = "Form_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Парнс Плеер";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_Closing);
             this.Load += new System.EventHandler(this.Form_Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
@@ -1611,7 +1595,6 @@
             this.panelControl_lists.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xTabCtrl_PlayLists)).EndInit();
             this.xTabCtrl_PlayLists.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_Hot_PL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_PlayBack)).EndInit();
             this.panelControl_PlayBack.ResumeLayout(false);
@@ -1761,7 +1744,6 @@
         private DevExpress.XtraEditors.SplitterControl splitterControl1;
         private DevExpress.XtraEditors.PanelControl panelControl_Hot_PL;
         private DevExpress.XtraEditors.PanelControl panelControl_lists;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         private DevExpress.XtraBars.BarButtonItem iToggle_PL_Show;
         private DevExpress.XtraBars.BarButtonItem iCheckUpdates;

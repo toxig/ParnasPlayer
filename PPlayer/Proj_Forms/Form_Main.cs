@@ -50,6 +50,7 @@ namespace PPlayer
         StreamClass         MainStream = new StreamClass();         // основной поток
         StreamClass         SlaveStream = new StreamClass();        // поток для сведения фейдера
         Mod_Rich_Edit       Text_RTEditor = new Mod_Rich_Edit();    // редактор текстов
+        Form_History        FChangeLog = new Form_History();        // История изменений списка
 
         // Константы
         Keys v_Key_to_HotList = Keys.Enter; // клавиша добавления трека в горячий список
@@ -156,22 +157,43 @@ namespace PPlayer
             Init_MainForm();            
         }
 
+        #region Проверка обновлений
+        // Поток проверка обновлений        
+        private void FU_StartUpdate_Hidden() //// Запуск проверки без сообщений ошибок
+        {
+            CheckUpdates(false);
+        }
+
+        // Поток проверка обновлений        
+        private void FU_StartUpdate() //// Запуск проверки c сообщениями
+        {
+            CheckUpdates(true);
+        }
+
+        // инициализация потока обновлений
+        //Thread FU_Thread = new Thread(new ThreadStart(FU_StartUpdate or FU_StartUpdate_Hidden));
+        //FU_Thread.Start();
+        #endregion
+
         // загрузка программы
         private void Form_Main_Load(object sender, EventArgs e)
         {
             this.Text = "Парнас Плеер [" + curVersion.ToString() + "]";
 
-            FWorking.param_Operation_Text = "Загрузка настроек...";
-            Load_Prog_Settings();
-            FW_Tread.Abort();
-
             #region проверка обновления
-            // проверка обновления
+            // проверка обновления без сообщений об ошибках
             if (Settings.p_check_updates)
             {
-                CheckUpdates(false);
+                FWorking.param_Operation_Text = "Проверка обновлений...";
+                Thread FU_Thread = new Thread(new ThreadStart(FU_StartUpdate_Hidden));
+                FU_Thread.Start();
             }
             #endregion
+
+            FWorking.param_Operation_Text = "Загрузка настроек...";
+            Load_Prog_Settings();            
+            
+            FW_Tread.Abort();
         }
 
         // загрузка настроек
@@ -271,11 +293,23 @@ namespace PPlayer
             Bass.BASS_Free();
             //System.IO.File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\KPlayerOptions.ini", Storage.path);
 
+            int cur_list = v_play_list_id_active;
+
             Settings.p_PL_OpenFiles = "";
+
             for (int i = 0; i < xTabCtrl_PlayLists.TabPages.Count; i++)
             {
+                xTabCtrl_PlayLists.SelectedTabPageIndex = i;
+                if (!PL_PlayLists_Save(i)) // закрытие списков
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
                 Settings.p_PL_OpenFiles += All_PlayLists[i].pl_FilePath + "\n";
             }
+
+            xTabCtrl_PlayLists.SelectedTabPageIndex = cur_list; //v_play_list_id_active             
 
             Settings.p_bar_show_EQ = panelControl_EQ.Visible;
             Settings.p_bar_show_PLAY = panelControl_PlayBack.Visible;
@@ -284,10 +318,13 @@ namespace PPlayer
             
             if (this.WindowState == FormWindowState.Maximized)
                 Settings.p_Form_Maximized = true;
-            else Settings.p_Form_Maximized = false;            
+            else 
+                Settings.p_Form_Maximized = false;            
 
-            if (sbtn_Repeat.Tag.ToString() == "1") Settings.p_Repeat_Status = true;
-            else Settings.p_Repeat_Status = false;
+            if (sbtn_Repeat.Tag.ToString() == "1") 
+                Settings.p_Repeat_Status = true;
+            else 
+                Settings.p_Repeat_Status = false;
 
             Settings.p_Fade_time = int.Parse(textEdit_FadeTime.Text);
 
@@ -295,7 +332,8 @@ namespace PPlayer
 
             Settings.p_HotList_Height = panelControl_Hot_PL.Height;
 
-            Settings.Save();
+            Settings.Save();           
+
         }
 
         #region Инициализация элементов
@@ -451,15 +489,6 @@ namespace PPlayer
                 All_PlayLists[v_play_list_id_active].Focused_Row_Blink();
             }
 
-            // удаление из листа
-            if (e.KeyCode == Keys.Delete)
-            {                
-                All_PlayLists[v_play_list_id_active].dt_FileData.Rows[Row_ID].Delete();
-                All_PlayLists[v_play_list_id_active].dt_ListData.Rows[Row_ID].Delete();
-                All_PlayLists[v_play_list_id_active].is_Changed = true;
-                iSave_PlayList.Enabled = true;
-            }
-
             // изменение тэгов
             if (e.KeyCode == Keys.F2)
             {
@@ -479,6 +508,7 @@ namespace PPlayer
             if (e.KeyCode == Keys.Delete)
             {
                 iEdit_DelMuzFile_ItemClick(null, null);
+                iSave_PlayList.Enabled = true;
             }
             
         }
@@ -757,19 +787,19 @@ namespace PPlayer
             
             if (MainStream.v_stream_status == StreamStatus.PLAY) // трек играет
             {
-                MainStream.v_stream_status = StreamStatus.PAUSE;
+                MainStream.v_stream_status = StreamStatus.PAUSE; // ставим на паузу
                 Label_InfoLine.Text = "Пауза";                
                 sbtn_Pause.ImageIndex = 0; // 0 - Play; 1 - Pause
                 sbtn_FadeNow.ImageIndex = 6; // 3 - Fade Down; 6 - Fade Up    
 
                 MainStream.v_FadeActive = false;
             }
-            else                
+            else // не играет
                 if (MainStream.v_stream_status == StreamStatus.PAUSE // трек на паузе
                     && MainStream.v_PL_List_ID_played == v_play_list_id_active  // ПЛ листы совпадают
                     && MainStream.v_PL_Row_ID == Row_ID) // треки совпадают
                 { 
-                    // продолжение paus - start - с полной громкостью                   
+                    // продолжение pause -> start - (с полной громкостью / без фейдера)
                     int pos = EQ_Main.pbc_equal_main.Position;
                     int max = EQ_Main.pbc_equal_main.Properties.Maximum;
 
@@ -783,6 +813,8 @@ namespace PPlayer
                 }
                 else //инициируем новое воспроизведение
                 {
+                    GC.Collect();
+                    GC.WaitForFullGCComplete();
                     PlayCurFile_FromList(v_play_list_id_active, 0); // текущий трек
                     Label_InfoLine.Text = "Проигрывается";                    
                     sbtn_Pause.ImageIndex = 1; // 0 - Play; 1 - Pause
@@ -1698,6 +1730,7 @@ namespace PPlayer
 
         private void iExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            // проверка изменений плейлистов
             this.Close();
         }
 
@@ -2201,23 +2234,57 @@ namespace PPlayer
 
         private void iClose_PlayList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (All_PlayLists[v_play_list_id_active].is_Changed)
+            if (PL_PlayLists_Save(v_play_list_id_active))
+                All_PlayLists[v_play_list_id_active].PL_CloseList(); // очистка PL;
+        }
+
+        // Закрытие списка плейлиста
+        private bool PL_PlayLists_Save(int play_list_id)
+        {
+            Control_PlayList Cur_PL = All_PlayLists[play_list_id];
+
+            if (Cur_PL.is_Changed)
             {
-                switch (MessageBox.Show("Сохранить изменения?" +
-                                "\nПлейлист: " + Path.GetFileName(All_PlayLists[v_play_list_id_active].pl_FilePath)
-                                , "Вопрос", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                // название списка
+                string playlist_name = (Cur_PL.pl_FilePath != "" ?
+                                        Path.GetFileName(Cur_PL.pl_FilePath) : 
+                                        "Новый плейлист");
+                
+                FChangeLog = new Form_History();
+                FChangeLog.v_list_name = playlist_name;
+                FChangeLog.v_list_change_log = Cur_PL.Сhange_history.info();
+                FChangeLog.v_init_dir = openFileDialog.InitialDirectory;
+
+                FChangeLog.v_resault = 0;
+
+                FChangeLog.ShowDialog();
+
+                // Если нет файла плейлиста, то сохраняем как (3)
+                if (FChangeLog.v_resault == 2 && Cur_PL.pl_FilePath == "") FChangeLog.v_resault = 3;
+
+                switch (FChangeLog.v_resault)
                 {
-                    case System.Windows.Forms.DialogResult.Yes:
-                        if (!All_PlayLists[v_play_list_id_active].PL_SaveData()) return;// сохранить файл
-                        iSave_PlayList.Enabled = false;
+                    case 3: // сохранить как
+                        if (Cur_PL.PL_SaveDataAs(FChangeLog.v_file_name)) // если сохр успешно
+                            Cur_PL.pl_FilePath = FChangeLog.v_file_name;                            
+                        else 
+                            return false;
                         break;
-                    case System.Windows.Forms.DialogResult.No:
+                    case 2: // сохранить
+                        if (!Cur_PL.PL_SaveData()) return false;// сохранить файл
                         break;
-                    default: return; // cancel - отмена                        
+                    case 1: // без сохранения
+                        break;
+                    default: return false; // тут cancel - отмена  
+                }
+
+                if (FChangeLog.v_resault != 0)
+                {                    
+                    iSave_PlayList.Enabled = false;
                 }
             }
 
-            All_PlayLists[v_play_list_id_active].PL_CloseList();            
+            return true;
         }
 
         private void iSave_PlayList_ItemClick(object sender, ItemClickEventArgs e)
@@ -2238,6 +2305,7 @@ namespace PPlayer
             saveFileDialog.InitialDirectory = openFileDialog.InitialDirectory;
             saveFileDialog.FileName = Path.GetFileName(All_PlayLists[v_play_list_id_active].pl_FilePath);
             saveFileDialog.Filter = "PlayList Parnas Machine (*.pmp)|*.pmp|All files (*.*)|*.*";
+            if (saveFileDialog.FileName == "") saveFileDialog.FileName = "Новый плейлист";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 if (All_PlayLists[v_play_list_id_active].PL_SaveDataAs(saveFileDialog.FileName))
@@ -2249,9 +2317,20 @@ namespace PPlayer
 
         private void iEdit_DelMuzFile_ItemClick(object sender, ItemClickEventArgs e)
         {            
-            int Row_ID = All_PlayLists[v_play_list_id_active].dt_ListData.Rows.IndexOf(All_PlayLists[v_play_list_id_active].gv_PlayList.GetFocusedDataRow());
+            int Row_ID = All_PlayLists[v_play_list_id_active].dt_ListData.Rows.IndexOf(
+                         All_PlayLists[v_play_list_id_active].gv_PlayList.GetFocusedDataRow()
+                         );
+            // выделяем след элемент с учетом сортировки (иначе после удаления текущ записи список прыгнет)
+            int max_rows = All_PlayLists[v_play_list_id_active].gv_PlayList.RowCount;
+            int cur_row = All_PlayLists[v_play_list_id_active].gv_PlayList.FocusedRowHandle;
 
-            All_PlayLists[v_play_list_id_active].PL_DelTrack(Row_ID);
+            if (cur_row < max_rows - 1) cur_row++;
+            else cur_row--;
+
+            All_PlayLists[v_play_list_id_active].gv_PlayList.FocusedRowHandle = cur_row; 
+
+            All_PlayLists[v_play_list_id_active].PL_DelTrack(Row_ID);            
+
             Check_PL_Status(v_play_list_id_active);
         }
 
@@ -2291,13 +2370,16 @@ namespace PPlayer
             openFileDialog.InitialDirectory = Settings.p_DefFolder_Music;
             openFileDialog.FileName = "";
 
-            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel) return;
+            DialogResult dr = this.openFileDialog.ShowDialog();
 
-            if (openFileDialog.FileName.Length != 0)
+            if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                All_PlayLists[v_play_list_id_active].PL_AddMuz(openFileDialog.FileName);
-                Check_PL_Status(v_play_list_id_active);
-                Settings.p_DefFolder_Music = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
+                foreach (String file in openFileDialog.FileNames)
+                {
+                    All_PlayLists[v_play_list_id_active].PL_AddMuz(file);
+                    Check_PL_Status(v_play_list_id_active);
+                    Settings.p_DefFolder_Music = System.IO.Path.GetDirectoryName(file);
+                }
             }
         }
 
@@ -2519,13 +2601,15 @@ namespace PPlayer
 
         private void iCheckUpdates_ItemClick(object sender, ItemClickEventArgs e)
         {
-            CheckUpdates(true);
+            // инициализация потока обновлений
+            Thread FU_Thread = new Thread(new ThreadStart(FU_StartUpdate));
+            FU_Thread.Start();
         }
 
         private void iFindFilter_ItemClick(object sender, ItemClickEventArgs e)
         {
             All_PlayLists[v_play_list_id_active].checkButton_Filter_Plus.Checked =
-                All_PlayLists[v_play_list_id_active].checkButton_Filter_Plus.Checked ? false : true;
+            All_PlayLists[v_play_list_id_active].checkButton_Filter_Plus.Checked ? false : true;
 
         }
 

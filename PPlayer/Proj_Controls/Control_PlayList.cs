@@ -10,7 +10,8 @@ using DevExpress.XtraEditors;
 using DevExpress.Data.Filtering;
 
 namespace PPlayer
-{
+{    
+    // класс списка плейлиста
     public partial class Control_PlayList : DevExpress.XtraEditors.XtraUserControl
     {
         private string _pl_FilePath = "";
@@ -32,13 +33,13 @@ namespace PPlayer
                 }
                 else
                 {
-                    labelControl_header.Text = "новый плейлист";
+                    labelControl_header.Text = "Новый плейлист";
                     labelControl_header.ToolTip = "";
                 }
             }
         }
 
-        private bool _pl_History = false;
+        private bool _pl_History = false; // Список в формате истории
         public bool pl_History
         {
             get
@@ -66,8 +67,7 @@ namespace PPlayer
 
         public DataTable dt_FileData;
         public DataTable dt_ListData;
-        public GridViewFilterHelper filterHelper;
-        public bool is_Changed = false;
+        public GridViewFilterHelper filterHelper;        
 
         // константы
         public int tooltip_hide_ms = 2000; // кол-во секунд, которые держится тултип
@@ -81,23 +81,42 @@ namespace PPlayer
         public bool tooltip_started = true;
 
         private int OldRow = 0;
-        private int timer_ticks = 5; // колво миганий строки при переносе в hotlist
-        private int timer_type = 0; // цвет мигания ok/error
-        private Color row_color_default;
+        private int timer_ticks = 5;         // колво миганий строки при переносе в hotlist
+        private int timer_type = 0;
+        private Color row_color_default;     // цвет мигания ok/error
         private Color row_color_blink;
-        private Color row_color_err_blink;        
-        private string tooltip_text = "";
-        private int Row_Handle = -1;
+        private Color row_color_err_blink;       
+ 
+        private string tooltip_text = "";     // подсказка для трека
+        private int Row_Handle = -1;          // последняя выделенная запись
         private MouseEventArgs e_last;
-        private bool is_scroll = false;
-        private bool list_is_focused = false;
-        private bool find_is_focused = false;
-        private TagLib.File Tag_File; // Тэги в файле
-        public bool v_CheckTags = false;        
+        private bool is_scroll = false;       // актиен скролл
+        private bool list_is_focused = false; // активный лист
+        private bool find_is_focused = false; // активна форма поиска
+        private TagLib.File Tag_File;         // Тэги в файле
+        public bool v_CheckTags = false;      // проверять тэги в файлах                
+        
+        public Change_History Сhange_history = new Change_History(); // История изменений
+        private bool _is_Changed = false;    // Наличие изменений
+        public bool is_Changed
+        {
+            get
+            {
+                return _is_Changed;
+            }
+            set
+            {
+                _is_Changed = value;
+                if (value == false)
+                {
+                    Сhange_history.clear(); 
+                }                
+            }
+        }
 
-        public Form_Working FWorking;
-        // debug        
+        public Form_Working FWorking;              
 
+        // Инициализация класса
         public Control_PlayList()
         {
             InitializeComponent();
@@ -291,6 +310,36 @@ namespace PPlayer
 
         #region Поиск (фильтр)
 
+        // активация фильтрации на списке
+        private void gv_PlayList_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (search_clear_dt < DateTime.Now) // очистка поиска после интервала ожидания
+                btnEdit_Find.Text = "";
+
+            btnEdit_Find.DeselectAll();
+
+            if (!char.IsControl(e.KeyChar))
+                btnEdit_Find.Text += e.KeyChar;
+            else
+                if (e.KeyChar == '\b' && btnEdit_Find.Text.Length > 0) // бэкспейс - очистка последнего символа
+                    btnEdit_Find.Text = btnEdit_Find.Text.Substring(0, btnEdit_Find.Text.Length - 1);
+                else
+                    if (e.KeyChar == 27 && btnEdit_Find.Text.Length > 0) // эскейп - очистка всего поиска
+                        btnEdit_Find.Text = "";
+
+            if (btnEdit_Find.Text == "" && panelControl_Filter.Visible)
+            {
+                checkButton_Toggle_FindPanel.Checked = false;
+                panelControl_Filter.Visible = false;
+            }
+            else
+            {
+                checkButton_Toggle_FindPanel.Checked = true;
+                panelControl_Filter.Visible = true;
+            }
+
+        }
+
         // Изменение фильтра
         private void btnEdit_Find_EditValueChanged(object sender, EventArgs e)
         {
@@ -476,37 +525,7 @@ namespace PPlayer
         }
 
         #endregion
-        
-        // активация фильтрации на списке
-        private void gv_PlayList_KeyPress(object sender, KeyPressEventArgs e)
-        {
-                if (search_clear_dt < DateTime.Now) // очистка поиска после интервала ожидания
-                    btnEdit_Find.Text = "";
                 
-                btnEdit_Find.DeselectAll();
-
-                if (!char.IsControl(e.KeyChar))
-                    btnEdit_Find.Text += e.KeyChar;
-                else
-                    if (e.KeyChar == '\b' && btnEdit_Find.Text.Length > 0) // бэкспейс - очистка последнего символа
-                        btnEdit_Find.Text = btnEdit_Find.Text.Substring(0, btnEdit_Find.Text.Length - 1);
-                    else
-                        if (e.KeyChar == 27 && btnEdit_Find.Text.Length > 0) // эскейп - очистка всего поиска
-                            btnEdit_Find.Text = "";
-
-                if (btnEdit_Find.Text == "" && panelControl_Filter.Visible)
-                {
-                    checkButton_Toggle_FindPanel.Checked = false;
-                    panelControl_Filter.Visible = false;                    
-                }
-                else
-                {                    
-                    checkButton_Toggle_FindPanel.Checked = true;
-                    panelControl_Filter.Visible = true;
-                }
-
-        }
-
         #region Наличие файлов на диске
         /// <summary>
         /// Проверка наличия файлов на диске для списка
@@ -563,6 +582,7 @@ namespace PPlayer
 
         #endregion
 
+        #region Управление списком
         // Закрытие списка
         public void PL_CloseList()
         {
@@ -574,8 +594,9 @@ namespace PPlayer
         // Очистка списка
         public void PL_ClearList()
         {
-            Init_Table_Data();            
+            Init_Table_Data();
             is_Changed = true;
+            Сhange_history.add("Список [ОЧИЩЕН]");
         }
 
         // набор данных для сохранения в формате PM
@@ -627,25 +648,32 @@ namespace PPlayer
             return PL_SaveDataAs(pl_FilePath);
         }
 
+        // Удаление трека
         public void PL_DelTrack(int RowHandle)
         {
             if (RowHandle > dt_ListData.Rows.Count - 1) return;
 
-            dt_ListData.Rows[RowHandle].Delete();
-            dt_FileData.Rows[RowHandle].Delete();
             is_Changed = true;
+            Сhange_history.add("Муз [удален]: \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
+
+            dt_ListData.Rows[RowHandle].Delete();
+            dt_FileData.Rows[RowHandle].Delete();            
         }
 
         // Удаление текста
         public void PL_DelText(int RowHandle)
         {
-            if (RowHandle > dt_ListData.Rows.Count - 1 || RowHandle < 0) return;
+            if (RowHandle > dt_ListData.Rows.Count - 1 || RowHandle < 0 || dt_ListData.Rows[RowHandle]["TextFile"] == "") return;
+
+            Сhange_history.add("Текст [удален]: \"" + Path.GetFileName(dt_ListData.Rows[RowHandle]["TextFile"].ToString()) +
+                               "\" для Муз \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
+
+            is_Changed = true;
 
             dt_ListData.Rows[RowHandle]["TextFile"] = "";
-            dt_FileData.Rows[RowHandle]["TextFile"] = "";    
+            dt_FileData.Rows[RowHandle]["TextFile"] = "";
 
-            Check_Exists_Row(RowHandle);
-            is_Changed = true;
+            Check_Exists_Row(RowHandle);            
         }
 
         // Добавление текста
@@ -653,11 +681,14 @@ namespace PPlayer
         {
             if (RowHandle > dt_ListData.Rows.Count - 1 || RowHandle < 0) return;
 
+            Сhange_history.add("Текст [добавлен]: \"" + Path.GetFileName(FilePath) + "\"" +
+                               "\" для Муз \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
+            is_Changed = true;
+
             dt_ListData.Rows[RowHandle]["TextFile"] = FilePath;
             dt_FileData.Rows[RowHandle]["TextFile"] = FilePath;
 
-            Check_Exists_Row(RowHandle);
-            is_Changed = true;
+            Check_Exists_Row(RowHandle);            
         }
 
         // Добавление муз файла
@@ -708,6 +739,8 @@ namespace PPlayer
             dt_ListData.Rows.Add(DrowL);
 
             Check_Exists_Row(dt_ListData.Rows.Count - 1);
+
+            Сhange_history.add("Муз [добавлен]: \"" + DrowL["Name"] + "\"");
             is_Changed = true;
         }
 
@@ -720,7 +753,40 @@ namespace PPlayer
         private void checkButton_Toggle_FindPanel_CheckedChanged(object sender, EventArgs e)
         {
             Toggle_Show_Filter();
+        } 
+        #endregion
+
+    }
+
+    // Класс - История изменений списка
+    public class Change_History
+    {
+
+        string[] hist = new string[2000]; // список изменений
+        int rows = 0; // кол-во строк истории
+
+        public void add(string info)
+        {
+            hist[rows] = info;
+            rows++;
         }
 
+        public string info()
+        {
+            string inf = "";
+
+            for (int i = 0; i < rows; i++)
+            {
+                inf += "* " + hist[i] + "\r\n";
+            }
+
+            return inf;
+        }
+
+        public void clear()
+        {
+            hist = new string[2000];
+            rows = 0;
+        }
     }
 }
