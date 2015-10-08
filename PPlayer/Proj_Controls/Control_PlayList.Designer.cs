@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition5 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition6 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Control_PlayList));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gridColumn_exists = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grid_PlayList = new DevExpress.XtraGrid.GridControl();
             this.gv_PlayList = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -80,8 +80,7 @@
             this.grid_PlayList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_PlayList});
             this.grid_PlayList.DragDrop += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragDrop);
-            this.grid_PlayList.DragEnter += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragEnter);
-            this.grid_PlayList.DragLeave += new System.EventHandler(this.grid_PlayList_DragLeave);
+            this.grid_PlayList.DragEnter += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragEnter);            
             this.grid_PlayList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grid_PlayList_MouseClick);
             this.grid_PlayList.MouseEnter += new System.EventHandler(this.grid_PlayList_MouseEnter);
             // 
@@ -117,34 +116,34 @@
             this.gridColumn_exists,
             this.gridColumn_date});
             this.gv_PlayList.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.Black;
-            styleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Salmon;
-            styleFormatCondition4.Appearance.Options.UseBackColor = true;
-            styleFormatCondition4.Appearance.Options.UseForeColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Column = this.gridColumn_exists;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition4.Value1 = "100";
-            styleFormatCondition5.Appearance.BackColor = System.Drawing.Color.Black;
-            styleFormatCondition5.Appearance.ForeColor = System.Drawing.Color.Salmon;
-            styleFormatCondition5.Appearance.Options.UseBackColor = true;
-            styleFormatCondition5.Appearance.Options.UseForeColor = true;
-            styleFormatCondition5.ApplyToRow = true;
-            styleFormatCondition5.Column = this.gridColumn_exists;
-            styleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition5.Value1 = "101";
-            styleFormatCondition6.Appearance.BackColor = System.Drawing.Color.Black;
-            styleFormatCondition6.Appearance.ForeColor = System.Drawing.Color.DarkGray;
-            styleFormatCondition6.Appearance.Options.UseBackColor = true;
-            styleFormatCondition6.Appearance.Options.UseForeColor = true;
-            styleFormatCondition6.ApplyToRow = true;
-            styleFormatCondition6.Column = this.gridColumn_exists;
-            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition6.Value1 = "110";
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Black;
+            styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Salmon;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Appearance.Options.UseForeColor = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Column = this.gridColumn_exists;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition1.Value1 = "100";
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Black;
+            styleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Salmon;
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.Appearance.Options.UseForeColor = true;
+            styleFormatCondition2.ApplyToRow = true;
+            styleFormatCondition2.Column = this.gridColumn_exists;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition2.Value1 = "101";
+            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.Black;
+            styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.DarkGray;
+            styleFormatCondition3.Appearance.Options.UseBackColor = true;
+            styleFormatCondition3.Appearance.Options.UseForeColor = true;
+            styleFormatCondition3.ApplyToRow = true;
+            styleFormatCondition3.Column = this.gridColumn_exists;
+            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition3.Value1 = "110";
             this.gv_PlayList.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition4,
-            styleFormatCondition5,
-            styleFormatCondition6});
+            styleFormatCondition1,
+            styleFormatCondition2,
+            styleFormatCondition3});
             this.gv_PlayList.GridControl = this.grid_PlayList;
             this.gv_PlayList.Name = "gv_PlayList";
             this.gv_PlayList.OptionsHint.ShowCellHints = false;
@@ -269,7 +268,7 @@
             this.btnEdit_Find.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnEdit_Find.Properties.Appearance.Options.UseFont = true;
             this.btnEdit_Find.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnEdit_Find.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnEdit_Find.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
             this.btnEdit_Find.Properties.HideSelection = false;
             this.btnEdit_Find.Size = new System.Drawing.Size(264, 26);
             this.btnEdit_Find.TabIndex = 0;

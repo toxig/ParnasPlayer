@@ -263,6 +263,23 @@ namespace PPlayer
             }
         }
 
+        
+        /// <summary>Проверка наличия файлов на диске</summary>        
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Проверка наличия файлов на диске")]
+        [global::System.Configuration.DefaultSettingValue("true")]
+        public bool p_Check_Exist
+        {
+            get
+            {
+                return ((bool)this["p_Check_Exist"]);
+            }
+            set
+            {
+                this["p_Check_Exist"] = value;
+            }
+        }
+
         /// <summary>
         /// Высота горячего списка
         /// </summary>

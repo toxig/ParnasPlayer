@@ -750,6 +750,7 @@
             this.iCheck_Tags_Files.Caption = "Вкл. Чтение Тэгов при загрузке";
             this.iCheck_Tags_Files.Id = 77;
             this.iCheck_Tags_Files.Name = "iCheck_Tags_Files";
+            this.iCheck_Tags_Files.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.iCheck_Tags_Files_CheckedChanged);
             // 
             // iRepeat_Check
             // 
@@ -1660,7 +1661,6 @@
         private DevExpress.XtraEditors.LabelControl lbc_time;
         private DevExpress.XtraBars.BarButtonItem im_Open_PM_List;
         private DevExpress.XtraBars.PopupMenu popup_MainMenu;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
         private DevExpress.XtraBars.BarButtonItem im_Open_PP_List;
         private DevExpress.XtraEditors.LabelControl lbc_time_back;
         private DevExpress.XtraBars.Bar bar1;
@@ -1751,7 +1751,8 @@
         private DevExpress.XtraBars.BarButtonItem iCheckUpdates;
         private DevExpress.XtraBars.BarButtonItem iFindFilter;
         private DevExpress.XtraBars.BarCheckItem iPList_Width;
-        public DevExpress.XtraTab.XtraTabControl xTabCtrl_PlayLists;        
+        public DevExpress.XtraTab.XtraTabControl xTabCtrl_PlayLists;
+        public System.Windows.Forms.OpenFileDialog openFileDialog;        
 
     }
 }

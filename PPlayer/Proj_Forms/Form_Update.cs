@@ -104,7 +104,7 @@ namespace PPlayer
             // Поток сообщений выполняемых операций
             Thread FW_Tread = new Thread(new ThreadStart(FW_ShowDialog));
             if (show_msg) // запускаем фоновое сообщение пользователю
-            {                
+            {
                 FW_Tread.Start();
                 FWorking.param_Operation_Text = "Проверка обновления...";
             }
@@ -193,7 +193,7 @@ namespace PPlayer
                 if (show_usr_msg)
                 {
                     #region Ошибка получения данных
-                    FW_Tread.Abort();
+                    if (FW_Tread.ThreadState == System.Threading.ThreadState.Running) FW_Tread.Abort();
                     DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка проверки последней версии.\n"
                                 + "\n" + e.Message + "\n"
                                 + "\nВозможные причины:\n * нет доступа к интернету;\n * cеревер обновления временно не доступен;",
@@ -236,10 +236,9 @@ namespace PPlayer
                 if (reader != null)
                     reader.Close();
 
-                if (FW_Tread.IsAlive) FW_Tread.Abort();
+                //if (FW_Tread.ThreadState == System.Threading.ThreadState.Running) FW_Tread.Abort();
             }
-            #endregion            
-            
+            #endregion                                               
 
             #region Есть новая версия - Спрашиваем пользователя
             //спрашиваем у пользователя что делать дальше
@@ -272,6 +271,8 @@ namespace PPlayer
                     memoEdit_info.Visible = false;
                 }
 
+
+                if (FW_Tread.IsAlive && FW_Tread.ThreadState != System.Threading.ThreadState.AbortRequested) FW_Tread.Abort();
                 this.ShowDialog();
                 //пытаемся перейти по ссылке открыв браузер
                 //Process.Start(uv.p_url_xml_filelist);
@@ -300,12 +301,14 @@ namespace PPlayer
                     memoEdit_info.Text = uv.v_whatnew;
                     memoEdit_info.Select(0, 0);
 
+                    if (FW_Tread.IsAlive && FW_Tread.ThreadState != System.Threading.ThreadState.AbortRequested) FW_Tread.Abort();
                     this.ShowDialog();
                 }
                 
                 this.Close();
                 return;
             }
+            
             #endregion
         }
 

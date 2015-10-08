@@ -37,7 +37,7 @@ namespace PPlayer
 
         // Не сохранять - 1
         private void sbtn_No_Save_Click(object sender, EventArgs e)
-        {
+        {            
             v_resault = 1;
             this.Close();
         }
@@ -45,15 +45,21 @@ namespace PPlayer
         // Сохранить - 2
         private void sbtn_save_Click(object sender, EventArgs e)
         {
-            v_resault = 2;
-            this.Close();
+            if (v_file_name == "" || v_file_name == null)
+                sbtn_save_as_Click(null, null);
+            else
+            {
+                v_resault = 2;
+                this.Close();
+            }
         }
 
         // Сохранить как... - 3
         private void sbtn_save_as_Click(object sender, EventArgs e)
         {            
             saveFileDialog.InitialDirectory = v_init_dir;
-            saveFileDialog.FileName = v_list_name;
+            string name = v_list_name.Substring(4,v_list_name.Length - 4);
+            saveFileDialog.FileName = name.Replace("\"","");
             saveFileDialog.Filter = "PlayList Parnas Machine (*.pmp)|*.pmp|All files (*.*)|*.*";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)

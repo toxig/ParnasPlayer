@@ -41,20 +41,18 @@ namespace PPlayer
         string v_Name_HotList = "H";          //Заголовок горячего плейлиста
         private int v_MainWindowTread = Thread.CurrentThread.ManagedThreadId; // ID главного потока
 
-        //string v_PlaingFileName;            // название проигрываемого трека        
-        Form_Working        FWorking = new Form_Working();          // Фоновое окно операций
-        Thread              FW_Tread;                               // Поток
+        //string v_PlaingFileName;                                  // название проигрываемого трека                
+        Class_Working            FWorking = new Class_Working();              // Отображение статуса выполнения
         Form_TagEditor      FTags = new Form_TagEditor();           // Редактор Тэгов
         Form_Settings       FSettings = new Form_Settings();        // Редактор настроек
-        FormView            FView = new FormView();                 // настройки отображения формы    
-        Loader_FileList     FLoader = new Loader_FileList();        // загрузчик файлов        
+        FormView            FView = new FormView();                 // настройки отображения формы                  
         Control_EQ          EQ_Main;                                // настройки эквалайзера
         Control_PlayList[]  All_PlayLists = new Control_PlayList[10]; // массив плейлистов
         StreamClass         MainStream = new StreamClass();         // основной поток
         StreamClass         SlaveStream = new StreamClass();        // поток для сведения фейдера
         Mod_Rich_Edit       Text_RTEditor = new Mod_Rich_Edit();    // редактор текстов
         Form_History        FChangeLog = new Form_History();        // История изменений списка
-        Form_Update         FUpdate = new Form_Update();
+        Form_Update         FUpdate = new Form_Update();        
 
         // Константы
         Keys v_Key_to_HotList = Keys.Enter; // клавиша добавления трека в горячий список
@@ -101,14 +99,7 @@ namespace PPlayer
         #endregion
 
         // Пользовательские настройки программы
-        private static MySettings Settings = new MySettings();
-
-        // Запуск фонового окна
-        private void FW_ShowDialog()
-        {
-            FWorking.StartPosition = FormStartPosition.CenterScreen;            
-            FWorking.ShowDialog();            
-        }
+        private static MySettings Settings = new MySettings();        
 
         public Form_Main()
         {
@@ -117,9 +108,9 @@ namespace PPlayer
                 + curVersion.Build.ToString() + "."
                 + curVersion.Revision.ToString();
 
-            FWorking.param_Operation_Text = "Программа запускается...\n" + AboutInfo + " v." + AboutVersion;
-            FW_Tread = new Thread(new ThreadStart(FW_ShowDialog));
-            FW_Tread.Start();
+            FWorking.Text = "Программа запускается...\n" + AboutInfo + " v." + AboutVersion;
+            
+            FWorking.Start(); // Запуск потока оповещений
 
             try
             {
@@ -148,15 +139,15 @@ namespace PPlayer
             Init_PlayLists();
 
             // Инициализация эквалайзера
-            FWorking.param_Operation_Text = "Загрузка эквалайзера...";
+            FWorking.Text = "Загрузка эквалайзера...";
             Init_EQ();                                                                       
 
             // Настройки текста
-            FWorking.param_Operation_Text = "Загрузка текста...";
+            FWorking.Text = "Загрузка текста...";
             Init_Text();
 
             // Инициализация элементов главного окна
-            FWorking.param_Operation_Text = "Загрузка главного окна...";
+            FWorking.Text = "Загрузка главного окна...";
             Init_MainForm();            
         }
 
@@ -168,6 +159,7 @@ namespace PPlayer
             if (FUpdate.NeedUpdate)
             {
                 if (!Save_Main_Settings()) return;
+                
                 Application.Exit();
             }
         }
@@ -197,16 +189,16 @@ namespace PPlayer
             // проверка обновления без сообщений об ошибках
             if (Settings.p_check_updates)
             {
-                FWorking.param_Operation_Text = "Проверка обновлений...";
+                //FWorking.Text = "Проверка обновлений...";
                 Thread FU_Thread = new Thread(new ThreadStart(FU_StartUpdate_Hidden));
                 FU_Thread.Start();
             }
             #endregion
 
-            FWorking.param_Operation_Text = "Загрузка настроек...";
-            Load_Prog_Settings();            
-            
-            FW_Tread.Abort();
+            FWorking.Text = "Загрузка настроек...";
+            Load_Prog_Settings();
+
+            FWorking.Abort();
         }
 
         // загрузка настроек
@@ -214,7 +206,7 @@ namespace PPlayer
         {
             try
             {
-                FWorking.param_Operation_Text = "Загрузка настроек:\nЭквалайзер";
+                FWorking.Text = "Загрузка настроек:\nЭквалайзер";
                 #region Настройка эквалайзера
                 panelControl_EQ.Visible = Settings.p_bar_show_EQ;
                 panelControl_PlayBack.Visible = Settings.p_bar_show_PLAY;
@@ -222,7 +214,7 @@ namespace PPlayer
 
                 Pic_Logo.Dock = DockStyle.Fill;
 
-                FWorking.param_Operation_Text = "Загрузка настроек:\nНонстоп";
+                FWorking.Text = "Загрузка настроек:\nНонстоп";
                 #region Настройка повтора (Нонстоп)
                 if (Settings.p_Repeat_Status)
                 {
@@ -245,35 +237,20 @@ namespace PPlayer
                 #endregion
 
                 // Фейдер время
-                FWorking.param_Operation_Text = "Загрузка настроек:\nФейдер";
+                FWorking.Text = "Загрузка настроек:\nФейдер";
                 textEdit_FadeTime.Text = Settings.p_Fade_time.ToString();
                 v_FadeTime_Pause = Settings.p_Fade_time * 1000; // затухание при паузе
                 v_FadeTime_Hot = Settings.p_Fade_time * 1000; // затухание при горячем пуске
 
                 // загрузка листов
-                string[] PL_List_Path = Settings.p_PL_OpenFiles.Split('\n');
+                string[] PL_List_Path = Settings.p_PL_OpenFiles.Split('\n'); //список файлов
                 for (int i = 0; i < PL_List_Path.Length; i++)
                 {
                     if (xTabCtrl_PlayLists.TabPages.Count > i)
                     {
                         if (PL_List_Path[i].Trim() != "")
                         {
-                            v_play_list_id_active = i;
-                            FWorking.param_Operation_Text = "Загрузка плейлиста: [" + i.ToString() + "] \"" + Path.GetFileNameWithoutExtension(PL_List_Path[i]) + "\"";
-                            File_Load_PM_List(PL_List_Path[i]);
-
-                            if (Settings.p_Check_Tags)
-                            {
-                                FWorking.param_Operation_Text = "Загрузка плейлиста: [" + i.ToString() + "] \"" + Path.GetFileNameWithoutExtension(PL_List_Path[i]) + "\"" +
-                                                                "\nПроверка тэгов [" + All_PlayLists[i].dt_ListData.Rows.Count + " треков]";
-                            }
-                            else
-                            {
-                                FWorking.param_Operation_Text = "Загрузка плейлиста: [" + i.ToString() + "] \"" + Path.GetFileNameWithoutExtension(PL_List_Path[i]) + "\"" +
-                                                                "\nПроверка файлов [" + All_PlayLists[i].dt_ListData.Rows.Count + " треков]";
-                            }
-
-                            File_Check_Exists(i); // проверка наличия файлов на диске
+                            All_PlayLists[i].PM_Load_List(PL_List_Path[i]);
                         }
                     }
                 }
@@ -286,15 +263,13 @@ namespace PPlayer
                         v_play_list_id_active = Settings.p_PL_ActiveListID;
                 xTabCtrl_PlayLists.SelectedTabPageIndex = v_play_list_id_active;
 
-                FWorking.param_Operation_Text = "Загрузка настроек:\nРазмер окна";
-                if (Settings.p_Form_Maximized)
-                    this.WindowState = FormWindowState.Maximized;
+                FWorking.Text = "Загрузка настроек:\nРазмер окна";
+
+                if (Settings.p_Form_Maximized) this.WindowState = FormWindowState.Maximized;
                 else this.WindowState = FormWindowState.Normal;
 
                 panelControl_Right.Width = Settings.p_PL_PanelWidth;
-
                 iCheck_Tags_Files.Checked = Settings.p_Check_Tags;
-
                 panelControl_Hot_PL.Height = Settings.p_HotList_Height;
             }
             catch { }
@@ -325,6 +300,7 @@ namespace PPlayer
 
             #region Настройка плейлистов
             int cur_list = v_play_list_id_active;
+            Settings.p_PL_OpenFiles = "";
 
             for (int i = 0; i < xTabCtrl_PlayLists.TabPages.Count; i++)
             {
@@ -345,8 +321,6 @@ namespace PPlayer
             #endregion
 
             #region Остальные настройки
-            Settings.p_PL_OpenFiles = "";
-
             Settings.p_bar_show_EQ = panelControl_EQ.Visible;
             Settings.p_bar_show_PLAY = panelControl_PlayBack.Visible;
             Settings.p_PL_ActiveListID = xTabCtrl_PlayLists.SelectedTabPageIndex;
@@ -390,9 +364,16 @@ namespace PPlayer
         // новый плей лист
         private void Init_New_PlayList(int i)
         {
+            
             All_PlayLists[i] = new Control_PlayList();
-            All_PlayLists[i].Dock = DockStyle.Fill;
-            All_PlayLists[i].grid_PlayList.Tag = i;
+            Control_PlayList PL = All_PlayLists[i];
+
+            PL.Dock = DockStyle.Fill;
+            PL.grid_PlayList.Tag = i;            
+            PL.FWorking = FWorking;
+            PL.v_PList_ID = i;
+            PL.v_Check_Tags = Settings.p_Check_Tags;
+            //PL.v_Check_Exist = Settings.p_Check_Exist; // всегда включено (нет опции в меню)
 
             int max_pl = xTabCtrl_PlayLists.TabPages.Count - 1;
 
@@ -401,19 +382,19 @@ namespace PPlayer
             {
                 if (Settings.p_HotList_Position)
                 {
-                    panelControl_Hot_PL.Controls.Add(All_PlayLists[i]);
+                    panelControl_Hot_PL.Controls.Add(PL);
                     xTabCtrl_PlayLists.TabPages[i].PageVisible = false;
                     panelControl_Hot_PL.Visible = true;
                 }
                 else
                 {
-                    xTabCtrl_PlayLists.TabPages[i].Controls.Add(All_PlayLists[i]);
+                    xTabCtrl_PlayLists.TabPages[i].Controls.Add(PL);
                     xTabCtrl_PlayLists.TabPages[i].PageVisible = true;
                     panelControl_Hot_PL.Visible = false;
                 }
                 
                 xTabCtrl_PlayLists.TabPages[i].Text = "[!]";
-                All_PlayLists[i].labelControl_header.Text = "Горячий список";
+                PL.labelControl_header.Text = "Горячий список";
             }
 
             // остальные листы
@@ -547,146 +528,8 @@ namespace PPlayer
             {
                 iEdit_DelMuzFile_ItemClick(null, null);
                 iSave_PlayList.Enabled = true;
-            }
-            
-        }
-
-        // Загрузка плейлиста
-        public void File_Load_PM_List(string PMFilePath)
-        {          
-            if (PMFilePath.Length != 0)
-            {
-                if (FLoader.Load_FileData(PMFilePath))
-                {    
-                    /*
-                    string tName = Path.GetFileNameWithoutExtension(PMFilePath);
-                    tName = tName[0].ToString().ToUpper() + tName.Substring(1, tName.Length - 1);
-
-                    if (v_play_list_id == 0) xTabCtrl_PlayLists.TabPages[v_play_list_id].Text = "[" + v_Name_HotList + "] " + tName;
-                    else xTabCtrl_PlayLists.TabPages[v_play_list_id].Text = "[" + (v_play_list_id) + "] " + tName;
-                    */
-
-                    All_PlayLists[v_play_list_id_active].Init_Table_Data();
-                    All_PlayLists[v_play_list_id_active].pl_FilePath = PMFilePath;
-
-                    string[] pathFiles = FLoader.Data; // список в файле плейлиста
-                    foreach (string s in pathFiles)
-                    {
-                        PM_AddFileRow(All_PlayLists[v_play_list_id_active].dt_FileData, s);
-                        PM_AddGridRow(All_PlayLists[v_play_list_id_active].dt_ListData, s);                        
-                    }                                                                                
-                }
-                else
-                {
-                    XtraMessageBox.Show(FLoader.ResaultMsg, "Загрузка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        // Проверка наличия файлов на диске
-        public void File_Check_Exists(int list_id)
-        {
-            if (iCheck_Exists_Files.Checked)
-            {
-                All_PlayLists[list_id].FWorking = FWorking;
-                All_PlayLists[list_id].v_CheckTags = iCheck_Tags_Files.Checked;
-                All_PlayLists[list_id].Check_Exists_Data();                
-            }
-        }
-
-        // Парсинг строки файла PM в строку таблицы
-        private void PM_AddFileRow(DataTable PM, string s)
-        {
-            DataRow Drow = PM.NewRow();
-            int i = 0;
-            int pos = 0;
-
-            while (s.Length != 0)
-            {
-                pos = s.IndexOf('|');
-                if (pos >= 0)
-                {
-                    Drow[i] = s.Substring(0, pos);
-                    s = s.Remove(0, pos + 1);
-                    i++;
-                }
-                else
-                {
-                    Drow[i] = s;
-                    s = "";
-                }
-            }
-            PM.Rows.Add(Drow);
-        }
-
-        // Добавление строки в таблицу плейлист
-        private void PM_AddGridRow(DataTable PL, string s)
-        {
-            DataRow Drow = PL.NewRow();
-            int i = 0;
-            int pos = 0;
-
-            while (s.Length != 0)
-            {
-                pos = s.IndexOf('|');
-                if (pos >= 0)
-                {
-                    Drow[i] = s.Substring(0, pos);
-                    s = s.Remove(0, pos + 1);
-                    i++;
-                }
-                else
-                {
-                    Drow[i] = s;
-                    s = "";
-                }                
-            }
-            
-            Drow["Num"] = PL.Rows.Count + 1;
-            Drow["FileExistsFlag"] = "000"; 
-            string fname = System.IO.Path.GetFileNameWithoutExtension(Drow[0].ToString());
-            
-            fname = fname.Replace("  ", " ");
-            fname = fname.Replace("ё", "е");
-            fname = fname.Replace("( ", "(");
-            fname = fname.Replace("(-", "[[");
-
-            pos = fname.IndexOf('-');
-
-            if (pos == -1)
-            {
-                string track_all = fname.Trim().ToUpper();
-                Drow["Name"] = track_all;
-                Drow["Artist"] = track_all;
-            }
-            else
-            {
-                string track_name = fname.Substring(0, pos).Trim().ToUpper();
-                string track_artist = fname.Substring(pos + 1, fname.Length - pos - 1).Replace('-', ' ').Trim().ToUpper();
-
-                Drow["Name"] = track_name + " - " + track_artist;
-                Drow["Artist"] = track_artist + " - " + track_name;
-            }
-
-            if (pos == -1)
-            {
-                string track_all = fname.Trim().Replace("[[", "(-").ToUpper();
-
-                Drow["Name"] = track_all;
-                Drow["Artist"] = track_all;
-            }
-            else
-            {
-                string track_name = fname.Substring(0, pos).Trim().ToUpper().Replace("[[", "(-");
-                string track_artist = fname.Substring(pos + 1, fname.Length - pos - 1).Replace('-', ' ').Trim().ToUpper().Replace("[[", "(-");
-
-                Drow["Name"] = track_name + " - " + track_artist;
-                Drow["Artist"] = track_artist + " - " + track_name;
-            }
-           
-            PL.Rows.Add(Drow);            
-        }        
-
+            }            
+        }                     
         #endregion
 
         #region Панель управления Play/Stop
@@ -1242,7 +1085,7 @@ namespace PPlayer
             buttonPlay_Click(null, null);
         }
 
-        // очистка списка
+        // очистка списка ???
         private void buttonClearList_Click(object sender, EventArgs e)
         {
             ClearList(ActListID());
@@ -1254,14 +1097,15 @@ namespace PPlayer
             return xTabCtrl_PlayLists.SelectedTabPageIndex;
         }
 
-        private void ClearList(int ListID)
+        private void ClearList(int ListID) // ???
         {
             //ListID
+            No_Func();
         }
 
         private void iOpen_PlayList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!PL_PlayLists_Save(v_play_list_id_active)) return;
+            if (!All_PlayLists[v_play_list_id_active].PL_Save_Changes()) return;
 
             openFileDialog.Title = "Выбор плейлиста";
             openFileDialog.Filter = "Плейлист (*.pmp)|*.pmp|Все файлы (*.*)|*.*";
@@ -1279,27 +1123,14 @@ namespace PPlayer
                 //string PListFile = openFileDialog.FileName;
                 //FWorking.param_Operation_Text = "Загрузка плейлиста: \"" + Path.GetFileNameWithoutExtension(PListFile) + "\"";
                 
-                File_Load_PM_List(openFileDialog.FileName);
+                Control_PlayList Cur_PL = All_PlayLists[v_play_list_id_active];
+                Cur_PL.pl_FilePath = openFileDialog.FileName; // файл плейлиста                
+                Cur_PL.PM_Load_List(Cur_PL.pl_FilePath); // Загрузка файла                
 
-                /*if (Settings.p_Check_Tags)
-                {
-                    FWorking.param_Operation_Text = "Загрузка плейлиста: \"" + Path.GetFileNameWithoutExtension(PListFile) + "\"" +
-                                                    "\nПроверка тэгов [" + All_PlayLists[v_play_list_id_active].dt_ListData.Rows.Count + " треков]";
-                }
-                else
-                {
-                    FWorking.param_Operation_Text = "Загрузка плейлиста: \"" + Path.GetFileNameWithoutExtension(PListFile) + "\"" +
-                                                    "\nПроверка файлов [" + All_PlayLists[v_play_list_id_active].dt_ListData.Rows.Count + " треков]";
-                }*/
-
-                File_Check_Exists(v_play_list_id_active); // проверка наличия файлов на диске                
-                Settings.p_DefFolder_PList = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
+                // Папка плейлистов "по умолчанию"
+                Settings.p_DefFolder_PList = System.IO.Path.GetDirectoryName(openFileDialog.FileName);                
                 //FW_Tread.Abort();
             }
-        }
-
-        private void grid_PlayList_MouseEnter(object sender, EventArgs e)
-        {
         }
 
         private void grid_PlayList_MouseClick(object sender, MouseEventArgs e)
@@ -1322,6 +1153,7 @@ namespace PPlayer
             Update_Visual_List_Color();
         }
 
+        /// <summary>Цвет заголовка активной вкладки</summary>
         private void Update_Visual_List_Color()
         {
             for (int i = 0; i <  All_PlayLists.Length; i++)
@@ -2290,7 +2122,13 @@ namespace PPlayer
         {
             Control_PlayList Cur_PL = All_PlayLists[play_list_id];
 
-            if (Cur_PL.is_Changed)
+            if (!Cur_PL.PL_Save_Changes()) return false;
+
+            iSave_PlayList.Enabled = false;
+            return true;
+
+            #region Старый код
+		/*if (Cur_PL.is_Changed)
             {
                 // название списка
                 string playlist_name = "[" + play_list_id + "] " + 
@@ -2332,7 +2170,8 @@ namespace PPlayer
                 }
             }
 
-            return true;
+            return true;*/ 
+	#endregion
         }
 
         private void iSave_PlayList_ItemClick(object sender, ItemClickEventArgs e)
@@ -2454,17 +2293,7 @@ namespace PPlayer
         {
             if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel) return;
 
-            string[] pathFiles = FLoader.GetFilesFromDir(folderBrowserDialog.SelectedPath, "*.mp3");
-            foreach (string s in pathFiles)
-            {
-                All_PlayLists[v_play_list_id_active].PL_AddMuz(s);
-            }
-
-            pathFiles = FLoader.GetFilesFromDir(folderBrowserDialog.SelectedPath, "*.wav");
-            foreach (string s in pathFiles)
-            {
-                All_PlayLists[v_play_list_id_active].PL_AddMuz(s);
-            }
+            All_PlayLists[v_play_list_id_active].PL_AddMuz_Folder(folderBrowserDialog.SelectedPath);            
 
             Check_PL_Status(v_play_list_id_active);
         }
@@ -2691,6 +2520,18 @@ namespace PPlayer
         private void Global_KeyPress(object sender, KeyPressEventArgs e)
         {
             All_PlayLists[v_play_list_id_active].gv_PlayList_KeyPress(sender, e);
+        }
+
+        private void iCheck_Tags_Files_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+                for (int i = 0; i < xTabCtrl_PlayLists.TabPages.Count; i++)
+                {
+                    All_PlayLists[i].v_Check_Exist = true; // нет в меню, всегда вкл
+                    All_PlayLists[i].v_Check_Tags = iCheck_Tags_Files.Checked;
+                    if (iCheck_Tags_Files.Checked) All_PlayLists[i].Check_Exists_Data();
+                }
+
+
         }
 
     }    

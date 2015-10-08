@@ -72,6 +72,15 @@ namespace PPlayer
         public bool Save_To_File(string FileName, string[] Data)
         {
             #region Запись в файл
+            if (FileName == null)
+            {
+                MessageBox.Show("Ошибка сохранения данных в файл!" +
+                                             "\nПричина:" +
+                                             "\n  - не указан путь к файлу сохранения"                                             
+                                             , "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false; 
+            }
+            
             try
             {
                 File.WriteAllLines(FileName, Data, System.Text.Encoding.GetEncoding(1251));                                                
