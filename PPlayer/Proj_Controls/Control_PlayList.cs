@@ -311,7 +311,7 @@ namespace PPlayer
         #region Поиск (фильтр)
 
         // активация фильтрации на списке
-        private void gv_PlayList_KeyPress(object sender, KeyPressEventArgs e)
+        public void gv_PlayList_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (search_clear_dt < DateTime.Now) // очистка поиска после интервала ожидания
                 btnEdit_Find.Text = "";

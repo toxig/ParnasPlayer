@@ -188,13 +188,14 @@ namespace PPlayer
                 } 
                 #endregion
             }
-            catch (Exception /*e*/)
+            catch (Exception e)
             {   //  + e.Message
                 if (show_usr_msg)
                 {
                     #region Ошибка получения данных
                     FW_Tread.Abort();
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка проверки последней версии.\n"// + e.Message
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка проверки последней версии.\n"
+                                + "\n" + e.Message + "\n"
                                 + "\nВозможные причины:\n * нет доступа к интернету;\n * cеревер обновления временно не доступен;",
                                 "Ошибка обновления", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

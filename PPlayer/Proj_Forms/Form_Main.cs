@@ -36,6 +36,7 @@ namespace PPlayer
         //int v_PL_Widh_prim_scale = 400;       // ширина плейлиста
         int v_PL_Widh_min_scale = 250;        // ширина плейлиста minimal
         int v_Line_max_width = 0;             // длина максимальной строки в текстовом файле (pix)
+        double v_Text_Width_koef = 0.94;      // коэфициент увеличения текста / Пример: 1 - 100% ширины, 0.5 - 50%
         int v_Logo_NoActions_Time = 0;
         string v_Name_HotList = "H";          //Заголовок горячего плейлиста
         //string v_PlaingFileName;            // название проигрываемого трека        
@@ -1814,7 +1815,7 @@ namespace PPlayer
         {
             if (v_Line_max_width > 0 && RTBox_TextFile.ClientSize.Width > 0)
             {
-                RTBox_TextFile.ZoomFactor = (float)((double)RTBox_TextFile.ClientSize.Width / v_Line_max_width * 0.95);
+                RTBox_TextFile.ZoomFactor = (float)((double)RTBox_TextFile.ClientSize.Width / v_Line_max_width * v_Text_Width_koef); // 0.95
             }
         }
 
@@ -2086,8 +2087,13 @@ namespace PPlayer
             iNext_Text.ItemShortcut = new BarShortcut(Keys.PageDown);
             iPrev_Text.ItemShortcut = new BarShortcut(Keys.PageUp);
             iHotFader.ItemShortcut = new BarShortcut(Shortcut.CtrlX);
-        }        
+        }
 
+        // нажатие клавиш передаем активному плей листу
+        private void RTBox_TextFile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            All_PlayLists[v_play_list_id_active].gv_PlayList_KeyPress(sender, e);            
+        }
         #endregion        
 
         #region Горячие клавиши
@@ -2357,9 +2363,17 @@ namespace PPlayer
 
             if (openFileDialog.FileName.Length != 0)
             {
-                All_PlayLists[v_play_list_id_active].PL_AddText(Row_ID, openFileDialog.FileName);
+                All_PlayLists[v_play_list_id_active].PL_AddText(Row_ID, openFileDialog.FileName);              
                 Check_PL_Status(v_play_list_id_active);
                 Settings.p_DefFolder_Texts = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
+
+                // Загрузка текста вусшьфд редакто - если изменен текущий открытый муз файл
+                if (MainStream.v_PL_List_ID_played == v_play_list_id_active &&
+                    MainStream.v_PL_Row_ID == Row_ID)
+                {                    
+                    MainStream.v_TextFileName = openFileDialog.FileName;
+                    RTBox_TextFile.LoadFile(MainStream.v_TextFileName);                     
+                }
             }
 
         }
@@ -2620,7 +2634,7 @@ namespace PPlayer
                 panelControl_Right.Width = panelControl_Right.Width * 2;
             else
                 panelControl_Right.Width = panelControl_Right.Width / 2;
-        }
+        }        
 
     }    
 

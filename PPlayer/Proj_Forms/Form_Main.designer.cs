@@ -1035,35 +1035,35 @@
             this.xtraTabPage2.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(266, 204);
+            this.xtraTabPage2.Size = new System.Drawing.Size(266, 208);
             this.xtraTabPage2.Text = "[1]";
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(266, 204);
+            this.xtraTabPage3.Size = new System.Drawing.Size(266, 208);
             this.xtraTabPage3.Text = "[2]";
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(266, 204);
+            this.xtraTabPage4.Size = new System.Drawing.Size(266, 208);
             this.xtraTabPage4.Text = "[3]";
             // 
             // xtraTabPage5
             // 
             this.xtraTabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(266, 204);
+            this.xtraTabPage5.Size = new System.Drawing.Size(266, 208);
             this.xtraTabPage5.Text = "[4]";
             // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(266, 204);
+            this.xtraTabPage6.Size = new System.Drawing.Size(266, 208);
             this.xtraTabPage6.Text = "[5]";
             // 
             // xtraTabPage7
@@ -1071,7 +1071,7 @@
             this.xtraTabPage7.ImageIndex = 24;
             this.xtraTabPage7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(266, 204);
+            this.xtraTabPage7.Size = new System.Drawing.Size(266, 208);
             this.xtraTabPage7.Text = "[H]";
             // 
             // panelControl_Hot_PL
@@ -1498,6 +1498,7 @@
             this.RTBox_TextFile.WordWrap = false;
             this.RTBox_TextFile.SizeChanged += new System.EventHandler(this.RTBox_TextFile_SizeChanged);
             this.RTBox_TextFile.TextChanged += new System.EventHandler(this.RTBox_TextFile_TextChanged);
+            this.RTBox_TextFile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RTBox_TextFile_KeyPress);
             this.RTBox_TextFile.Leave += new System.EventHandler(this.RTBox_TextFile_LostFocus);
             this.RTBox_TextFile.MouseEnter += new System.EventHandler(this.RTBox_TextFile_MouseEnter);
             // 
