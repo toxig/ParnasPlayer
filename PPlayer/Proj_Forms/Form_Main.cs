@@ -69,6 +69,7 @@ namespace PPlayer
         int v_Logo_StartTime = 5000;        //20 сек
         float[] level_max = new float[2];
         float[] level_min = new float[2];
+        string[] v_arg_pl;                  // плейлист, переданный в параметрах запуска (cmd)
                 
         #region Scroll DLL init
 
@@ -99,9 +100,9 @@ namespace PPlayer
         #endregion
 
         // Пользовательские настройки программы
-        private static MySettings Settings = new MySettings();        
+        private static MySettings Settings = new MySettings();
 
-        public Form_Main()
+        public Form_Main(string[] args)
         {
             AboutVersion = curVersion.Major.ToString() + "." 
                 + curVersion.Minor.ToString() + "."
@@ -148,7 +149,11 @@ namespace PPlayer
 
             // Инициализация элементов главного окна
             FWorking.Text = "Загрузка главного окна...";
-            Init_MainForm();            
+            Init_MainForm();
+
+            // Парсинг входящих аргументов
+            v_arg_pl = Parse_arguments_PL(args); // поиск плейлистов
+
         }
 
         #region Проверка обновлений
@@ -190,6 +195,7 @@ namespace PPlayer
             if (Settings.p_check_updates)
             {
                 //FWorking.Text = "Проверка обновлений...";
+                FUpdate.Owner = this;
                 Thread FU_Thread = new Thread(new ThreadStart(FU_StartUpdate_Hidden));
                 FU_Thread.Start();
             }
@@ -201,7 +207,19 @@ namespace PPlayer
             FWorking.Abort();
         }
 
-        // загрузка настроек
+        // Закрытие программы
+        private void FormMain_Closing(object sender, FormClosingEventArgs e)
+        {
+            bool main_thread = Thread.CurrentThread.ManagedThreadId == v_MainWindowTread;
+
+            // Сохранение настроек - только закрытие в главном потоке (не доп потоки)
+            if (main_thread && !Save_Main_Settings()) e.Cancel = true;
+
+            // Запуск обработчика обновлений
+            if (!FUpdate.Start_Update()) e.Cancel = true;
+        }
+
+        /// <summary>Загрузка настроек </summary>
         private void Load_Prog_Settings()
         {
             try
@@ -242,19 +260,16 @@ namespace PPlayer
                 v_FadeTime_Pause = Settings.p_Fade_time * 1000; // затухание при паузе
                 v_FadeTime_Hot = Settings.p_Fade_time * 1000; // затухание при горячем пуске
 
-                // загрузка листов
-                string[] PL_List_Path = Settings.p_PL_OpenFiles.Split('\n'); //список файлов
-                for (int i = 0; i < PL_List_Path.Length; i++)
+                // загрузка плейлистов
+                string[] PL_List_Path = Settings.p_PL_OpenFiles.Split('\n'); //список файлов                                
+                for (int i = 0; i < xTabCtrl_PlayLists.TabPages.Count; i++)
                 {
-                    if (xTabCtrl_PlayLists.TabPages.Count > i)
+                    if (i < PL_List_Path.Length && PL_List_Path[i].Trim() != "")
                     {
-                        if (PL_List_Path[i].Trim() != "")
-                        {
-                            All_PlayLists[i].PM_Load_List(PL_List_Path[i]);
-                        }
+                        All_PlayLists[i].PM_Load_List(PL_List_Path[i]);
                     }
                 }
-
+                
                 // активный плей лист
                 if (Settings.p_PL_ActiveListID < xTabCtrl_PlayLists.TabPages.Count)
                     if (Settings.p_PL_ActiveListID == 0 && xTabCtrl_PlayLists.TabPages.Count > 1)
@@ -262,6 +277,15 @@ namespace PPlayer
                     else
                         v_play_list_id_active = Settings.p_PL_ActiveListID;
                 xTabCtrl_PlayLists.SelectedTabPageIndex = v_play_list_id_active;
+
+                // загружаем арг плейлист в горячий список
+                if (v_arg_pl.Length > 0)
+                {                    
+                    All_PlayLists[0].PM_Load_List(v_arg_pl[0]);
+                    if (xTabCtrl_PlayLists.TabPages[0].PageVisible) xTabCtrl_PlayLists.SelectedTabPageIndex = 0;
+                    //v_play_list_id_active = Settings.p_PL_ActiveListID;
+                    //xTabCtrl_PlayLists.SelectedTabPageIndex = v_play_list_id_active;
+                }
 
                 FWorking.Text = "Загрузка настроек:\nРазмер окна";
 
@@ -272,19 +296,14 @@ namespace PPlayer
                 iCheck_Tags_Files.Checked = Settings.p_Check_Tags;
                 panelControl_Hot_PL.Height = Settings.p_HotList_Height;
             }
-            catch { }
-        }
-
-        // Закрытие программы
-        private void FormMain_Closing(object sender, FormClosingEventArgs e)
-        {
-            bool main_thread = Thread.CurrentThread.ManagedThreadId == v_MainWindowTread;
-
-            // Сохранение настроек - только закрытие в главном потоке (не доп потоки)
-            if (main_thread && !Save_Main_Settings()) e.Cancel = true;
-
-            // Запуск обработчика обновлений
-            if (!FUpdate.Start_Update()) e.Cancel = true;
+            catch (Exception e)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show(
+                    e.Message + "\n" + e.StackTrace, 
+                    "Ошибка загрузки настроек приложения", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+            }
         }
 
         // Сохранение пользовательских настроек
@@ -305,7 +324,8 @@ namespace PPlayer
             for (int i = 0; i < xTabCtrl_PlayLists.TabPages.Count; i++)
             {
                 // Если главный поток - меняем вкладки 
-                if (is_main_thread) xTabCtrl_PlayLists.SelectedTabPageIndex = i; // меняем ативную вкладку ПЛ
+                if (is_main_thread && All_PlayLists[i].is_Changed) 
+                    xTabCtrl_PlayLists.SelectedTabPageIndex = i; // меняем ативную вкладку ПЛ
 
                 if (!PL_PlayLists_Save(i)) // закрытие списков
                 {
@@ -317,7 +337,8 @@ namespace PPlayer
             }
 
             // возврат к начальному активному плейлисту if (is_main_thread)            
-            if (is_main_thread) xTabCtrl_PlayLists.SelectedTabPageIndex = cur_list; 
+            if (is_main_thread && xTabCtrl_PlayLists.SelectedTabPageIndex != cur_list) 
+                xTabCtrl_PlayLists.SelectedTabPageIndex = cur_list; 
             #endregion
 
             #region Остальные настройки
@@ -1523,6 +1544,23 @@ namespace PPlayer
         private int Text_CalcWidth(string s, Font TextFont)
         {
             return TextRenderer.MeasureText(s, Default_Font).Width;
+        }
+
+        // парсинг входящих аргументов
+        private string[] Parse_arguments_PL(string[] args)
+        {            
+            string arg_new;
+            string arg_line = "";
+            char[] charSeparators = new char[] { '|' };
+            
+            for (int i = 0; i < args.Length; i++)
+            {                
+                arg_new = args[i].Trim().ToLower();
+                if (System.IO.File.Exists(arg_new) && Path.GetExtension(arg_new) == ".pmp") 
+                    arg_line += arg_new + charSeparators[0];
+            }            
+
+            return arg_line.Trim().Split( charSeparators, StringSplitOptions.RemoveEmptyEntries);
         }
         #endregion        
 

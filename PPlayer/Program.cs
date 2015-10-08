@@ -15,12 +15,12 @@ namespace PPlayer
     static class Program
     {
         /// <summary>
-        /// Главная точка входа для приложения.
+        /// Главная точка входа для приложения (с параметрами).
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {            
-            #region Загрузка параметров
+            #region Загрузка параметров (откл)
             /*
             try
             {
@@ -47,16 +47,17 @@ namespace PPlayer
 
             #endregion            
 
-            #region Запуск основной программы    
-            Application.Run(new Form_Main());
-            /*try
+            #region Запуск основной программы
+            //Application.Run(new Form_Main(args));
+
+            try
             {
-                Application.Run(new Form_Main());
+                Application.Run(new Form_Main(args));
             }
             catch (Exception e)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show(e.StackTrace, "Ошибка запуска приложения", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
             #endregion
         }
     }

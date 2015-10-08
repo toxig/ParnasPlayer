@@ -127,6 +127,7 @@
             this.Name = "Form_Update";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Обновление программы";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Form_Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit_info.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbc_upload.Properties)).EndInit();
