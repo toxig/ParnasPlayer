@@ -8,7 +8,12 @@ namespace PPlayer
 {
     public partial class Mod_Rich_Edit : DevExpress.XtraEditors.XtraUserControl
     {
-        public bool v_need_reload = false;        
+        public bool v_need_reload = false;
+        public bool v_need_save = false;
+        private int v_changes_count;
+        private int v_changes_saved;
+
+        private string v_FilePath_new = "";
 
         private string _v_FilePath = "";
         public string v_FilePath
@@ -19,18 +24,22 @@ namespace PPlayer
             }
             set 
             {
-                _v_FilePath = value;
-
-                v_need_reload = false;                
+                _v_FilePath = value;                               
 
                 if (value != "")
                 {                    
-                    RTE_Text.LoadDocument(_v_FilePath);
+                    RTE_Text.LoadDocument(_v_FilePath);                    
                 }
                 else
                 {
                     RTE_Text.Text = "";
-                }                
+                }
+
+                v_need_reload = false; 
+                v_need_save = false;
+                v_changes_count = 0;
+                v_changes_saved = 0;
+                StateRefresh();
             }
         }        
 
@@ -67,7 +76,8 @@ namespace PPlayer
             {
                 try
                 {
-                    RTE_Text.LoadDocument(dlg.FileName);
+                    v_FilePath_new = dlg.FileName;
+                    RTE_Text.LoadDocument(v_FilePath_new);                    
                 }
                 catch (Exception exc)
                 {
@@ -77,20 +87,43 @@ namespace PPlayer
                         "Ошибка",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
-                        );                    
+                        );
+                    v_FilePath_new = "";
                 }                
             }            
         }
 
         private void StateRefresh()
         {
-            iUndo.Enabled = RTE_Text.CanUndo;
+            iUndo.Enabled = RTE_Text.CanUndo;            
             iRedo.Enabled = RTE_Text.CanRedo;
             iClear.Enabled = !RTE_Text.Text.Equals("");
+
+            if (
+                    (
+                    (!RTE_Text.CanUndo && !RTE_Text.CanRedo)
+                    ||
+                    (!RTE_Text.CanUndo && v_changes_saved == 0)
+                    || 
+                    (v_changes_saved == v_changes_count)
+                    ) 
+                    &&
+                    (v_FilePath_new == "")
+                )
+            { // нет изменений
+                v_need_save = false;
+                iSave.Enabled = false;
+            }
+            else
+            { // есть изменения
+                v_need_save = true;
+                iSave.Enabled = true;                
+            }
         }
 
         private void RTE_Text_RtfTextChanged(object sender, EventArgs e)
         {
+            v_changes_count++;
             StateRefresh();
         }
 
@@ -117,6 +150,7 @@ namespace PPlayer
         private void fileSaveItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SaveData();
+            StateRefresh();
         }
 
         public bool SaveData()
@@ -136,7 +170,14 @@ namespace PPlayer
                 return false;
             }
 
+            if (!RTE_Text.CanUndo) v_changes_count = 0;
+            v_changes_saved = v_changes_count;
+
+            v_FilePath_new = "";
+
             v_need_reload = true;
+            v_need_save = false;            
+
             return true;
         }
 

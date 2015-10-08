@@ -112,7 +112,7 @@ namespace PPlayer
             AboutVersion = curVersion.Major.ToString() + "." 
                 + curVersion.Minor.ToString() + "."
                 + curVersion.Build.ToString() + "."
-                + curVersion.MajorRevision.ToString();
+                + curVersion.Revision.ToString();
 
             FWorking.param_Operation_Text = "Программа запускается...\n" + AboutInfo + " v." + AboutVersion;
             FW_Tread = new Thread(new ThreadStart(FW_ShowDialog));
@@ -833,7 +833,7 @@ namespace PPlayer
             { // вкл лого
                 Pic_Logo.Visible = true;
                 RTBox_TextFile.Visible = false;
-                Pic_Logo.Dock = DockStyle.Fill;                  
+                Pic_Logo.Dock = DockStyle.Fill;
             }
             else
             {
@@ -1764,7 +1764,7 @@ namespace PPlayer
         #endregion
 
         #region Текст песен
-        // Правая Панель 
+        // Правая Панель
         private void panelControl_Right_SizeChanged(object sender, EventArgs e)
         {
             // ограничение минимальной ширины листа
@@ -1784,7 +1784,7 @@ namespace PPlayer
                     All_PlayLists[i].gv_PlayList.Appearance.Row.Font = PL_Font;
                 }
             } */   
-        }
+        }  
 
         // Изменение размера редактора
         private void RTBox_TextFile_SizeChanged(object sender, EventArgs e)
@@ -2016,7 +2016,8 @@ namespace PPlayer
                 }
                 else
                 {
-                    if (Text_RTEditor.RTE_Text.CanUndo) // были изменения
+                    // Text_RTEditor.RTE_Text.CanUndo
+                    if (Text_RTEditor.v_need_save) // были изменения                        
                     {
                         switch (XtraMessageBox.Show("Данные изменились, сохранить?", "Вопрос", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                         {

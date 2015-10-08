@@ -29,103 +29,103 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip61 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem61 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem57 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip62 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem62 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem58 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip89 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem89 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem83 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip82 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem82 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem76 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip87 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem87 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem81 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip88 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem88 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem82 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip83 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem83 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem77 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip84 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem84 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem78 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip80 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem80 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem74 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip81 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem81 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem75 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip85 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem85 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem79 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip86 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem86 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem80 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip70 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem70 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem66 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip71 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem71 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem67 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip72 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem72 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem68 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip73 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem73 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip74 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem74 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip75 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem75 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem69 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip76 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem76 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem70 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip77 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem77 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem71 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip48 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem48 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem44 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mod_Rich_Edit));
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip15 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem15 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip16 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem16 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem17 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem18 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip19 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem19 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip63 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem63 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem59 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip64 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem64 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem60 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip65 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem65 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem61 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip66 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem66 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem62 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip67 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem67 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem63 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip68 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem68 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem64 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip69 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem69 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem65 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip20 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem20 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem18 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip21 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem21 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem19 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip22 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem22 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem20 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip23 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem23 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem21 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip24 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem24 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem22 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip25 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem25 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem23 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip26 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem26 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem24 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip27 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem27 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem25 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip28 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem28 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem26 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip29 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem29 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem27 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip30 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem30 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem28 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip31 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem31 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem29 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip78 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem78 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem72 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip79 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem79 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem73 = new DevExpress.Utils.ToolTipItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar_Main = new DevExpress.XtraBars.Bar();
             this.iClear = new DevExpress.XtraBars.BarButtonItem();
             this.iOpen = new DevExpress.XtraBars.BarButtonItem();
-            this.fileSaveItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.iSave = new DevExpress.XtraBars.BarButtonItem();
             this.fileSaveAsItem1 = new DevExpress.XtraRichEdit.UI.FileSaveAsItem();
             this.iUndo = new DevExpress.XtraBars.BarButtonItem();
             this.iRedo = new DevExpress.XtraBars.BarButtonItem();
@@ -236,7 +236,7 @@
             this.zoomInItem1,
             this.iUndo,
             this.iRedo,
-            this.fileSaveItem1});
+            this.iSave});
             this.barManager1.MaxItemId = 20;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSpinEdit1});
@@ -251,7 +251,7 @@
             this.bar_Main.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.iClear),
             new DevExpress.XtraBars.LinkPersistInfo(this.iOpen),
-            new DevExpress.XtraBars.LinkPersistInfo(this.fileSaveItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iSave),
             new DevExpress.XtraBars.LinkPersistInfo(this.fileSaveAsItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.iUndo),
             new DevExpress.XtraBars.LinkPersistInfo(this.iRedo),
@@ -279,12 +279,12 @@
             this.iClear.Id = 1;
             this.iClear.ImageIndex = 13;
             this.iClear.Name = "iClear";
-            toolTipTitleItem1.Text = "Очистить";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Очистить текст";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.iClear.SuperTip = superToolTip1;
+            toolTipTitleItem61.Text = "Очистить";
+            toolTipItem57.LeftIndent = 6;
+            toolTipItem57.Text = "Очистить текст";
+            superToolTip61.Items.Add(toolTipTitleItem61);
+            superToolTip61.Items.Add(toolTipItem57);
+            this.iClear.SuperTip = superToolTip61;
             this.iClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iClear_ItemClick);
             // 
             // iOpen
@@ -294,45 +294,44 @@
             this.iOpen.Id = 2;
             this.iOpen.ImageIndex = 7;
             this.iOpen.Name = "iOpen";
-            toolTipTitleItem2.Text = "Открыть";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Загрузка данных из текстового файла.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.iOpen.SuperTip = superToolTip2;
+            toolTipTitleItem62.Text = "Открыть";
+            toolTipItem58.LeftIndent = 6;
+            toolTipItem58.Text = "Загрузка данных из текстового файла.";
+            superToolTip62.Items.Add(toolTipTitleItem62);
+            superToolTip62.Items.Add(toolTipItem58);
+            this.iOpen.SuperTip = superToolTip62;
             this.iOpen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iOpen_ItemClick);
             // 
-            // fileSaveItem1
+            // iSave
             // 
-            this.fileSaveItem1.Caption = "Save";
-            this.fileSaveItem1.Hint = "Сохранить изменения";
-            this.fileSaveItem1.Id = 19;
-            this.fileSaveItem1.ImageIndex = 10;
-            this.fileSaveItem1.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S));
-            this.fileSaveItem1.Name = "fileSaveItem1";
-            toolTipTitleItem3.Text = "Сохранить";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Сохранить изменения в файл";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.fileSaveItem1.SuperTip = superToolTip3;
-            this.fileSaveItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.fileSaveItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fileSaveItem1_ItemClick);
+            this.iSave.Caption = "Save";
+            this.iSave.Hint = "Сохранить изменения";
+            this.iSave.Id = 19;
+            this.iSave.ImageIndex = 10;
+            this.iSave.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S));
+            this.iSave.Name = "iSave";
+            toolTipTitleItem89.Text = "Сохранить";
+            toolTipItem83.LeftIndent = 6;
+            toolTipItem83.Text = "Сохранить изменения в файл";
+            superToolTip89.Items.Add(toolTipTitleItem89);
+            superToolTip89.Items.Add(toolTipItem83);
+            this.iSave.SuperTip = superToolTip89;
+            this.iSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.fileSaveItem1_ItemClick);
             // 
             // fileSaveAsItem1
             // 
             this.fileSaveAsItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("fileSaveAsItem1.Glyph")));
             this.fileSaveAsItem1.Id = 32;
-            this.fileSaveAsItem1.ItemShortcut = new DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-                            | System.Windows.Forms.Keys.S));
+            this.fileSaveAsItem1.ItemShortcut = new DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+                | System.Windows.Forms.Keys.S));
             this.fileSaveAsItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("fileSaveAsItem1.LargeGlyph")));
             this.fileSaveAsItem1.Name = "fileSaveAsItem1";
-            toolTipTitleItem4.Text = "Сохранить как (Ctrl+Shift+S)";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Сохранить в указанном формате";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.fileSaveAsItem1.SuperTip = superToolTip4;
+            toolTipTitleItem82.Text = "Сохранить как (Ctrl+Shift+S)";
+            toolTipItem76.LeftIndent = 6;
+            toolTipItem76.Text = "Сохранить в указанном формате";
+            superToolTip82.Items.Add(toolTipTitleItem82);
+            superToolTip82.Items.Add(toolTipItem76);
+            this.fileSaveAsItem1.SuperTip = superToolTip82;
             // 
             // iUndo
             // 
@@ -341,12 +340,12 @@
             this.iUndo.Id = 4;
             this.iUndo.ImageIndex = 11;
             this.iUndo.Name = "iUndo";
-            toolTipTitleItem5.Text = "Отмена";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Отмена последней операции.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.iUndo.SuperTip = superToolTip5;
+            toolTipTitleItem87.Text = "Отмена";
+            toolTipItem81.LeftIndent = 6;
+            toolTipItem81.Text = "Отмена последней операции.";
+            superToolTip87.Items.Add(toolTipTitleItem87);
+            superToolTip87.Items.Add(toolTipItem81);
+            this.iUndo.SuperTip = superToolTip87;
             this.iUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iUndo_ItemClick);
             // 
             // iRedo
@@ -356,12 +355,12 @@
             this.iRedo.Id = 5;
             this.iRedo.ImageIndex = 23;
             this.iRedo.Name = "iRedo";
-            toolTipTitleItem6.Text = "Повтор";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "Повтор последней операции.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.iRedo.SuperTip = superToolTip6;
+            toolTipTitleItem88.Text = "Повтор";
+            toolTipItem82.LeftIndent = 6;
+            toolTipItem82.Text = "Повтор последней операции.";
+            superToolTip88.Items.Add(toolTipTitleItem88);
+            superToolTip88.Items.Add(toolTipItem82);
+            this.iRedo.SuperTip = superToolTip88;
             this.iRedo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iRedo_ItemClick);
             // 
             // printItem1
@@ -370,12 +369,12 @@
             this.printItem1.Id = 12;
             this.printItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("printItem1.LargeGlyph")));
             this.printItem1.Name = "printItem1";
-            toolTipTitleItem7.Text = "Печать (Ctrl+P)";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "Печать данных. Возможно выбрать принтер, количество копий и других опций печати.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.printItem1.SuperTip = superToolTip7;
+            toolTipTitleItem83.Text = "Печать (Ctrl+P)";
+            toolTipItem77.LeftIndent = 6;
+            toolTipItem77.Text = "Печать данных. Возможно выбрать принтер, количество копий и других опций печати.";
+            superToolTip83.Items.Add(toolTipTitleItem83);
+            superToolTip83.Items.Add(toolTipItem77);
+            this.printItem1.SuperTip = superToolTip83;
             // 
             // printPreviewItem1
             // 
@@ -383,12 +382,12 @@
             this.printPreviewItem1.Id = 13;
             this.printPreviewItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("printPreviewItem1.LargeGlyph")));
             this.printPreviewItem1.Name = "printPreviewItem1";
-            toolTipTitleItem8.Text = "Предварительный просмотр";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "Просмотр страниц перед печатью.";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.printPreviewItem1.SuperTip = superToolTip8;
+            toolTipTitleItem84.Text = "Предварительный просмотр";
+            toolTipItem78.LeftIndent = 6;
+            toolTipItem78.Text = "Просмотр страниц перед печатью.";
+            superToolTip84.Items.Add(toolTipTitleItem84);
+            superToolTip84.Items.Add(toolTipItem78);
+            this.printPreviewItem1.SuperTip = superToolTip84;
             // 
             // insertPictureItem1
             // 
@@ -396,12 +395,12 @@
             this.insertPictureItem1.Id = 35;
             this.insertPictureItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("insertPictureItem1.LargeGlyph")));
             this.insertPictureItem1.Name = "insertPictureItem1";
-            toolTipTitleItem9.Text = "Рисунок";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "Добавление рисунка из файла";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.insertPictureItem1.SuperTip = superToolTip9;
+            toolTipTitleItem80.Text = "Рисунок";
+            toolTipItem74.LeftIndent = 6;
+            toolTipItem74.Text = "Добавление рисунка из файла";
+            superToolTip80.Items.Add(toolTipTitleItem80);
+            superToolTip80.Items.Add(toolTipItem74);
+            this.insertPictureItem1.SuperTip = superToolTip80;
             // 
             // insertHyperlinkItem1
             // 
@@ -409,12 +408,12 @@
             this.insertHyperlinkItem1.Id = 28;
             this.insertHyperlinkItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("insertHyperlinkItem1.LargeGlyph")));
             this.insertHyperlinkItem1.Name = "insertHyperlinkItem1";
-            toolTipTitleItem10.Text = "Ссылка (Ctrl+K)";
-            toolTipItem10.LeftIndent = 6;
-            toolTipItem10.Text = "Создать ссылку на Веб страницу, рисунок, e-mail, или программу.";
-            superToolTip10.Items.Add(toolTipTitleItem10);
-            superToolTip10.Items.Add(toolTipItem10);
-            this.insertHyperlinkItem1.SuperTip = superToolTip10;
+            toolTipTitleItem81.Text = "Ссылка (Ctrl+K)";
+            toolTipItem75.LeftIndent = 6;
+            toolTipItem75.Text = "Создать ссылку на Веб страницу, рисунок, e-mail, или программу.";
+            superToolTip81.Items.Add(toolTipTitleItem81);
+            superToolTip81.Items.Add(toolTipItem75);
+            this.insertHyperlinkItem1.SuperTip = superToolTip81;
             // 
             // zoomOutItem1
             // 
@@ -422,12 +421,12 @@
             this.zoomOutItem1.Id = 9;
             this.zoomOutItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("zoomOutItem1.LargeGlyph")));
             this.zoomOutItem1.Name = "zoomOutItem1";
-            toolTipTitleItem11.Text = "Уменьшить (Ctrl+Scroll)";
-            toolTipItem11.LeftIndent = 6;
-            toolTipItem11.Text = "Уменьшить область отображения";
-            superToolTip11.Items.Add(toolTipTitleItem11);
-            superToolTip11.Items.Add(toolTipItem11);
-            this.zoomOutItem1.SuperTip = superToolTip11;
+            toolTipTitleItem85.Text = "Уменьшить (Ctrl+Scroll)";
+            toolTipItem79.LeftIndent = 6;
+            toolTipItem79.Text = "Уменьшить область отображения";
+            superToolTip85.Items.Add(toolTipTitleItem85);
+            superToolTip85.Items.Add(toolTipItem79);
+            this.zoomOutItem1.SuperTip = superToolTip85;
             // 
             // zoomInItem1
             // 
@@ -435,12 +434,12 @@
             this.zoomInItem1.Id = 10;
             this.zoomInItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("zoomInItem1.LargeGlyph")));
             this.zoomInItem1.Name = "zoomInItem1";
-            toolTipTitleItem12.Text = "Увеличить (Ctrl+Scroll)";
-            toolTipItem12.LeftIndent = 6;
-            toolTipItem12.Text = "Увеличить область отображения";
-            superToolTip12.Items.Add(toolTipTitleItem12);
-            superToolTip12.Items.Add(toolTipItem12);
-            this.zoomInItem1.SuperTip = superToolTip12;
+            toolTipTitleItem86.Text = "Увеличить (Ctrl+Scroll)";
+            toolTipItem80.LeftIndent = 6;
+            toolTipItem80.Text = "Увеличить область отображения";
+            superToolTip86.Items.Add(toolTipTitleItem86);
+            superToolTip86.Items.Add(toolTipItem80);
+            this.zoomInItem1.SuperTip = superToolTip86;
             // 
             // iNumberingList
             // 
@@ -448,12 +447,12 @@
             this.iNumberingList.Id = 41;
             this.iNumberingList.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("iNumberingList.LargeGlyph")));
             this.iNumberingList.Name = "iNumberingList";
-            toolTipTitleItem13.Text = "Нумерация";
-            toolTipItem13.LeftIndent = 6;
-            toolTipItem13.Text = "Добавление нумерации для списка.";
-            superToolTip13.Items.Add(toolTipTitleItem13);
-            superToolTip13.Items.Add(toolTipItem13);
-            this.iNumberingList.SuperTip = superToolTip13;
+            toolTipTitleItem70.Text = "Нумерация";
+            toolTipItem66.LeftIndent = 6;
+            toolTipItem66.Text = "Добавление нумерации для списка.";
+            superToolTip70.Items.Add(toolTipTitleItem70);
+            superToolTip70.Items.Add(toolTipItem66);
+            this.iNumberingList.SuperTip = superToolTip70;
             // 
             // iBulletedListI
             // 
@@ -461,12 +460,12 @@
             this.iBulletedListI.Id = 42;
             this.iBulletedListI.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("iBulletedListI.LargeGlyph")));
             this.iBulletedListI.Name = "iBulletedListI";
-            toolTipTitleItem14.Text = "Точки списка";
-            toolTipItem14.LeftIndent = 6;
-            toolTipItem14.Text = "Добавление точек для списка.";
-            superToolTip14.Items.Add(toolTipTitleItem14);
-            superToolTip14.Items.Add(toolTipItem14);
-            this.iBulletedListI.SuperTip = superToolTip14;
+            toolTipTitleItem71.Text = "Точки списка";
+            toolTipItem67.LeftIndent = 6;
+            toolTipItem67.Text = "Добавление точек для списка.";
+            superToolTip71.Items.Add(toolTipTitleItem71);
+            superToolTip71.Items.Add(toolTipItem67);
+            this.iBulletedListI.SuperTip = superToolTip71;
             // 
             // toggleMultiLevelListItem1
             // 
@@ -474,12 +473,12 @@
             this.toggleMultiLevelListItem1.Id = 43;
             this.toggleMultiLevelListItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("toggleMultiLevelListItem1.LargeGlyph")));
             this.toggleMultiLevelListItem1.Name = "toggleMultiLevelListItem1";
-            toolTipTitleItem15.Text = "Многоуровневый список.";
-            toolTipItem15.LeftIndent = 6;
-            toolTipItem15.Text = "Добавление многоуровнего списка.";
-            superToolTip15.Items.Add(toolTipTitleItem15);
-            superToolTip15.Items.Add(toolTipItem15);
-            this.toggleMultiLevelListItem1.SuperTip = superToolTip15;
+            toolTipTitleItem72.Text = "Многоуровневый список.";
+            toolTipItem68.LeftIndent = 6;
+            toolTipItem68.Text = "Добавление многоуровнего списка.";
+            superToolTip72.Items.Add(toolTipTitleItem72);
+            superToolTip72.Items.Add(toolTipItem68);
+            this.toggleMultiLevelListItem1.SuperTip = superToolTip72;
             // 
             // decreaseIndentItem1
             // 
@@ -487,9 +486,9 @@
             this.decreaseIndentItem1.Id = 44;
             this.decreaseIndentItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("decreaseIndentItem1.LargeGlyph")));
             this.decreaseIndentItem1.Name = "decreaseIndentItem1";
-            toolTipTitleItem16.Text = "Сдвиг влево";
-            superToolTip16.Items.Add(toolTipTitleItem16);
-            this.decreaseIndentItem1.SuperTip = superToolTip16;
+            toolTipTitleItem73.Text = "Сдвиг влево";
+            superToolTip73.Items.Add(toolTipTitleItem73);
+            this.decreaseIndentItem1.SuperTip = superToolTip73;
             // 
             // increaseIndentItem2
             // 
@@ -497,9 +496,9 @@
             this.increaseIndentItem2.Id = 45;
             this.increaseIndentItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("increaseIndentItem2.LargeGlyph")));
             this.increaseIndentItem2.Name = "increaseIndentItem2";
-            toolTipTitleItem17.Text = "Сдвиг вправо";
-            superToolTip17.Items.Add(toolTipTitleItem17);
-            this.increaseIndentItem2.SuperTip = superToolTip17;
+            toolTipTitleItem74.Text = "Сдвиг вправо";
+            superToolTip74.Items.Add(toolTipTitleItem74);
+            this.increaseIndentItem2.SuperTip = superToolTip74;
             // 
             // toggleShowWhitespaceItem2
             // 
@@ -507,12 +506,12 @@
             this.toggleShowWhitespaceItem2.Id = 46;
             this.toggleShowWhitespaceItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("toggleShowWhitespaceItem2.LargeGlyph")));
             this.toggleShowWhitespaceItem2.Name = "toggleShowWhitespaceItem2";
-            toolTipTitleItem18.Text = "Показать/Скрыть ¶ (Ctrl+Shift+8)";
-            toolTipItem16.LeftIndent = 6;
-            toolTipItem16.Text = "Показывает символ конца строки и другие скрытые символы форматирования.";
-            superToolTip18.Items.Add(toolTipTitleItem18);
-            superToolTip18.Items.Add(toolTipItem16);
-            this.toggleShowWhitespaceItem2.SuperTip = superToolTip18;
+            toolTipTitleItem75.Text = "Показать/Скрыть ¶ (Ctrl+Shift+8)";
+            toolTipItem69.LeftIndent = 6;
+            toolTipItem69.Text = "Показывает символ конца строки и другие скрытые символы форматирования.";
+            superToolTip75.Items.Add(toolTipTitleItem75);
+            superToolTip75.Items.Add(toolTipItem69);
+            this.toggleShowWhitespaceItem2.SuperTip = superToolTip75;
             // 
             // showParagraphFormItem1
             // 
@@ -520,12 +519,12 @@
             this.showParagraphFormItem1.Id = 47;
             this.showParagraphFormItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("showParagraphFormItem1.LargeGlyph")));
             this.showParagraphFormItem1.Name = "showParagraphFormItem1";
-            toolTipTitleItem19.Text = "Формат текста";
-            toolTipItem17.LeftIndent = 6;
-            toolTipItem17.Text = "Открывает окно редактирования формата.";
-            superToolTip19.Items.Add(toolTipTitleItem19);
-            superToolTip19.Items.Add(toolTipItem17);
-            this.showParagraphFormItem1.SuperTip = superToolTip19;
+            toolTipTitleItem76.Text = "Формат текста";
+            toolTipItem70.LeftIndent = 6;
+            toolTipItem70.Text = "Открывает окно редактирования формата.";
+            superToolTip76.Items.Add(toolTipTitleItem76);
+            superToolTip76.Items.Add(toolTipItem70);
+            this.showParagraphFormItem1.SuperTip = superToolTip76;
             // 
             // bar_Font
             // 
@@ -556,12 +555,12 @@
             this.changeFontNameItem1.Edit = this.repositoryItemFontEdit1;
             this.changeFontNameItem1.Id = 0;
             this.changeFontNameItem1.Name = "changeFontNameItem1";
-            toolTipTitleItem20.Text = "Шрифт";
-            toolTipItem18.LeftIndent = 6;
-            toolTipItem18.Text = "Выбор шрифта.";
-            superToolTip20.Items.Add(toolTipTitleItem20);
-            superToolTip20.Items.Add(toolTipItem18);
-            this.changeFontNameItem1.SuperTip = superToolTip20;
+            toolTipTitleItem77.Text = "Шрифт";
+            toolTipItem71.LeftIndent = 6;
+            toolTipItem71.Text = "Выбор шрифта.";
+            superToolTip77.Items.Add(toolTipTitleItem77);
+            superToolTip77.Items.Add(toolTipItem71);
+            this.changeFontNameItem1.SuperTip = superToolTip77;
             // 
             // repositoryItemFontEdit1
             // 
@@ -575,12 +574,12 @@
             this.changeFontSizeItem1.Edit = this.repositoryItemRichEditFontSizeEdit1;
             this.changeFontSizeItem1.Id = 1;
             this.changeFontSizeItem1.Name = "changeFontSizeItem1";
-            toolTipTitleItem21.Text = "Размер шрифта";
-            toolTipItem19.LeftIndent = 6;
-            toolTipItem19.Text = "Изменение размера шрифта.";
-            superToolTip21.Items.Add(toolTipTitleItem21);
-            superToolTip21.Items.Add(toolTipItem19);
-            this.changeFontSizeItem1.SuperTip = superToolTip21;
+            toolTipTitleItem48.Text = "Размер шрифта";
+            toolTipItem44.LeftIndent = 6;
+            toolTipItem44.Text = "Изменение размера шрифта.";
+            superToolTip48.Items.Add(toolTipTitleItem48);
+            superToolTip48.Items.Add(toolTipItem44);
+            this.changeFontSizeItem1.SuperTip = superToolTip48;
             // 
             // repositoryItemRichEditFontSizeEdit1
             // 
@@ -597,7 +596,9 @@
             this.RTE_Text.Location = new System.Drawing.Point(0, 62);
             this.RTE_Text.MenuManager = this.barManager1;
             this.RTE_Text.Name = "RTE_Text";
+            this.RTE_Text.Options.Fields.UseCurrentCultureDateTimeFormat = false;
             this.RTE_Text.Options.HorizontalScrollbar.Visibility = DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Visible;
+            this.RTE_Text.Options.MailMerge.KeepLastParagraph = false;
             this.RTE_Text.Options.VerticalScrollbar.Visibility = DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Visible;
             this.RTE_Text.Size = new System.Drawing.Size(695, 307);
             this.RTE_Text.TabIndex = 4;
@@ -609,12 +610,12 @@
             this.toggleFontBoldItem1.Id = 4;
             this.toggleFontBoldItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("toggleFontBoldItem1.LargeGlyph")));
             this.toggleFontBoldItem1.Name = "toggleFontBoldItem1";
-            toolTipTitleItem22.Text = "Жирный (Ctrl+B)";
-            toolTipItem20.LeftIndent = 6;
-            toolTipItem20.Text = "Делает выделенный текст жирным.";
-            superToolTip22.Items.Add(toolTipTitleItem22);
-            superToolTip22.Items.Add(toolTipItem20);
-            this.toggleFontBoldItem1.SuperTip = superToolTip22;
+            toolTipTitleItem63.Text = "Жирный (Ctrl+B)";
+            toolTipItem59.LeftIndent = 6;
+            toolTipItem59.Text = "Делает выделенный текст жирным.";
+            superToolTip63.Items.Add(toolTipTitleItem63);
+            superToolTip63.Items.Add(toolTipItem59);
+            this.toggleFontBoldItem1.SuperTip = superToolTip63;
             // 
             // toggleFontItalicItem1
             // 
@@ -622,12 +623,12 @@
             this.toggleFontItalicItem1.Id = 5;
             this.toggleFontItalicItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("toggleFontItalicItem1.LargeGlyph")));
             this.toggleFontItalicItem1.Name = "toggleFontItalicItem1";
-            toolTipTitleItem23.Text = "Курсив (Ctrl+I)";
-            toolTipItem21.LeftIndent = 6;
-            toolTipItem21.Text = "Делает выделенный текст курсивным.";
-            superToolTip23.Items.Add(toolTipTitleItem23);
-            superToolTip23.Items.Add(toolTipItem21);
-            this.toggleFontItalicItem1.SuperTip = superToolTip23;
+            toolTipTitleItem64.Text = "Курсив (Ctrl+I)";
+            toolTipItem60.LeftIndent = 6;
+            toolTipItem60.Text = "Делает выделенный текст курсивным.";
+            superToolTip64.Items.Add(toolTipTitleItem64);
+            superToolTip64.Items.Add(toolTipItem60);
+            this.toggleFontItalicItem1.SuperTip = superToolTip64;
             // 
             // toggleFontUnderlineItem1
             // 
@@ -635,12 +636,12 @@
             this.toggleFontUnderlineItem1.Id = 6;
             this.toggleFontUnderlineItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("toggleFontUnderlineItem1.LargeGlyph")));
             this.toggleFontUnderlineItem1.Name = "toggleFontUnderlineItem1";
-            toolTipTitleItem24.Text = "Подчеркивание (Ctrl+U)";
-            toolTipItem22.LeftIndent = 6;
-            toolTipItem22.Text = "Подчеркивает выделенный текст.";
-            superToolTip24.Items.Add(toolTipTitleItem24);
-            superToolTip24.Items.Add(toolTipItem22);
-            this.toggleFontUnderlineItem1.SuperTip = superToolTip24;
+            toolTipTitleItem65.Text = "Подчеркивание (Ctrl+U)";
+            toolTipItem61.LeftIndent = 6;
+            toolTipItem61.Text = "Подчеркивает выделенный текст.";
+            superToolTip65.Items.Add(toolTipTitleItem65);
+            superToolTip65.Items.Add(toolTipItem61);
+            this.toggleFontUnderlineItem1.SuperTip = superToolTip65;
             // 
             // iAlignmentLeft
             // 
@@ -648,12 +649,12 @@
             this.iAlignmentLeft.Id = 37;
             this.iAlignmentLeft.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("iAlignmentLeft.LargeGlyph")));
             this.iAlignmentLeft.Name = "iAlignmentLeft";
-            toolTipTitleItem25.Text = "Влево (Ctrl+L)";
-            toolTipItem23.LeftIndent = 6;
-            toolTipItem23.Text = "Выранивание текста влево";
-            superToolTip25.Items.Add(toolTipTitleItem25);
-            superToolTip25.Items.Add(toolTipItem23);
-            this.iAlignmentLeft.SuperTip = superToolTip25;
+            toolTipTitleItem66.Text = "Влево (Ctrl+L)";
+            toolTipItem62.LeftIndent = 6;
+            toolTipItem62.Text = "Выранивание текста влево";
+            superToolTip66.Items.Add(toolTipTitleItem66);
+            superToolTip66.Items.Add(toolTipItem62);
+            this.iAlignmentLeft.SuperTip = superToolTip66;
             // 
             // iAlignmentCenter
             // 
@@ -661,12 +662,12 @@
             this.iAlignmentCenter.Id = 38;
             this.iAlignmentCenter.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("iAlignmentCenter.LargeGlyph")));
             this.iAlignmentCenter.Name = "iAlignmentCenter";
-            toolTipTitleItem26.Text = "Центр (Ctrl+E)";
-            toolTipItem24.LeftIndent = 6;
-            toolTipItem24.Text = "Выранивание текста по центру.";
-            superToolTip26.Items.Add(toolTipTitleItem26);
-            superToolTip26.Items.Add(toolTipItem24);
-            this.iAlignmentCenter.SuperTip = superToolTip26;
+            toolTipTitleItem67.Text = "Центр (Ctrl+E)";
+            toolTipItem63.LeftIndent = 6;
+            toolTipItem63.Text = "Выранивание текста по центру.";
+            superToolTip67.Items.Add(toolTipTitleItem67);
+            superToolTip67.Items.Add(toolTipItem63);
+            this.iAlignmentCenter.SuperTip = superToolTip67;
             // 
             // iAlignmentRight
             // 
@@ -674,12 +675,12 @@
             this.iAlignmentRight.Id = 39;
             this.iAlignmentRight.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("iAlignmentRight.LargeGlyph")));
             this.iAlignmentRight.Name = "iAlignmentRight";
-            toolTipTitleItem27.Text = "Вправо (Ctrl+R)";
-            toolTipItem25.LeftIndent = 6;
-            toolTipItem25.Text = "Выранивание текста впарво.";
-            superToolTip27.Items.Add(toolTipTitleItem27);
-            superToolTip27.Items.Add(toolTipItem25);
-            this.iAlignmentRight.SuperTip = superToolTip27;
+            toolTipTitleItem68.Text = "Вправо (Ctrl+R)";
+            toolTipItem64.LeftIndent = 6;
+            toolTipItem64.Text = "Выранивание текста впарво.";
+            superToolTip68.Items.Add(toolTipTitleItem68);
+            superToolTip68.Items.Add(toolTipItem64);
+            this.iAlignmentRight.SuperTip = superToolTip68;
             // 
             // iAlignmentJustify
             // 
@@ -687,12 +688,12 @@
             this.iAlignmentJustify.Id = 40;
             this.iAlignmentJustify.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("iAlignmentJustify.LargeGlyph")));
             this.iAlignmentJustify.Name = "iAlignmentJustify";
-            toolTipTitleItem28.Text = "По ширине (Ctrl+J)";
-            toolTipItem26.LeftIndent = 6;
-            toolTipItem26.Text = "Выранивание текста по всей ширине, добавляя пробелы между словами.";
-            superToolTip28.Items.Add(toolTipTitleItem28);
-            superToolTip28.Items.Add(toolTipItem26);
-            this.iAlignmentJustify.SuperTip = superToolTip28;
+            toolTipTitleItem69.Text = "По ширине (Ctrl+J)";
+            toolTipItem65.LeftIndent = 6;
+            toolTipItem65.Text = "Выранивание текста по всей ширине, добавляя пробелы между словами.";
+            superToolTip69.Items.Add(toolTipTitleItem69);
+            superToolTip69.Items.Add(toolTipItem65);
+            this.iAlignmentJustify.SuperTip = superToolTip69;
             // 
             // changeFontColorItem1
             // 
@@ -700,12 +701,12 @@
             this.changeFontColorItem1.Id = 2;
             this.changeFontColorItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("changeFontColorItem1.LargeGlyph")));
             this.changeFontColorItem1.Name = "changeFontColorItem1";
-            toolTipTitleItem29.Text = "Цвет шрифта";
-            toolTipItem27.LeftIndent = 6;
-            toolTipItem27.Text = "Изменение цвета шрифта";
-            superToolTip29.Items.Add(toolTipTitleItem29);
-            superToolTip29.Items.Add(toolTipItem27);
-            this.changeFontColorItem1.SuperTip = superToolTip29;
+            toolTipTitleItem20.Text = "Цвет шрифта";
+            toolTipItem18.LeftIndent = 6;
+            toolTipItem18.Text = "Изменение цвета шрифта";
+            superToolTip20.Items.Add(toolTipTitleItem20);
+            superToolTip20.Items.Add(toolTipItem18);
+            this.changeFontColorItem1.SuperTip = superToolTip20;
             // 
             // changeFontBackColorItem1
             // 
@@ -713,12 +714,12 @@
             this.changeFontBackColorItem1.Id = 3;
             this.changeFontBackColorItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("changeFontBackColorItem1.LargeGlyph")));
             this.changeFontBackColorItem1.Name = "changeFontBackColorItem1";
-            toolTipTitleItem30.Text = "Фон текста";
-            toolTipItem28.LeftIndent = 6;
-            toolTipItem28.Text = "Изменяет фон за текстом, как будто его выделили ручкой-маркером.";
-            superToolTip30.Items.Add(toolTipTitleItem30);
-            superToolTip30.Items.Add(toolTipItem28);
-            this.changeFontBackColorItem1.SuperTip = superToolTip30;
+            toolTipTitleItem78.Text = "Фон текста";
+            toolTipItem72.LeftIndent = 6;
+            toolTipItem72.Text = "Изменяет фон за текстом, как будто его выделили ручкой-маркером.";
+            superToolTip78.Items.Add(toolTipTitleItem78);
+            superToolTip78.Items.Add(toolTipItem72);
+            this.changeFontBackColorItem1.SuperTip = superToolTip78;
             // 
             // clearFormattingItem1
             // 
@@ -726,13 +727,13 @@
             this.clearFormattingItem1.Id = 13;
             this.clearFormattingItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("clearFormattingItem1.LargeGlyph")));
             this.clearFormattingItem1.Name = "clearFormattingItem1";
-            toolTipTitleItem31.Text = "Очистка форматирования (Ctrl+Space)";
-            toolTipItem29.LeftIndent = 6;
-            toolTipItem29.Text = "Очстка форматирования всего выделенного фрагмента, остается только обычный текст." +
-                "";
-            superToolTip31.Items.Add(toolTipTitleItem31);
-            superToolTip31.Items.Add(toolTipItem29);
-            this.clearFormattingItem1.SuperTip = superToolTip31;
+            toolTipTitleItem79.Text = "Очистка форматирования (Ctrl+Space)";
+            toolTipItem73.LeftIndent = 6;
+            toolTipItem73.Text = "Очстка форматирования всего выделенного фрагмента, остается только обычный текст." +
+    "";
+            superToolTip79.Items.Add(toolTipTitleItem79);
+            superToolTip79.Items.Add(toolTipItem73);
+            this.clearFormattingItem1.SuperTip = superToolTip79;
             // 
             // barDockControlTop
             // 
@@ -857,6 +858,8 @@
             this.richEditControl1.Location = new System.Drawing.Point(2, 2);
             this.richEditControl1.MenuManager = this.barManager1;
             this.richEditControl1.Name = "richEditControl1";
+            this.richEditControl1.Options.Fields.UseCurrentCultureDateTimeFormat = false;
+            this.richEditControl1.Options.MailMerge.KeepLastParagraph = false;
             this.richEditControl1.Size = new System.Drawing.Size(554, 339);
             this.richEditControl1.TabIndex = 4;
             // 
@@ -889,11 +892,12 @@
             this.richEditBarController1.BarItems.Add(this.zoomInItem1);
             this.richEditBarController1.BarItems.Add(this.printItem1);
             this.richEditBarController1.BarItems.Add(this.printPreviewItem1);
-            this.richEditBarController1.RichEditControl = this.RTE_Text;
+            this.richEditBarController1.Control = this.RTE_Text;
             // 
             // fontBar1
             // 
             this.fontBar1.BarName = "";
+            this.fontBar1.Control = null;
             this.fontBar1.DockCol = 2;
             this.fontBar1.DockRow = 0;
             this.fontBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
@@ -905,11 +909,10 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.sbtn_Close);
-            this.panelControl1.Location = new System.Drawing.Point(629, 0);
+            this.panelControl1.Location = new System.Drawing.Point(631, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(66, 60);
+            this.panelControl1.Size = new System.Drawing.Size(64, 57);
             this.panelControl1.TabIndex = 9;
             // 
             // sbtn_Close
@@ -918,9 +921,9 @@
             this.sbtn_Close.ImageIndex = 1;
             this.sbtn_Close.ImageList = this.imageCollection_48;
             this.sbtn_Close.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_Close.Location = new System.Drawing.Point(9, 5);
+            this.sbtn_Close.Location = new System.Drawing.Point(7, 3);
             this.sbtn_Close.Name = "sbtn_Close";
-            this.sbtn_Close.Size = new System.Drawing.Size(50, 50);
+            this.sbtn_Close.Size = new System.Drawing.Size(50, 51);
             this.sbtn_Close.TabIndex = 0;
             this.sbtn_Close.Click += new System.EventHandler(this.sbtn_Close_Click);
             // 
@@ -1015,7 +1018,7 @@
         public DevExpress.XtraRichEdit.RichEditControl RTE_Text;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DevExpress.XtraBars.Bar bar_Font;
-        private DevExpress.XtraBars.BarButtonItem fileSaveItem1;
+        private DevExpress.XtraBars.BarButtonItem iSave;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.Utils.ImageCollection imageCollection_48;
         public DevExpress.XtraEditors.SimpleButton sbtn_Close;
