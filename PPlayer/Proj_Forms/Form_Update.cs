@@ -566,7 +566,7 @@ namespace PPlayer
                     cur_load_all += Convert.ToInt32(Row["SizeLoadNow"].ToString());
                     need_load += Convert.ToInt32(Row["Size"].ToString());
 
-                    // файл Updater загружен
+                    // файл Updater загружен - перезаписать
                     if (Row["Name"].ToString() == "Updater.exe" && Row["Size"].ToString() == Row["SizeLoadNow"].ToString())
                     {
                         FileInfo old_file = new FileInfo(uv.v_folder_program + "\\" + Row["Name"].ToString());
@@ -689,15 +689,15 @@ namespace PPlayer
             }
         }
 
-        // закрытие обновления
+        // закрыть окно обновления
         private void sbtn_Close_Click(object sender, EventArgs e)
         {
             NeedUpdate = true;
             this.Close();
         }
 
-
-        public void Start_Update()
+        // Запуск обновления файлов
+        public bool Start_Update()
         {
             if (NeedUpdate)
             {
@@ -713,16 +713,21 @@ namespace PPlayer
                         //ваши аргументы
                         Arguments = "-" + uv.v_program_run_file
                     };
-                    //запуск процесса
+                    //запуск процесса переноса загруженных файлов
                     Process.Start(startInfo);
-                    Application.Exit();
+                    //ParentForm.Close();                    
+                    //Application.Exit();
+                    return true;
                 }
                 catch (Exception e)
                 {
                     if (show_usr_msg) DevExpress.XtraEditors.XtraMessageBox.Show(e.Message, "Ошибка запуска обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     NeedUpdate = false;
+                    return false;
                 } 
             }
+
+            return true;
         }
     }
 }

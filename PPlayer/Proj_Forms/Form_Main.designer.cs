@@ -1018,6 +1018,7 @@
             this.xtraTabPage6,
             this.xtraTabPage7});
             this.xTabCtrl_PlayLists.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xTabCtrl_PlayLists_SelectedPageChanged);
+            this.xTabCtrl_PlayLists.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // xtraTabPage1
             // 
@@ -1525,6 +1526,7 @@
             this.Pic_Logo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.Pic_Logo.Size = new System.Drawing.Size(691, 202);
             this.Pic_Logo.TabIndex = 0;
+            this.Pic_Logo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Global_KeyPress);
             // 
             // panelControl_TextEditor
             // 
@@ -1654,7 +1656,6 @@
         private DevExpress.XtraBars.BarToolbarsListItem barToolbarsListItem1;
         private DevExpress.XtraBars.BarCheckItem iFullScreen;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
-        private DevExpress.XtraTab.XtraTabControl xTabCtrl_PlayLists;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraEditors.LabelControl lbc_time;
         private DevExpress.XtraBars.BarButtonItem im_Open_PM_List;
@@ -1749,7 +1750,8 @@
         private DevExpress.XtraBars.BarButtonItem iToggle_PL_Show;
         private DevExpress.XtraBars.BarButtonItem iCheckUpdates;
         private DevExpress.XtraBars.BarButtonItem iFindFilter;
-        private DevExpress.XtraBars.BarCheckItem iPList_Width;        
+        private DevExpress.XtraBars.BarCheckItem iPList_Width;
+        public DevExpress.XtraTab.XtraTabControl xTabCtrl_PlayLists;        
 
     }
 }

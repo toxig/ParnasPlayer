@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
+//using System.ComponentModel;
+//using System.Drawing;
 using System.Data;
-using System.Text;
+//using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Un4seen.Bass;
@@ -18,7 +18,7 @@ namespace PPlayer
         public int v_stream;
         public DataRow Row;
         public StreamClass MainStream;
-
+        public Control_PlayList Cur_PL;            
         private bool fl_eqLoading = false;
         private bool fl_scroll_Loading = false;
         private int eq_on_off = 1;
@@ -854,6 +854,7 @@ namespace PPlayer
             Eq_array_to_row();
             btn_eq_save.Enabled = false;
             btn_eq_cancel.Enabled = false;
+            Cur_PL.PL_Changed_EQ(MainStream.v_PL_Row_ID);            
         }
 
         private void btn_eq_cancel_Click(object sender, EventArgs e)

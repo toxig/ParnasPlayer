@@ -56,7 +56,7 @@ namespace PPlayer
             catch (Exception e)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show(e.StackTrace, "Ошибка запуска приложения", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } */
+            }*/
             #endregion
         }
     }

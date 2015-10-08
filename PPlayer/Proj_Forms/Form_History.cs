@@ -24,7 +24,7 @@ namespace PPlayer
         private void Form_History_Load(object sender, EventArgs e)
         {
             memoEdit_info.Text = v_list_change_log;
-            label_info.Text = "\"" + v_list_name + "\"";
+            label_info.Text = v_list_name;
             memoEdit_info.DeselectAll();
         }
 

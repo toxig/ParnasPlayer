@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition5 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition6 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Control_PlayList));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gridColumn_exists = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grid_PlayList = new DevExpress.XtraGrid.GridControl();
             this.gv_PlayList = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -70,16 +70,18 @@
             // 
             // grid_PlayList
             // 
+            this.grid_PlayList.AllowDrop = true;
             this.grid_PlayList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid_PlayList.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grid_PlayList.Location = new System.Drawing.Point(0, 72);
+            this.grid_PlayList.Location = new System.Drawing.Point(0, 59);
             this.grid_PlayList.MainView = this.gv_PlayList;
-            this.grid_PlayList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grid_PlayList.Name = "grid_PlayList";
-            this.grid_PlayList.Size = new System.Drawing.Size(367, 340);
+            this.grid_PlayList.Size = new System.Drawing.Size(315, 276);
             this.grid_PlayList.TabIndex = 1;
             this.grid_PlayList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_PlayList});
+            this.grid_PlayList.DragDrop += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragDrop);
+            this.grid_PlayList.DragEnter += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragEnter);
+            this.grid_PlayList.DragLeave += new System.EventHandler(this.grid_PlayList_DragLeave);
             this.grid_PlayList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grid_PlayList_MouseClick);
             this.grid_PlayList.MouseEnter += new System.EventHandler(this.grid_PlayList_MouseEnter);
             // 
@@ -115,34 +117,34 @@
             this.gridColumn_exists,
             this.gridColumn_date});
             this.gv_PlayList.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Black;
-            styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Salmon;
-            styleFormatCondition1.Appearance.Options.UseBackColor = true;
-            styleFormatCondition1.Appearance.Options.UseForeColor = true;
-            styleFormatCondition1.ApplyToRow = true;
-            styleFormatCondition1.Column = this.gridColumn_exists;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition1.Value1 = "100";
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Black;
-            styleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Salmon;
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
-            styleFormatCondition2.Appearance.Options.UseForeColor = true;
-            styleFormatCondition2.ApplyToRow = true;
-            styleFormatCondition2.Column = this.gridColumn_exists;
-            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition2.Value1 = "101";
-            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.Black;
-            styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.DarkGray;
-            styleFormatCondition3.Appearance.Options.UseBackColor = true;
-            styleFormatCondition3.Appearance.Options.UseForeColor = true;
-            styleFormatCondition3.ApplyToRow = true;
-            styleFormatCondition3.Column = this.gridColumn_exists;
-            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition3.Value1 = "110";
+            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.Black;
+            styleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Salmon;
+            styleFormatCondition4.Appearance.Options.UseBackColor = true;
+            styleFormatCondition4.Appearance.Options.UseForeColor = true;
+            styleFormatCondition4.ApplyToRow = true;
+            styleFormatCondition4.Column = this.gridColumn_exists;
+            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition4.Value1 = "100";
+            styleFormatCondition5.Appearance.BackColor = System.Drawing.Color.Black;
+            styleFormatCondition5.Appearance.ForeColor = System.Drawing.Color.Salmon;
+            styleFormatCondition5.Appearance.Options.UseBackColor = true;
+            styleFormatCondition5.Appearance.Options.UseForeColor = true;
+            styleFormatCondition5.ApplyToRow = true;
+            styleFormatCondition5.Column = this.gridColumn_exists;
+            styleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition5.Value1 = "101";
+            styleFormatCondition6.Appearance.BackColor = System.Drawing.Color.Black;
+            styleFormatCondition6.Appearance.ForeColor = System.Drawing.Color.DarkGray;
+            styleFormatCondition6.Appearance.Options.UseBackColor = true;
+            styleFormatCondition6.Appearance.Options.UseForeColor = true;
+            styleFormatCondition6.ApplyToRow = true;
+            styleFormatCondition6.Column = this.gridColumn_exists;
+            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition6.Value1 = "110";
             this.gv_PlayList.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1,
-            styleFormatCondition2,
-            styleFormatCondition3});
+            styleFormatCondition4,
+            styleFormatCondition5,
+            styleFormatCondition6});
             this.gv_PlayList.GridControl = this.grid_PlayList;
             this.gv_PlayList.Name = "gv_PlayList";
             this.gv_PlayList.OptionsHint.ShowCellHints = false;
@@ -229,9 +231,10 @@
             this.panelControl_Filter.Controls.Add(this.checkButton_Filter_Plus);
             this.panelControl_Filter.Controls.Add(this.btnEdit_Find);
             this.panelControl_Filter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl_Filter.Location = new System.Drawing.Point(0, 28);
+            this.panelControl_Filter.Location = new System.Drawing.Point(0, 23);
+            this.panelControl_Filter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_Filter.Name = "panelControl_Filter";
-            this.panelControl_Filter.Size = new System.Drawing.Size(367, 44);
+            this.panelControl_Filter.Size = new System.Drawing.Size(315, 36);
             this.panelControl_Filter.TabIndex = 2;
             this.panelControl_Filter.Visible = false;
             // 
@@ -241,9 +244,10 @@
             this.checkButton_Filter_Plus.ImageIndex = 1;
             this.checkButton_Filter_Plus.ImageList = this.imageCollection1;
             this.checkButton_Filter_Plus.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.checkButton_Filter_Plus.Location = new System.Drawing.Point(320, 9);
+            this.checkButton_Filter_Plus.Location = new System.Drawing.Point(274, 7);
+            this.checkButton_Filter_Plus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkButton_Filter_Plus.Name = "checkButton_Filter_Plus";
-            this.checkButton_Filter_Plus.Size = new System.Drawing.Size(42, 23);
+            this.checkButton_Filter_Plus.Size = new System.Drawing.Size(36, 19);
             this.checkButton_Filter_Plus.TabIndex = 1;
             this.checkButton_Filter_Plus.ToolTip = "Режим поиска (простой - продвинутый)";
             this.checkButton_Filter_Plus.CheckedChanged += new System.EventHandler(this.checkButton_Filter_Plus_CheckedChanged);
@@ -257,19 +261,21 @@
             // 
             // btnEdit_Find
             // 
-            this.btnEdit_Find.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit_Find.Location = new System.Drawing.Point(6, 6);
+            this.btnEdit_Find.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit_Find.Location = new System.Drawing.Point(5, 5);
+            this.btnEdit_Find.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit_Find.Name = "btnEdit_Find";
             this.btnEdit_Find.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnEdit_Find.Properties.Appearance.Options.UseFont = true;
             this.btnEdit_Find.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnEdit_Find.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnEdit_Find.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
             this.btnEdit_Find.Properties.HideSelection = false;
-            this.btnEdit_Find.Size = new System.Drawing.Size(308, 30);
+            this.btnEdit_Find.Size = new System.Drawing.Size(264, 26);
             this.btnEdit_Find.TabIndex = 0;
             this.btnEdit_Find.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnEdit_Find_ButtonClick);
             this.btnEdit_Find.EditValueChanged += new System.EventHandler(this.btnEdit_Find_EditValueChanged);
+            this.btnEdit_Find.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnEdit_Find_KeyPress);
             this.btnEdit_Find.Leave += new System.EventHandler(this.btnEdit_Find_Leave);
             this.btnEdit_Find.MouseEnter += new System.EventHandler(this.btnEdit_Find_MouseEnter);
             // 
@@ -280,9 +286,10 @@
             this.checkButton_Toggle_PLColumns.Appearance.Options.UseFont = true;
             this.checkButton_Toggle_PLColumns.ImageList = this.imageCollection1;
             this.checkButton_Toggle_PLColumns.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.checkButton_Toggle_PLColumns.Location = new System.Drawing.Point(334, 2);
+            this.checkButton_Toggle_PLColumns.Location = new System.Drawing.Point(286, 2);
+            this.checkButton_Toggle_PLColumns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkButton_Toggle_PLColumns.Name = "checkButton_Toggle_PLColumns";
-            this.checkButton_Toggle_PLColumns.Size = new System.Drawing.Size(28, 23);
+            this.checkButton_Toggle_PLColumns.Size = new System.Drawing.Size(24, 19);
             this.checkButton_Toggle_PLColumns.TabIndex = 2;
             this.checkButton_Toggle_PLColumns.Text = "Н";
             this.checkButton_Toggle_PLColumns.ToolTip = "Название - Исполниетль";
@@ -306,8 +313,9 @@
             this.panelControl_header.Controls.Add(this.labelControl_header);
             this.panelControl_header.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl_header.Location = new System.Drawing.Point(0, 0);
+            this.panelControl_header.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelControl_header.Name = "panelControl_header";
-            this.panelControl_header.Size = new System.Drawing.Size(367, 28);
+            this.panelControl_header.Size = new System.Drawing.Size(315, 23);
             this.panelControl_header.TabIndex = 2;
             // 
             // checkButton_Toggle_FindPanel
@@ -318,9 +326,10 @@
             this.checkButton_Toggle_FindPanel.ImageIndex = 2;
             this.checkButton_Toggle_FindPanel.ImageList = this.imageCollection1;
             this.checkButton_Toggle_FindPanel.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.checkButton_Toggle_FindPanel.Location = new System.Drawing.Point(304, 2);
+            this.checkButton_Toggle_FindPanel.Location = new System.Drawing.Point(261, 2);
+            this.checkButton_Toggle_FindPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkButton_Toggle_FindPanel.Name = "checkButton_Toggle_FindPanel";
-            this.checkButton_Toggle_FindPanel.Size = new System.Drawing.Size(28, 23);
+            this.checkButton_Toggle_FindPanel.Size = new System.Drawing.Size(24, 19);
             this.checkButton_Toggle_FindPanel.TabIndex = 3;
             this.checkButton_Toggle_FindPanel.ToolTip = "Поиск";
             this.checkButton_Toggle_FindPanel.ToolTipTitle = "Переключение списка";
@@ -328,8 +337,8 @@
             // 
             // labelControl_header
             // 
-            this.labelControl_header.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl_header.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl_header.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.labelControl_header.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl_header.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -337,21 +346,23 @@
             this.labelControl_header.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.labelControl_header.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl_header.Location = new System.Drawing.Point(2, 2);
+            this.labelControl_header.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl_header.Name = "labelControl_header";
-            this.labelControl_header.Size = new System.Drawing.Size(296, 24);
+            this.labelControl_header.Size = new System.Drawing.Size(254, 20);
             this.labelControl_header.TabIndex = 0;
             this.labelControl_header.Text = "новый плейлист";
             this.labelControl_header.ToolTipController = this.toolTipController;
             // 
             // Control_PlayList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grid_PlayList);
             this.Controls.Add(this.panelControl_Filter);
             this.Controls.Add(this.panelControl_header);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Control_PlayList";
-            this.Size = new System.Drawing.Size(367, 412);
+            this.Size = new System.Drawing.Size(315, 335);
             ((System.ComponentModel.ISupportInitialize)(this.grid_PlayList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_PlayList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_Filter)).EndInit();

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.Data.Filtering;
+using System.Xml;
 
 namespace PPlayer
 {    
@@ -114,7 +115,7 @@ namespace PPlayer
             }
         }
 
-        public Form_Working FWorking;              
+        public Form_Working FWorking;
 
         // Инициализация класса
         public Control_PlayList()
@@ -256,6 +257,7 @@ namespace PPlayer
         // включение/отключение всплывающей подсказки
         private void timer_tooltip_Tick(object sender, EventArgs e)
         {
+            #region Старая логика
             /*
             if (tooltip_wait_ms_now >= 0)
             {
@@ -277,6 +279,8 @@ namespace PPlayer
                     toolTipController.HideHint();                    
                 }
             }*/
+            
+            #endregion
 
             if (DateTime.Now > tooltip_wait_dt && DateTime.Now < tooltip_hide_dt && !tooltip_started)
             {
@@ -303,6 +307,7 @@ namespace PPlayer
         // потеря мышки на плейлисте
         private void gv_PlayList_MouseLeave(object sender, EventArgs e)
         {
+            timer_tooltip.Stop();
             toolTipController.HideHint();
         }
 
@@ -310,16 +315,26 @@ namespace PPlayer
 
         #region Поиск (фильтр)
 
+        // обработчик текста
+        private char key_update(char ch)
+        {
+            switch (ch)
+            {
+                case 'ё': ch='е'; break;
+                case 'Ё': ch = 'Е'; break;
+                default: break;
+            }
+
+            return ch;
+        }
+
         // активация фильтрации на списке
         public void gv_PlayList_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (search_clear_dt < DateTime.Now) // очистка поиска после интервала ожидания
-                btnEdit_Find.Text = "";
+            if (search_clear_dt < DateTime.Now) btnEdit_Find.Text = "";// очистка поиска (после интервала ожидания)            
 
-            btnEdit_Find.DeselectAll();
-
-            if (!char.IsControl(e.KeyChar))
-                btnEdit_Find.Text += e.KeyChar;
+            if (!char.IsControl(e.KeyChar))            
+                btnEdit_Find.Text += key_update(e.KeyChar);            
             else
                 if (e.KeyChar == '\b' && btnEdit_Find.Text.Length > 0) // бэкспейс - очистка последнего символа
                     btnEdit_Find.Text = btnEdit_Find.Text.Substring(0, btnEdit_Find.Text.Length - 1);
@@ -338,6 +353,21 @@ namespace PPlayer
                 panelControl_Filter.Visible = true;
             }
 
+            btnEdit_Find.DeselectAll();
+        }
+
+        private void btnEdit_Find_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // обработка управляющих клавиш
+            if (char.IsControl(e.KeyChar))
+	        {
+                if (e.KeyChar == 27) btnEdit_Find.Text = ""; // эскейп - очистка всего поиска                
+	        } 
+            else
+            {
+                e.KeyChar = key_update(e.KeyChar);
+            }
+            
         }
 
         // Изменение фильтра
@@ -608,16 +638,25 @@ namespace PPlayer
             {
                 for (int i = 0; i < dt_ListData.Rows.Count; i++)
                 {
-                    Data[i] += dt_ListData.Rows[i][0] + "|";
-                    Data[i] += dt_ListData.Rows[i][1] + "|";
-                    Data[i] += dt_ListData.Rows[i][2] + "|";
-                    Data[i] += dt_ListData.Rows[i][3] + "|";
-                    Data[i] += dt_ListData.Rows[i][4] + "|";
-                    Data[i] += dt_ListData.Rows[i][5] + "|";
+                    Data[i] += dt_ListData.Rows[i][0] + "|"; // MuzFile   
+                    Data[i] += dt_ListData.Rows[i][1] + "|"; // TextFile
+                    Data[i] += (dt_ListData.Rows[i][2] == "" ? "0:0:0:0:0:0:0:0:0:0:0:" : dt_ListData.Rows[i][2]) + "|"; // EqLines
+                    Data[i] += (dt_ListData.Rows[i][3] == "" ? "0" : dt_ListData.Rows[i][3]) + "|";  // EqPreamp
+                    Data[i] += (dt_ListData.Rows[i][4] == "" ? "5" : dt_ListData.Rows[i][4]) + "|";  // Volume
+                    Data[i] += (dt_ListData.Rows[i][5] == "" ? "10" : dt_ListData.Rows[i][5]) + "|"; // LRBalance
                     Data[i] += dt_ListData.Rows[i][6] + "|";
                     Data[i] += dt_ListData.Rows[i][7];
 
-                    //dt_FileData
+                    //dt_FileData 
+                    /*
+                    DrowL["MuzFile"] = FilePath;
+                    DrowL["EqLines"] = "0:0:0:0:0:0:0:0:0:0:0:";
+                    DrowL["EqPreamp"] = "0";
+                    DrowL["Volume"] = "5";
+                    DrowL["LRBalance"] = "10";
+                    DrowL["Num"] = dt_ListData.Rows.Count + 1; ;
+                    DrowL["FileExistsFlag"] = "000";
+                    */
                 }
             }
 
@@ -676,6 +715,14 @@ namespace PPlayer
             Check_Exists_Row(RowHandle);            
         }
 
+        public void PL_Changed_EQ(int RowHandle)
+        {
+            if (RowHandle > dt_ListData.Rows.Count - 1 || RowHandle < 0) return;
+
+            Сhange_history.add("Экв [изменен]: муз \"" + dt_ListData.Rows[RowHandle]["Name"] + "\"");
+            is_Changed = true;
+        }
+
         // Добавление текста
         public void PL_AddText(int RowHandle, String FilePath)
         {
@@ -708,7 +755,7 @@ namespace PPlayer
             DrowL["EqLines"] = "0:0:0:0:0:0:0:0:0:0:0:";
             DrowL["EqPreamp"] = "0";
             DrowL["Volume"] = "5";
-            DrowF["LRBalance"] = "10";
+            DrowL["LRBalance"] = "10";
             DrowL["Num"] = dt_ListData.Rows.Count + 1; ;
             DrowL["FileExistsFlag"] = "000";
 
@@ -753,9 +800,92 @@ namespace PPlayer
         private void checkButton_Toggle_FindPanel_CheckedChanged(object sender, EventArgs e)
         {
             Toggle_Show_Filter();
-        } 
-        #endregion
+        }
 
+        private void grid_PlayList_DragDrop(object sender, DragEventArgs e)
+        {
+            // список файлов
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            string ex;
+
+            if (files.Length == 0) return;
+
+            foreach (string file in files)
+            {
+                ex = Path.GetExtension(file).ToLower();
+                if (!File.Exists(file)) return; // мало ли что закинуть пробуют
+
+                switch (ex)
+                {
+                    case ".pmp":
+                        // !! Перенести обработчики в класс PL
+                        //if (!Form_Main.PL_PlayLists_Save(Form_Main.v_play_list_id_active)) return;
+                        //Form_Main.File_Load_PM_List(file);
+                        //Form_Main.File_Check_Exists(Form_Main.v_play_list_id_active); // 
+                        //pl_FilePath = file; 
+                        break;
+                    case ".mp3": PL_AddMuz(file); 
+                        break;
+                    case ".vaw": PL_AddMuz(file); 
+                        break;
+                    case ".rtf": PL_AddText(dt_ListData.Rows.IndexOf(gv_PlayList.GetFocusedDataRow()), file);
+                        break;
+                    case ".txt": PL_AddText(dt_ListData.Rows.IndexOf(gv_PlayList.GetFocusedDataRow()), file); 
+                        break;
+                    default: 
+                        break;
+                }
+            }
+
+        }
+
+        #endregion
+        // Драг файлов над списком (фильтр)
+        private void grid_PlayList_DragEnter(object sender, DragEventArgs e)
+        {
+            // список файлов
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            string ex;
+            
+            int files_group = 0;
+            int file_playlist = 0;
+            int file_text = 0;
+            int file_music = 0;
+            int file_none = 0;
+
+            foreach (string file in files)
+	        {
+		        ex = Path.GetExtension(file).ToLower();
+                if (!File.Exists(file)) return; // мало ли что закинуть пробуют
+
+                switch (ex)
+	            {   
+                    case ".pmp": file_playlist++; break;
+                    case ".mp3": file_music++; break;
+                    case ".vaw": file_music++; break;
+                    case ".rtf": file_text++; break;
+                    case ".txt": file_text++; break;
+                    default: file_none++;  break;
+	            }                
+	        }
+
+            if ((file_none != 0) // есть некорректные файлы
+             || (file_playlist > 0 && files.Length != 1) // есть плейлист (больше одного или вместе с др. файлами)
+             || (file_text > 1) // много текста (больше одного)
+             || (file_music != 0 && file_text != 0) // есть музыка вместе с текстом             
+               )
+                { e.Effect = DragDropEffects.None; }
+            else
+                { e.Effect = DragDropEffects.Move; }
+
+            //if (ex == "pm" && files.Length == 1) files_group = 1; // playlist
+        }
+
+        private void grid_PlayList_DragLeave(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 
     // Класс - История изменений списка
