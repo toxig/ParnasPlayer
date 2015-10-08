@@ -695,7 +695,8 @@ namespace PPlayer
         // закрыть окно обновления
         private void sbtn_Close_Click(object sender, EventArgs e)
         {
-            NeedUpdate = true;
+            if (sbtn_Close.Text == "Отмена") NeedUpdate = false;
+            else NeedUpdate = true;
             this.Close();
         }
 

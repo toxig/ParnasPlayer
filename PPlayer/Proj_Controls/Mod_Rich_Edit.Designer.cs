@@ -592,15 +592,18 @@
             // RTE_Text
             // 
             this.RTE_Text.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.RTE_Text.Appearance.Text.Options.UseTextOptions = true;
+            this.RTE_Text.Appearance.Text.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
             this.RTE_Text.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RTE_Text.Location = new System.Drawing.Point(0, 62);
+            this.RTE_Text.Location = new System.Drawing.Point(0, 70);
+            this.RTE_Text.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RTE_Text.MenuManager = this.barManager1;
             this.RTE_Text.Name = "RTE_Text";
             this.RTE_Text.Options.Fields.UseCurrentCultureDateTimeFormat = false;
             this.RTE_Text.Options.HorizontalScrollbar.Visibility = DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Visible;
             this.RTE_Text.Options.MailMerge.KeepLastParagraph = false;
             this.RTE_Text.Options.VerticalScrollbar.Visibility = DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Visible;
-            this.RTE_Text.Size = new System.Drawing.Size(695, 307);
+            this.RTE_Text.Size = new System.Drawing.Size(811, 384);
             this.RTE_Text.TabIndex = 4;
             this.RTE_Text.RtfTextChanged += new System.EventHandler(this.RTE_Text_RtfTextChanged);
             // 
@@ -740,28 +743,32 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(695, 62);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(811, 70);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 369);
-            this.barDockControlBottom.Size = new System.Drawing.Size(695, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 454);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(811, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 62);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 307);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 70);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 384);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(695, 62);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 307);
+            this.barDockControlRight.Location = new System.Drawing.Point(811, 70);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 384);
             // 
             // standaloneBarDockControl2
             // 
@@ -909,22 +916,25 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.sbtn_Close);
-            this.panelControl1.Location = new System.Drawing.Point(631, 0);
+            this.panelControl1.Location = new System.Drawing.Point(736, 0);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(64, 57);
+            this.panelControl1.Size = new System.Drawing.Size(75, 70);
             this.panelControl1.TabIndex = 9;
             // 
             // sbtn_Close
             // 
-            this.sbtn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.sbtn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sbtn_Close.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sbtn_Close.ImageIndex = 1;
             this.sbtn_Close.ImageList = this.imageCollection_48;
             this.sbtn_Close.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_Close.Location = new System.Drawing.Point(7, 3);
+            this.sbtn_Close.Location = new System.Drawing.Point(2, 2);
+            this.sbtn_Close.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sbtn_Close.Name = "sbtn_Close";
-            this.sbtn_Close.Size = new System.Drawing.Size(50, 51);
+            this.sbtn_Close.Size = new System.Drawing.Size(71, 66);
             this.sbtn_Close.TabIndex = 0;
             this.sbtn_Close.Click += new System.EventHandler(this.sbtn_Close_Click);
             // 
@@ -937,7 +947,7 @@
             // 
             // Mod_Rich_Edit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.RTE_Text);
@@ -945,8 +955,9 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Mod_Rich_Edit";
-            this.Size = new System.Drawing.Size(695, 369);
+            this.Size = new System.Drawing.Size(811, 454);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichEditFontSizeEdit1)).EndInit();

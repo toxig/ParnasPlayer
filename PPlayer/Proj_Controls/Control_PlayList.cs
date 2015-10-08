@@ -1026,6 +1026,8 @@ namespace PPlayer
                         case ".vaw": file_music++; break;
                         case ".rtf": file_text++; break;
                         case ".txt": file_text++; break;
+                        //case ".doc": file_text++; break;
+                        //case ".docx": file_text++; break;
                         default: file_none++; break;
                     }
             }
@@ -1075,14 +1077,18 @@ namespace PPlayer
                     case ".rtf": PL_AddText(dt_ListData.Rows.IndexOf(gv_PlayList.GetFocusedDataRow()), file);
                         break;
                     case ".txt": PL_AddText(dt_ListData.Rows.IndexOf(gv_PlayList.GetFocusedDataRow()), file); 
-                        break;                                                                    
+                        break;
+                    /*case ".doc": PL_AddText(dt_ListData.Rows.IndexOf(gv_PlayList.GetFocusedDataRow()), file);
+                        break;
+                    case ".docx": PL_AddText(dt_ListData.Rows.IndexOf(gv_PlayList.GetFocusedDataRow()), file);
+                        break;     */                                                               
                     default:
                         if (System.IO.Directory.Exists(file + "\\")) PL_AddMuz_Folder(file); // если это папка                        
                         break;
                 }
             }
 
-        }
+        }           
 
         #endregion
 
@@ -1102,6 +1108,7 @@ namespace PPlayer
                 FChangeLog.v_list_name = playlist_name;
                 FChangeLog.v_list_change_log = PLog_history.info();
                 FChangeLog.v_init_dir = pl_FolderPath;
+                FChangeLog.v_file_name = pl_FilePath;
 
                 FChangeLog.v_resault = 0;
 

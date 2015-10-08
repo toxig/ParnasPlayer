@@ -16,6 +16,7 @@ using DevExpress.XtraBars;
 using TagLib;
 using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Fx;
+using System.Diagnostics;
 
 
 namespace PPlayer
@@ -40,7 +41,7 @@ namespace PPlayer
         //int v_PL_Widh_prim_scale = 400;       // ширина плейлиста
         int v_PL_Widh_min_scale = 250;        // ширина плейлиста minimal
         int v_Line_max_width = 0;             // длина максимальной строки в текстовом файле (pix)
-        double v_Text_Width_koef = 0.94;      // коэфициент увеличения текста / Пример: 1 - 100% ширины, 0.5 - 50%
+        double v_Text_Width_koef = 0.96;      // коэфициент увеличения текста / Пример: 1 - 100% ширины, 0.5 - 50%
         int v_Logo_NoActions_Time = 0;
         string v_Name_HotList = "H";          //Заголовок горячего плейлиста
         private int v_MainWindowTread = Thread.CurrentThread.ManagedThreadId; // ID главного потока              
@@ -193,7 +194,16 @@ namespace PPlayer
         // Поток проверка обновлений        
         private void FU_StartUpdate() //// Запуск проверки c сообщениями
         {
-            CheckUpdates(true);
+            try
+            {
+                CheckUpdates(true);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }                           
+
             if (FUpdate.NeedUpdate)
             {
                 if (!Save_Main_Settings()) return;
@@ -996,8 +1006,10 @@ namespace PPlayer
 
             if (System.IO.File.Exists(MainStream.v_TextFileName))
             {
-                RTBox_TextFile.LoadFile(MainStream.v_TextFileName);
+                RTBox_TextFile.LoadFile(MainStream.v_TextFileName);                                
                 RTBox_TextFile.Rtf = RTBox_TextFile.Rtf.Insert(RTBox_TextFile.Rtf.LastIndexOf('}') - 1, "\\par"); //"\\par" - перенос строки в конце файла                
+                v_RTEdit_no_resize = false; // флаг масштабирования текста
+                RTBox_TextFile_TextChanged(null, null);
                 Label_InfoLine.ToolTip = "Текст файл: " + MainStream.v_TextFileName;
 
                 Show_Logo(false);
@@ -1012,12 +1024,12 @@ namespace PPlayer
 
                 if (MainStream.v_TextFileName == "")
                 {
-                    TextMsg = " * Текст-файл: не присвоен треку"; //Текстовый файл не присвоен
-                    Label_InfoLine.ToolTip = "Текст файл: не присвоен";
+                    TextMsg = " * Текст-файл: не выбран"; //Текстовый файл не присвоен
+                    Label_InfoLine.ToolTip = "Текст файл: не выбран";
                 }
                 else
                 {
-                    TextMsg = " * Текст-файла нет на Диске: \n *** " + MainStream.v_TextFileName;
+                    TextMsg = " * Текст-файл: нет на Диске \n *** " + MainStream.v_TextFileName;
                     Label_InfoLine.ToolTip = "Текста нет на диске:" + MainStream.v_TextFileName;
                 }
             }
@@ -1054,15 +1066,14 @@ namespace PPlayer
             else
             {
                 MainStream.v_stream = 0;
-                Label_InfoLine.ToolTip = "Нет Муз файла: " + MainStream.v_FileName + "\n" + Label_InfoLine.ToolTip;
+                Label_InfoLine.ToolTip = "Нет Муз файл: " + MainStream.v_FileName + "\n" + Label_InfoLine.ToolTip;
                 Label_InfoLine.Text = "Нет файла: " + Path.GetFileName(MainStream.v_FileName);
-                if (TextMsg != "") TextMsg += "\n\n * Муз-файла нет на Диске:\n *** " + MainStream.v_FileName;
+                if (TextMsg != "") TextMsg += "\n\n * Муз-файл: нет на Диске\n *** " + MainStream.v_FileName;
             }
-
-            v_RTEdit_no_resize = false; // флаг масштабирования текста
+            
             if (TextMsg != "")
             {
-                v_RTEdit_no_resize = true;
+                //v_RTEdit_no_resize = true;                          
                 RTBox_TextFile.ZoomFactor = 1;
                 RTBox_TextFile.Text = TextMsg;                
             }
@@ -1218,20 +1229,16 @@ namespace PPlayer
             
             if (openFileDialog.FileName.Length != 0)
             {
-                /*FWorking.param_Operation_Text = "Загрузка плейлиста";                
-                FW_Tread = new Thread(new ThreadStart(FW_ShowDialog));
-                FW_Tread.Start();*/
-
-                //string PListFile = openFileDialog.FileName;
-                //FWorking.param_Operation_Text = "Загрузка плейлиста: \"" + Path.GetFileNameWithoutExtension(PListFile) + "\"";
+                FWorking.Text = "Загрузка плейлиста: \"" + Path.GetFileNameWithoutExtension(openFileDialog.FileName) + "\"";
+                FWorking.Start();                
                 
                 Control_PlayList Cur_PL = All_PlayLists[v_play_list_id_active];
                 Cur_PL.pl_FilePath = openFileDialog.FileName; // файл плейлиста                
                 Cur_PL.PM_Load_List(Cur_PL.pl_FilePath); // Загрузка файла                
 
                 // Папка плейлистов "по умолчанию"
-                Settings.p_DefFolder_PList = System.IO.Path.GetDirectoryName(openFileDialog.FileName);                
-                //FW_Tread.Abort();
+                Settings.p_DefFolder_PList = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
+                FWorking.Abort();
             }
         }
 
@@ -1804,6 +1811,8 @@ namespace PPlayer
         // Перерасчет масштаба отображения
         private void RTBox_CorrectScale()
         {
+            v_Text_Width_koef = 0.96;
+
             if (v_Line_max_width > 0 && RTBox_TextFile.ClientSize.Width > 0)
             {
                 RTBox_TextFile.ZoomFactor = (float)((double)RTBox_TextFile.ClientSize.Width / v_Line_max_width * v_Text_Width_koef); // 0.95
@@ -1825,9 +1834,9 @@ namespace PPlayer
 
             foreach (string LineText in RTBox_TextFile.Lines)
             {
-                int line_width = Text_CalcWidth(LineText, Default_Font);
+                int line_width = Text_CalcWidth(LineText.Replace("\t","          "), RTBox_TextFile.Font /*Default_Font*/);
                 if (v_Line_max_width < line_width)
-                    v_Line_max_width = line_width;
+                    v_Line_max_width = line_width;                
                 //Graphics.MeasureString();                
             }
         }
@@ -2326,6 +2335,7 @@ namespace PPlayer
             int Row_ID = All_PlayLists[v_play_list_id_active].dt_ListData.Rows.IndexOf(
                          All_PlayLists[v_play_list_id_active].gv_PlayList.GetFocusedDataRow()
                          );
+
             // выделяем след элемент с учетом сортировки (иначе после удаления текущ записи список прыгнет)
             int max_rows = All_PlayLists[v_play_list_id_active].gv_PlayList.RowCount;
             int cur_row = All_PlayLists[v_play_list_id_active].gv_PlayList.FocusedRowHandle;
@@ -2368,7 +2378,7 @@ namespace PPlayer
                 Check_PL_Status(v_play_list_id_active);
                 Settings.p_DefFolder_Texts = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
 
-                // Загрузка текста вусшьфд редакто - если изменен текущий открытый муз файл
+                // Загрузка текста decimal редакто - если изменен текущий открытый муз файл
                 if (MainStream.v_PL_List_ID_played == v_play_list_id_active &&
                     MainStream.v_PL_Row_ID == Row_ID)
                 {                    
@@ -2681,6 +2691,62 @@ namespace PPlayer
             }
         }
 
+        // Показать текстовый фал в проводнике
+        private void iShowExplorer_TextFile_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            int Row_ID = All_PlayLists[v_play_list_id_active].dt_ListData.Rows.IndexOf(
+             All_PlayLists[v_play_list_id_active].gv_PlayList.GetFocusedDataRow()
+             );
+
+            string FilePath = All_PlayLists[v_play_list_id_active].dt_ListData.Rows[Row_ID][1].ToString();
+
+            if (FilePath != "") ShowInExplorer(FilePath);
+            else DevExpress.XtraEditors.XtraMessageBox.Show("Текстовый файл не выбран!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // Показать Муз фал в проводнике Windows
+        private void iShowExplorer_Mp3File_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            int Row_ID = All_PlayLists[v_play_list_id_active].dt_ListData.Rows.IndexOf(
+             All_PlayLists[v_play_list_id_active].gv_PlayList.GetFocusedDataRow()
+             );            
+                        
+            string FilePath = All_PlayLists[v_play_list_id_active].dt_ListData.Rows[Row_ID][0].ToString();
+
+            ShowInExplorer(FilePath);
+        }
+
+        private void ShowInExplorer(string FilePath)
+        {
+            if (!System.IO.File.Exists(FilePath))
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Файла нет на диске!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                //создание параметров
+                var startInfo = new ProcessStartInfo
+                {
+                    //имя файла
+                    FileName = "explorer.exe",
+                    //скрытое окно
+                    //WindowStyle = ProcessWindowStyle.Hidden,
+                    //ваши аргументы
+                    Arguments = "/select," + FilePath /*<path-to-file>*/
+                };
+
+                //запуск процесса переноса загруженных файлов
+                Process.Start(startInfo);
+                //ParentForm.Close();                    
+                //Application.Exit();                
+            }
+            catch (Exception e)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show(e.Message, "Ошибка запуска проводника", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }                   
     }    
 
     public class FormView

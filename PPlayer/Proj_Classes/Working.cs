@@ -8,8 +8,8 @@ namespace PPlayer
     public class Working
     {
         public Thread           FW_Thread; // Поток - отображение выполняющихся операций
-        public Form_Working     FW_Form = new Form_Working();          // Фоновое окно операций        
-                
+        public Form_Working     FW_Form = new Form_Working();          // Фоновое окно операций              
+     
         /// <summary>Текст выполняемой операции</summary>
         public string Text
         {
@@ -58,9 +58,8 @@ namespace PPlayer
         /// <summary>Запуск фонового окна</summary>
         private void FW_ShowDialog()
         {
-            FW_Form.Visible = false;
-            try { FW_Form.ShowDialog(); }
-            catch { this.Abort(); }
+            //FW_Form.Visible = false;            
+            FW_Form.ShowDialog();
         }
 
         /// <summary>Запуск диалогового окна</summary>
@@ -85,7 +84,14 @@ namespace PPlayer
         /// <summary>Остановить показ уведомлений</summary>
         public void Abort()
         {
-            if (FW_Thread.ThreadState == System.Threading.ThreadState.Running) FW_Thread.Abort();
+            if (FW_Thread.ThreadState == System.Threading.ThreadState.Running)
+            {
+                while (!FW_Form.Visible) // ждем отрисовким  всех элементов - только потом останавливаем поток
+                { 
+                }
+
+                FW_Thread.Abort(); // потом отключаем окно
+            }
         }
         
 
