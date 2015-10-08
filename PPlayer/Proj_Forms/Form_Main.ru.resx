@@ -149,7 +149,7 @@
   <data name="bar1.BarAppearance.Disabled.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <assembly alias="DevExpress.Data.v11.2" name="DevExpress.Data.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Data.v11.2" name="DevExpress.Data.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=8b4b93d130d1cced" />
   <data name="barDockControlTop.AllowHtmlText" type="DevExpress.Utils.DefaultBoolean, DevExpress.Data.v11.2">
     <value>Default</value>
   </data>
@@ -165,7 +165,7 @@
   <data name="barDockControlTop.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <assembly alias="DevExpress.Utils.v11.2" name="DevExpress.Utils.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v11.2" name="DevExpress.Utils.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=8b4b93d130d1cced" />
   <data name="barDockControlTop.ToolTipIconType" type="DevExpress.Utils.ToolTipIconType, DevExpress.Utils.v11.2">
     <value>None</value>
   </data>
@@ -575,7 +575,7 @@
   <data name="spinEdit1.Properties.AutoHeight" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="DevExpress.XtraEditors.v11.2" name="DevExpress.XtraEditors.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.XtraEditors.v11.2" name="DevExpress.XtraEditors.v11.2, Version=11.2.5.0, Culture=neutral, PublicKeyToken=8b4b93d130d1cced" />
   <data name="spinEdit1.Properties.Mask.AutoComplete" type="DevExpress.XtraEditors.Mask.AutoCompleteType, DevExpress.XtraEditors.v11.2">
     <value>Default</value>
   </data>

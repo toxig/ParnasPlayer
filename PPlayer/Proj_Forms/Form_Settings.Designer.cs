@@ -47,6 +47,11 @@
             this.btn_Close_form = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Cancel_Changes = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save_Changes = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.checkEdit_uodates = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -63,6 +68,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_uodates.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -77,13 +88,14 @@
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.layoutControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(595, 326);
+            this.xtraTabPage1.Size = new System.Drawing.Size(591, 326);
             this.xtraTabPage1.Text = "Плейлист";
             // 
             // layoutControl1
@@ -96,7 +108,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(595, 326);
+            this.layoutControl1.Size = new System.Drawing.Size(591, 326);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -107,16 +119,16 @@
             this.PL_colorEdit_text.Name = "PL_colorEdit_text";
             this.PL_colorEdit_text.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PL_colorEdit_text.Size = new System.Drawing.Size(163, 22);
+            this.PL_colorEdit_text.Size = new System.Drawing.Size(161, 22);
             this.PL_colorEdit_text.StyleController = this.layoutControl1;
             this.PL_colorEdit_text.TabIndex = 7;
             // 
             // memoEdit1
             // 
             this.memoEdit1.EditValue = "Я ЛЮБЛЮ ТЕБЯ ДО СЛЕЗ";
-            this.memoEdit1.Location = new System.Drawing.Point(254, 12);
+            this.memoEdit1.Location = new System.Drawing.Point(252, 12);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(329, 302);
+            this.memoEdit1.Size = new System.Drawing.Size(327, 302);
             this.memoEdit1.StyleController = this.layoutControl1;
             this.memoEdit1.TabIndex = 6;
             // 
@@ -127,7 +139,7 @@
             this.PL_colorEdit_Background.Name = "PL_colorEdit_Background";
             this.PL_colorEdit_Background.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PL_colorEdit_Background.Size = new System.Drawing.Size(163, 22);
+            this.PL_colorEdit_Background.Size = new System.Drawing.Size(161, 22);
             this.PL_colorEdit_Background.StyleController = this.layoutControl1;
             this.PL_colorEdit_Background.TabIndex = 5;
             // 
@@ -137,7 +149,7 @@
             this.PL_Font.Name = "PL_Font";
             this.PL_Font.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PL_Font.Size = new System.Drawing.Size(163, 22);
+            this.PL_Font.Size = new System.Drawing.Size(161, 22);
             this.PL_Font.StyleController = this.layoutControl1;
             this.PL_Font.TabIndex = 4;
             // 
@@ -153,7 +165,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(595, 326);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(591, 326);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -163,7 +175,7 @@
             this.layoutControlItem1.CustomizationFormText = "Шрифт";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(242, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(240, 26);
             this.layoutControlItem1.Text = "Шрифт";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(71, 16);
             // 
@@ -171,9 +183,9 @@
             // 
             this.layoutControlItem3.Control = this.memoEdit1;
             this.layoutControlItem3.CustomizationFormText = "Пример изменений";
-            this.layoutControlItem3.Location = new System.Drawing.Point(242, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(240, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(333, 306);
+            this.layoutControlItem3.Size = new System.Drawing.Size(331, 306);
             this.layoutControlItem3.Text = "Пример изменений";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -186,7 +198,7 @@
             this.layoutControlItem2.CustomizationFormText = "Цвет Фон";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(242, 254);
+            this.layoutControlItem2.Size = new System.Drawing.Size(240, 254);
             this.layoutControlItem2.Text = "Цвет Фона";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(71, 16);
             // 
@@ -196,14 +208,14 @@
             this.layoutControlItem4.CustomizationFormText = "Цвет текста";
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(242, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(240, 26);
             this.layoutControlItem4.Text = "Цвет текста";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(71, 16);
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(595, 326);
+            this.xtraTabPage2.Size = new System.Drawing.Size(591, 326);
             this.xtraTabPage2.Text = "Время";
             // 
             // panelControl1
@@ -276,6 +288,59 @@
             this.btn_Save_Changes.Size = new System.Drawing.Size(119, 39);
             this.btn_Save_Changes.TabIndex = 5;
             this.btn_Save_Changes.Text = "Сохранить";
+            this.btn_Save_Changes.Click += new System.EventHandler(this.btn_Save_Changes_Click);
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Controls.Add(this.layoutControl2);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(591, 326);
+            this.xtraTabPage3.Text = "Основные";
+            // 
+            // checkEdit_uodates
+            // 
+            this.checkEdit_uodates.Location = new System.Drawing.Point(12, 12);
+            this.checkEdit_uodates.Name = "checkEdit_uodates";
+            this.checkEdit_uodates.Properties.Caption = "Проверять обновления при запуске";
+            this.checkEdit_uodates.Size = new System.Drawing.Size(567, 21);
+            this.checkEdit_uodates.StyleController = this.layoutControl2;
+            this.checkEdit_uodates.TabIndex = 0;
+            // 
+            // layoutControl2
+            // 
+            this.layoutControl2.Controls.Add(this.checkEdit_uodates);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.Root = this.layoutControlGroup2;
+            this.layoutControl2.Size = new System.Drawing.Size(591, 326);
+            this.layoutControl2.TabIndex = 1;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.CustomizationFormText = "layoutControlGroup2";
+            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup2.GroupBordersVisible = false;
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem5});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(591, 326);
+            this.layoutControlGroup2.Text = "layoutControlGroup2";
+            this.layoutControlGroup2.TextVisible = false;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.checkEdit_uodates;
+            this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(571, 306);
+            this.layoutControlItem5.Text = "layoutControlItem5";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextToControlDistance = 0;
+            this.layoutControlItem5.TextVisible = false;
             // 
             // Form_Settings
             // 
@@ -303,6 +368,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit_uodates.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,5 +399,10 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraLayout.LayoutControl layoutControl2;
+        private DevExpress.XtraEditors.CheckEdit checkEdit_uodates;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }

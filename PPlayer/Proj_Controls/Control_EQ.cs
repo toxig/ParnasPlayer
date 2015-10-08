@@ -782,7 +782,7 @@ namespace PPlayer
             double temp_value = double.Parse(textEdit_Temp.Text);
             double temp_delta = double.Parse(((SimpleButton)sender).Tag.ToString());
 
-            temp_value += temp_delta * 5;
+            temp_value += temp_delta * 1;
             if (temp_value < -95 || temp_value > 5000) return;
 
             textEdit_Temp.Text = temp_value.ToString();

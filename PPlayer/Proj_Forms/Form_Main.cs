@@ -29,10 +29,11 @@ namespace PPlayer
         // Переменные
         internal bool? v_initDefaultDevice;   // канал вывода звука        
         bool v_RTEdit_is_focused = false;     // фокус на окне текста песни
+        bool v_RTEdit_no_resize = false;     // не масштабировать текст
         int v_play_list_id_active = 0;        // Активный плейлист        
         //int v_play_track_id;                // проигрываемый трек
         int v_WaytDelay = 0;                  //задержка перерисовки информации о треке в статус баре                
-        int v_PL_Widh_prim_scale = 400;       // ширина плейлиста
+        //int v_PL_Widh_prim_scale = 400;       // ширина плейлиста
         int v_PL_Widh_min_scale = 250;        // ширина плейлиста minimal
         int v_Line_max_width = 0;             // длина максимальной строки в текстовом файле (pix)
         int v_Logo_NoActions_Time = 0;
@@ -53,7 +54,7 @@ namespace PPlayer
         // Константы
         Keys v_Key_to_HotList = Keys.Enter; // клавиша добавления трека в горячий список
         int v_FullScreen_Delta = 10;        // отступ от края экрана при fullscreen
-        float v_PL_FontSize = 13.8f;        // размер шрифта def
+        //float v_PL_FontSize = 13.8f;        // размер шрифта def
         Font Default_Font = new Font("Arial", 18, FontStyle.Bold);
         //bool iTime_Inverse_Check.Checked  // инверсия отсчета времени
         //bool iCheck_AutoScrollText.Checked     // активация автоскрола
@@ -109,8 +110,8 @@ namespace PPlayer
         {
             AboutVersion = curVersion.Major.ToString() + "." 
                 + curVersion.Minor.ToString() + "."
-                + curVersion.MajorRevision.ToString() + "." 
-                + curVersion.MinorRevision.ToString();
+                + curVersion.Build.ToString() + "."
+                + curVersion.MajorRevision.ToString();
 
             FWorking.param_Operation_Text = "Программа запускается...\n" + AboutInfo + " v." + AboutVersion;
             FW_Tread = new Thread(new ThreadStart(FW_ShowDialog));
@@ -162,7 +163,15 @@ namespace PPlayer
 
             FWorking.param_Operation_Text = "Загрузка настроек...";
             Load_Prog_Settings();
-            FW_Tread.Abort();            
+            FW_Tread.Abort();
+
+            #region проверка обновления
+            // проверка обновления
+            if (Settings.p_check_updates)
+            {
+                CheckUpdates(false);
+            }
+            #endregion
         }
 
         // загрузка настроек
@@ -760,9 +769,12 @@ namespace PPlayer
                     && MainStream.v_PL_List_ID_played == v_play_list_id_active  // ПЛ листы совпадают
                     && MainStream.v_PL_Row_ID == Row_ID) // треки совпадают
                 { 
-                    // продолжение paus - start                                                                                                        
+                    // продолжение paus - start - с полной громкостью                   
+                    int pos = EQ_Main.pbc_equal_main.Position;
+                    int max = EQ_Main.pbc_equal_main.Properties.Maximum;
+
+                    MainStream.v_stream_volume = (float)pos / max;
                     MainStream.v_stream_status = StreamStatus.PLAY;
-                    MainStream.v_stream_volume = MainStream.v_stream_volume;
 
                     Label_InfoLine.Text = "Проигрывается";
                     
@@ -970,12 +982,14 @@ namespace PPlayer
             if (System.IO.File.Exists(MainStream.v_TextFileName))
             {
                 RTBox_TextFile.LoadFile(MainStream.v_TextFileName);
+                RTBox_TextFile.Rtf = RTBox_TextFile.Rtf.Insert(RTBox_TextFile.Rtf.LastIndexOf('}') - 1, "\\par"); //"\\par" - перенос строки в конце файла                
                 Label_InfoLine.ToolTip = "Текст файл: " + MainStream.v_TextFileName;
 
                 Show_Logo(false);
             }
             else
             {
+                v_Logo_NoActions_Time = v_Logo_StartTime;
                 Show_Logo(true);
 
                 v_WaytDelay = 3;
@@ -983,12 +997,12 @@ namespace PPlayer
 
                 if (MainStream.v_TextFileName == "")
                 {
-                    TextMsg = "Текстовый файл не присвоен";
+                    TextMsg = " * Текст-файл: не присвоен треку"; //Текстовый файл не присвоен
                     Label_InfoLine.ToolTip = "Текст файл: не присвоен";
                 }
                 else
                 {
-                    TextMsg = "Текстовый файл отсутствует: \n *** " + MainStream.v_TextFileName;
+                    TextMsg = " * Текст-файла нет на Диске: \n *** " + MainStream.v_TextFileName;
                     Label_InfoLine.ToolTip = "Текста нет на диске:" + MainStream.v_TextFileName;
                 }
             }
@@ -1026,10 +1040,16 @@ namespace PPlayer
                 MainStream.v_stream = 0;
                 Label_InfoLine.ToolTip = "Нет Муз файла: " + MainStream.v_FileName + "\n" + Label_InfoLine.ToolTip;
                 Label_InfoLine.Text = "Нет файла: " + Path.GetFileName(MainStream.v_FileName);
-                if (TextMsg != "") TextMsg += "\n\nНет музыкального файла:\n *** " + MainStream.v_FileName;
+                if (TextMsg != "") TextMsg += "\n\n * Муз-файла нет на Диске:\n *** " + MainStream.v_FileName;
             }
 
-            if (TextMsg != "") RTBox_TextFile.Text = TextMsg;
+            v_RTEdit_no_resize = false; // флаг масштабирования текста
+            if (TextMsg != "")
+            {
+                v_RTEdit_no_resize = true;
+                RTBox_TextFile.ZoomFactor = 1;
+                RTBox_TextFile.Text = TextMsg;                
+            }
             #endregion
 
             #region Обновление таймера
@@ -1084,8 +1104,8 @@ namespace PPlayer
                     SlaveStream.v_FadeStopTime = v_FadeTime_Pause;
                     SlaveStream.v_FadePostAction = StreamStatus.FREE; // статус после фейдера
                     SlaveStream.v_FadeActive = true;
-                }
-                #endregion
+                    #endregion
+                }                
             }
 
 
@@ -1099,11 +1119,11 @@ namespace PPlayer
                 int max = EQ_Main.pbc_equal_main.Properties.Maximum;
 
                 MainStream.v_stream_volume = (float)pos / max;
-                MainStream.p_fade_channel(MainStream.v_stream_volume, v_FadeTime_Pause, 0);
+                MainStream.p_fade_channel(MainStream.v_stream_volume, 0, 0); //v_FadeTime_Pause
             }
             else MainStream.v_FadePostAction = StreamStatus.FREE;
 
-            TextEditor_Hide();
+            if (panelControl_TextEditor.Visible) TextEditor_Hide(); // скрываем редактор - если был запущен
             sbtn_FadeNow.ImageIndex = 3; // 3 - Fade Down; 6 - Fade Up
 
             Update_Paly_Status();
@@ -1179,9 +1199,29 @@ namespace PPlayer
             
             if (openFileDialog.FileName.Length != 0)
             {
+                /*FWorking.param_Operation_Text = "Загрузка плейлиста";                
+                FW_Tread = new Thread(new ThreadStart(FW_ShowDialog));
+                FW_Tread.Start();*/
+
+                //string PListFile = openFileDialog.FileName;
+                //FWorking.param_Operation_Text = "Загрузка плейлиста: \"" + Path.GetFileNameWithoutExtension(PListFile) + "\"";
+                
                 File_Load_PM_List(openFileDialog.FileName);
-                File_Check_Exists(v_play_list_id_active); // проверка наличия файлов на диске
+
+                /*if (Settings.p_Check_Tags)
+                {
+                    FWorking.param_Operation_Text = "Загрузка плейлиста: \"" + Path.GetFileNameWithoutExtension(PListFile) + "\"" +
+                                                    "\nПроверка тэгов [" + All_PlayLists[v_play_list_id_active].dt_ListData.Rows.Count + " треков]";
+                }
+                else
+                {
+                    FWorking.param_Operation_Text = "Загрузка плейлиста: \"" + Path.GetFileNameWithoutExtension(PListFile) + "\"" +
+                                                    "\nПроверка файлов [" + All_PlayLists[v_play_list_id_active].dt_ListData.Rows.Count + " треков]";
+                }*/
+
+                File_Check_Exists(v_play_list_id_active); // проверка наличия файлов на диске                
                 Settings.p_DefFolder_PList = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
+                //FW_Tread.Abort();
             }
         }
 
@@ -1432,11 +1472,12 @@ namespace PPlayer
             }
 
             // Обработка заставки
-            if (MainStream.v_stream_status != StreamStatus.PLAY)
+            if (MainStream.v_stream_status != StreamStatus.PLAY || MainStream.v_TextFileName == "")
             {
                 if (!Pic_Logo.Visible && !panelControl_TextEditor.Visible)
                 {
-                    v_Logo_NoActions_Time += timer_playng.Interval;
+                    if (v_Logo_NoActions_Time >= 0)
+                        v_Logo_NoActions_Time += timer_playng.Interval;
 
                     if (v_Logo_NoActions_Time > v_Logo_StartTime)
                     {
@@ -1722,6 +1763,8 @@ namespace PPlayer
         // Изменение текста в редакторе
         private void RTBox_TextFile_TextChanged(object sender, EventArgs e)
         {
+            if (v_RTEdit_no_resize) return; // не масштабировать - служ инфо в тексте
+
             // изменение шрифта
             RTBox_CorrectFont();
             // поиск максимальной строки
@@ -2306,7 +2349,7 @@ namespace PPlayer
             {
                 Pic_Logo.Visible = false;
                 RTBox_TextFile.Visible = true;
-                v_Logo_NoActions_Time = 0;
+                v_Logo_NoActions_Time = -1;
             }
             else
             {
@@ -2461,6 +2504,37 @@ namespace PPlayer
                 xTabCtrl_PlayLists.TabPages[0].PageVisible = true;
                 panelControl_Hot_PL.Visible = false;
             }
+        }
+
+        private void CheckUpdates(bool show_err_msg)
+        {
+            Form_Update uf = new Form_Update();
+            uf.Check_NewVersion(show_err_msg); // показывать сообщения об ошибках
+            if (uf.NeedUpdate)
+            {
+                uf.Start_Update();
+                this.Close();
+            }
+        }
+
+        private void iCheckUpdates_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            CheckUpdates(true);
+        }
+
+        private void iFindFilter_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            All_PlayLists[v_play_list_id_active].checkButton_Filter_Plus.Checked =
+                All_PlayLists[v_play_list_id_active].checkButton_Filter_Plus.Checked ? false : true;
+
+        }
+
+        private void iPList_Width_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            if (iPList_Width.Checked)
+                panelControl_Right.Width = panelControl_Right.Width * 2;
+            else
+                panelControl_Right.Width = panelControl_Right.Width / 2;
         }
 
     }    

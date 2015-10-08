@@ -5,6 +5,18 @@ namespace PPlayer
 {
     public class MySettings : ApplicationSettingsBase
     {
+        /// <summary>
+        /// Проверять обновления при запуске программы
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Проверять обновления при запуске программы")]
+        [global::System.Configuration.DefaultSettingValue("true")]
+        public bool p_check_updates
+        {
+            get { return ((bool)(this["p_check_updates"])); }
+            set { this["p_check_updates"] = value; }
+        }
+
 		/// <summary>
         /// Отступ от края в полноэкранном режиме
         /// </summary>
@@ -58,7 +70,7 @@ namespace PPlayer
         /// </summary>
         [global::System.Configuration.UserScopedSetting()]
         [global::System.Configuration.SettingsDescription("Показать эквалайзер")]        
-        [global::System.Configuration.DefaultSettingValue("true")]
+        [global::System.Configuration.DefaultSettingValue("false")]
         public bool p_bar_show_EQ
         {
             get
@@ -274,7 +286,7 @@ namespace PPlayer
         /// </summary>
         [global::System.Configuration.UserScopedSetting()]
         [global::System.Configuration.SettingsDescription("Позиция горячего списка")]
-        [global::System.Configuration.DefaultSettingValue("true")]
+        [global::System.Configuration.DefaultSettingValue("false")]
         public bool p_HotList_Position
         {
             get

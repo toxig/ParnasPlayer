@@ -51,8 +51,12 @@
             // 
             // memoEdit_info
             // 
+            this.memoEdit_info.Cursor = System.Windows.Forms.Cursors.Default;
+            this.memoEdit_info.EditValue = resources.GetString("memoEdit_info.EditValue");
             this.memoEdit_info.Location = new System.Drawing.Point(14, 70);
             this.memoEdit_info.Name = "memoEdit_info";
+            this.memoEdit_info.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.memoEdit_info.Properties.Appearance.Options.UseFont = true;
             this.memoEdit_info.Properties.ReadOnly = true;
             this.memoEdit_info.Size = new System.Drawing.Size(528, 182);
             this.memoEdit_info.TabIndex = 54;
@@ -67,6 +71,7 @@
             // sbtn_cancel
             // 
             this.sbtn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sbtn_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.sbtn_cancel.Location = new System.Drawing.Point(367, 258);
             this.sbtn_cancel.Name = "sbtn_cancel";
             this.sbtn_cancel.Size = new System.Drawing.Size(175, 33);
@@ -97,8 +102,10 @@
             // 
             // Form_Update
             // 
+            this.AcceptButton = this.sbtn_update;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.sbtn_cancel;
             this.ClientSize = new System.Drawing.Size(554, 297);
             this.Controls.Add(this.sbtn_Close);
             this.Controls.Add(this.sbtn_cancel);
@@ -109,6 +116,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.LookAndFeel.SkinName = "Office 2010 Blue";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Update";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Обновление программы";

@@ -85,7 +85,7 @@
             this.lbCopyright.Name = "lbCopyright";
             this.lbCopyright.Size = new System.Drawing.Size(306, 28);
             this.lbCopyright.TabIndex = 15;
-            this.lbCopyright.Text = "© Копирайт 2012 Черников А.С.";
+            this.lbCopyright.Text = "© Копирайт 2013 Черников А.С.";
             this.lbCopyright.Click += new System.EventHandler(this.AboutForm_Close);
             // 
             // lbVersion

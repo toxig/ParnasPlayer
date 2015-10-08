@@ -265,6 +265,7 @@
             this.btnEdit_Find.Properties.Appearance.Options.UseFont = true;
             this.btnEdit_Find.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnEdit_Find.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            this.btnEdit_Find.Properties.HideSelection = false;
             this.btnEdit_Find.Size = new System.Drawing.Size(308, 30);
             this.btnEdit_Find.TabIndex = 0;
             this.btnEdit_Find.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnEdit_Find_ButtonClick);
@@ -283,7 +284,7 @@
             this.checkButton_Toggle_PLColumns.Name = "checkButton_Toggle_PLColumns";
             this.checkButton_Toggle_PLColumns.Size = new System.Drawing.Size(28, 23);
             this.checkButton_Toggle_PLColumns.TabIndex = 2;
-            this.checkButton_Toggle_PLColumns.Text = "П";
+            this.checkButton_Toggle_PLColumns.Text = "Н";
             this.checkButton_Toggle_PLColumns.ToolTip = "Название - Исполниетль";
             this.checkButton_Toggle_PLColumns.ToolTipTitle = "Переключение списка";
             this.checkButton_Toggle_PLColumns.CheckedChanged += new System.EventHandler(this.checkButton_Toggle_PLColumn);
@@ -371,7 +372,6 @@
         public DevExpress.XtraGrid.Columns.GridColumn gridColumn_name;
         public DevExpress.XtraGrid.Columns.GridColumn gridColumn_artist;
         private DevExpress.XtraEditors.PanelControl panelControl_Filter;
-        private DevExpress.XtraEditors.CheckButton checkButton_Filter_Plus;
         private DevExpress.Utils.ImageCollection imageCollection1;
         public System.Windows.Forms.Timer timer_add_row;
         private System.Windows.Forms.Timer timer_tooltip;
@@ -383,5 +383,6 @@
         public DevExpress.XtraEditors.LabelControl labelControl_header;
         private DevExpress.XtraEditors.CheckButton checkButton_Toggle_FindPanel;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn_date;
+        public DevExpress.XtraEditors.CheckButton checkButton_Filter_Plus;
     }
 }

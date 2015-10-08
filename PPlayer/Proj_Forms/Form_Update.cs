@@ -14,14 +14,18 @@ namespace PPlayer
 {
     public partial class Form_Update : DevExpress.XtraEditors.XtraForm
     {
-        //public string xmlURL = "file://192.168.0.2/PPlayer_Setup/PPlayer.application";
-        public string xmlURL; // = "http://zigzag-muz.ru/pplayer/PPlayer.application";
+        // ссылка для обновлений
+        //public string xmlURL = "file://192.168.0.2/PPlayer_Setup/PPlayer.application"; //отладка
+        public string xmlURL = "http://pp.zigzag-muz.ru/PPlayer.application";   
+    
         public bool NeedUpdate = false;
         public UpdateVersion uv = new UpdateVersion();
         private DataTable dt_File_List = Get_FileTable();
         public bool detect_new_version = false;
         private string UpdateFolder = "Updates";
-        private bool UpdateError = false;
+        //private bool UpdateError = false;
+        private bool show_usr_msg = false;
+        private int max_height = 330;
 
         //класс для проерки версии
         public class UpdateVersion
@@ -29,6 +33,7 @@ namespace PPlayer
             public Version v_cur_version = new Version("0.0.0.0"); // установленная версия
             public Version v_new_version = new Version("0.0.0.0"); //последняя версия программы
             public string  v_program_name; // название программы
+            public string  v_program_run_file; //файл запуска
             public string  v_folder_program; // папка программы
             public string  v_folder_update; // папка обновлений
             public string  v_whatnew; //что нового в программе
@@ -55,21 +60,20 @@ namespace PPlayer
             return table;
         }
 
-        public Form_Update(string Url_Update)
-        {
-            xmlURL = Url_Update;
+        public Form_Update()
+        {            
             InitializeComponent();
         }
 
         private void Form_Main_Load(object sender, EventArgs e)
         {
-            string Program_folder = System.IO.Directory.GetCurrentDirectory(); // текущая папка
+            /*string Program_folder = System.IO.Directory.GetCurrentDirectory(); // текущая папка
             string Update_folder = Program_folder + "\\Updates"; // папка для загрузки обновлений
 
             uv.v_folder_program = Program_folder;
             uv.v_folder_update = Update_folder;            
-
-            Check_NewVersion();            
+            */
+            //Check_NewVersion();            
         }
 
         // отмена
@@ -80,8 +84,13 @@ namespace PPlayer
         }
 
         // проверка наличия новой версии
-        private void Check_NewVersion()
+        public void Check_NewVersion(bool show_msg)
         {
+            show_usr_msg = show_msg;
+            uv.v_folder_program = System.IO.Directory.GetCurrentDirectory(); // текущая папка;
+            uv.v_folder_update = uv.v_folder_program + "\\Updates"; // папка для загрузки обновлений
+
+            this.max_height = this.Height;
             this.Height = 150;
 
             #region Проверка новой версии
@@ -100,14 +109,14 @@ namespace PPlayer
                 //подготавливаем запрос
                 System.Net.WebRequest req = System.Net.WebRequest.Create(xmlURL);
                 //т.к. в данном примере логин и пароль пустые, ничего не заносим
-                if (username != null && password != null)
-                    req.Credentials = new System.Net.NetworkCredential(username, password);
+                if (username != null && password != null) req.Credentials = new System.Net.NetworkCredential(username, password);
 
                 //пытаемся получить файл
                 System.Net.WebResponse resp = req.GetResponse();
 
                 //подключаемся к потоку
                 st = resp.GetResponseStream();
+
                 //читаем поток.. не забываем про кодировку
                 sr = new System.IO.StreamReader(st, Encoding.Default);
 
@@ -134,7 +143,7 @@ namespace PPlayer
                                 uv.v_url_xml_new = reader.GetAttribute("codebase");
                                 uv.v_url_xml_new = xmlURL.Substring(0, xmlURL.LastIndexOf('/') + 1) + uv.v_url_xml_new.Replace('\\', '/');
                                 uv.v_url_folder = uv.v_url_xml_new.Substring(0, uv.v_url_xml_new.LastIndexOf('/') + 1);
-                                break;
+                                break;                            
                         }
                     }
                     else
@@ -154,10 +163,12 @@ namespace PPlayer
                     }
                 }
             }
-            catch (Exception e)
-            {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка чтения последней версии.\n" + e.Message, "Ошибка загрузки обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                UpdateError = true;
+            catch (Exception /*e*/)
+            {   //  + e.Message
+                if (show_usr_msg) DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка проверки последней версии.\n"// + e.Message
+                    + "\nВозможные причины:\n * нет доступа к интернету;\n * cеревер обновления временно не доступен;", 
+                    "Ошибка обновления", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //UpdateError = true;
                 this.Close();
                 return;
             }
@@ -175,14 +186,15 @@ namespace PPlayer
             }
             #endregion            
 
-            // текущая версия
+            // текущая версия программы
             uv.v_cur_version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = "Обновление программы (" + uv.v_cur_version + ")";
 
-            #region Спрашиваем пользователя
+            #region Есть новая версия - Спрашиваем пользователя
             //спрашиваем у пользователя что делать дальше
             if (uv.v_cur_version.CompareTo(uv.v_new_version) < 0)
             {
+
                 // анализ списка файлов
                 Calc_NewVersion();
 
@@ -193,10 +205,15 @@ namespace PPlayer
                 sbtn_update.Visible = true;
                 //sbtn_cancel.Left = 367;
 
-                if (uv.v_whatnew != null)
+                // Читаем файл изменений
+                uv.v_whatnew = get_change_log(uv.v_url_folder + "\\change_log.txt");
+
+                if (uv.v_whatnew != null && uv.v_whatnew != "")
                 {
-                    this.Height = 330;
-                    memoEdit_info.Text = "Что нового:\n" + uv.v_whatnew;
+                    this.Height = this.max_height;
+                    memoEdit_info.Visible = true;
+                    memoEdit_info.Text = uv.v_whatnew;
+                    memoEdit_info.Select(0,0);
                 }
                 else
                 {
@@ -204,17 +221,80 @@ namespace PPlayer
                     memoEdit_info.Visible = false;
                 }
 
+                this.ShowDialog();
                 //пытаемся перейти по ссылке открыв браузер
                 //Process.Start(uv.p_url_xml_filelist);
             }
             else
             {
-                //DevExpress.XtraEditors.XtraMessageBox.Show("Установлена последняя версия.", "Обновление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NeedUpdate = false;
+
+                if (show_usr_msg)
+                {
+                    //DevExpress.XtraEditors.XtraMessageBox.Show("Установлена самая последняя версия.\nОбновление не требуется.", "Обновление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    label_info.Text = "Установлена самая последняя версия.\nОбновление не требуется.";
+                    label_info.Height = 55;
+                    label_info.Top = 9;
+
+
+                    pbc_upload.Visible = false;
+                    sbtn_update.Visible = false;
+                    sbtn_cancel.Left = 180;
+
+                    // Читаем файл изменений
+                    uv.v_whatnew = get_change_log(uv.v_url_folder + "\\change_log.txt");
+                    this.Height = this.max_height;
+                    memoEdit_info.Visible = true;
+                    memoEdit_info.Text = uv.v_whatnew;
+                    memoEdit_info.Select(0, 0);
+
+                    this.ShowDialog();
+                }
+                
                 this.Close();
                 return;
             }
             #endregion
+        }
+
+        // описание - лог сделанных изменений
+        private string get_change_log(string file_path)
+        {
+            //потоки для чтения
+            System.IO.Stream st = null;
+            System.IO.StreamReader sr = null;
+            string ch_log = null;
+
+            try
+            {
+                System.Net.WebRequest req = System.Net.WebRequest.Create(file_path);
+
+                //пытаемся получить файл
+                System.Net.WebResponse resp = req.GetResponse();
+
+                //подключаемся к потоку
+                st = resp.GetResponseStream();
+
+                //читаем поток.. не забываем про кодировку
+                sr = new System.IO.StreamReader(st, Encoding.Default);
+
+                ch_log = sr.ReadToEnd();
+            }
+            catch (Exception/*e*/)
+            {   //  + e.Message
+                //return null;
+            }
+            finally
+            {
+                //закрываем все потоки
+                if (sr != null)
+                    sr.Close();
+
+                if (st != null)
+                    st.Close();
+            }
+
+            return ch_log;
         }
 
         // расчет размера необходимых файлов
@@ -276,8 +356,9 @@ namespace PPlayer
                                 int file_bsize2 = Convert.ToInt32(reader.GetAttribute("size"));
                                 dt_File_List.Rows.Add(file_name2, file_bsize2);                                                                    
                                 break;
-                            case "commandLine":
+                            case "commandLine": //файл запуска
                                 start_exe = reader.GetAttribute("file");
+                                uv.v_program_run_file = start_exe;
                                 break;
                         }
                     }
@@ -300,7 +381,7 @@ namespace PPlayer
             }
             catch (Exception e)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка загрузки списка файлов.\n" + e.Message, "Ошибка загрузки обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (show_usr_msg) DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка загрузки списка файлов.\n" + e.Message, "Ошибка загрузки обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 NeedUpdate = false;
                 this.Close();
                 return;
@@ -399,7 +480,7 @@ namespace PPlayer
                         int cur_filesize = Convert.ToInt32(dt_File_List.Rows[i]["Size"]);
                         
                         label_info.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                        label_info.Text = "Загрузка обновления (ver. " + uv.v_new_version + "): 0 %";
+                        label_info.Text = "Загрузка файлов обновления (ver. " + uv.v_new_version + "): 0 %";
 
                         webClient.Headers.Add("FileName", cur_filename);
                         webClient.DownloadFileAsync(new Uri(path_from), path_to);
@@ -408,7 +489,7 @@ namespace PPlayer
                     }
                     catch (Exception e)
                     {
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка загрузки файла: " + cur_filename + "\n" + e.Message, "Ошибка загрузки обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (show_usr_msg) DevExpress.XtraEditors.XtraMessageBox.Show("Ошибка загрузки файла: " + cur_filename + "\n" + e.Message, "Ошибка загрузки обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         NeedUpdate = false;
                         this.Close();
                         return;
@@ -465,12 +546,12 @@ namespace PPlayer
             int pers = pbc_upload.Position / 100;
             string size_text = size_to_text_point(cur_load_all);
 
-            label_info.Text = label_info.Text = "Загрузка обновления [ver." + uv.v_new_version + "]: " +pers.ToString() + " % (" + size_text + ")"; //pbc_upload.Position
+            label_info.Text = label_info.Text = "Загрузка файлов обновления [ver." + uv.v_new_version + "]: " +pers.ToString() + " % (" + size_text + ")"; //pbc_upload.Position
             
             if (pbc_upload.Position == pbc_upload.Properties.Maximum)
             {
                 label_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                label_info.Text = "Загрузка завершена";
+                label_info.Text = "Загрузка обновления завершена";
                 sbtn_Close.Text = "Закрыть";
             }
         }
@@ -562,6 +643,34 @@ namespace PPlayer
             NeedUpdate = true;
             this.Close();
         }
-        
+
+
+        public void Start_Update()
+        {
+            if (NeedUpdate)
+            {
+                try
+                {
+                    //создание параметров
+                    var startInfo = new ProcessStartInfo
+                    {
+                        //имя файла
+                        FileName = uv.v_folder_program + "\\Updater.exe",
+                        //скрытое окно
+                        //WindowStyle = ProcessWindowStyle.Hidden,
+                        //ваши аргументы
+                        Arguments = "-" + uv.v_program_run_file
+                    };
+                    //запуск процесса
+                    Process.Start(startInfo);
+                    Application.Exit();
+                }
+                catch (Exception e)
+                {
+                    if (show_usr_msg) DevExpress.XtraEditors.XtraMessageBox.Show(e.Message, "Ошибка запуска обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    NeedUpdate = false;
+                } 
+            }
+        }
     }
 }

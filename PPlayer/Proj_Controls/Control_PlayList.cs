@@ -72,10 +72,12 @@ namespace PPlayer
         // константы
         public int tooltip_hide_ms = 2000; // кол-во секунд, которые держится тултип
         public int tooltip_wait_ms = 500; // кол-во мс (мили секунд, перед появлением тултипа)
+        public int search_clear_ms = 1500; // кол-во секунд, которые держится тултип
         private int timer_ticks_count = 5;
 
         public DateTime tooltip_hide_dt;
         public DateTime tooltip_wait_dt;
+        public DateTime search_clear_dt;
         public bool tooltip_started = true;
 
         private int OldRow = 0;
@@ -182,7 +184,20 @@ namespace PPlayer
         // значение подсказки при движении указателя
         private void gv_PlayList_MouseMove(object sender, MouseEventArgs e)
         {
+            if (e == null)
+            {
+                return; // ошибка при скроле в другой области при активном плейлисте
+            }
+
             DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo hti = gv_PlayList.CalcHitInfo(e.X, e.Y);
+
+            if (e.X > gv_PlayList.ViewRect.Width || // выход за края справа
+                e.X < gv_PlayList.ViewRect.Width * 0.5) // не показывать подсказку на первой половине трека, только на второй //e.X <= 0
+            {
+                toolTipController.HideHint();
+                return;                
+            }
+
             e_last = e;
 
             if (hti.RowHandle >= 0 && (hti.RowHandle != Row_Handle || is_scroll))
@@ -255,6 +270,7 @@ namespace PPlayer
                 timer_tooltip.Stop();
                 toolTipController.HideHint();
             }
+           
         }
 
         // скролл мышки (переход на другую строку плейлиста)
@@ -286,6 +302,8 @@ namespace PPlayer
             {
                 filterHelper.ActiveFilter = "";
             }
+
+            search_clear_dt = DateTime.Now.AddMilliseconds(search_clear_ms);            
         }
 
         // Очистка фильтра
@@ -321,14 +339,14 @@ namespace PPlayer
 
             if (checkButton_Toggle_PLColumns.Checked)
             {
-                checkButton_Toggle_PLColumns.Text = "А";
+                checkButton_Toggle_PLColumns.Text = "И";
                 gridColumn_name.Visible = false;
                 gridColumn_artist.Visible = true;
                 gridColumn_artist.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
             }
             else
             {
-                checkButton_Toggle_PLColumns.Text = "П";
+                checkButton_Toggle_PLColumns.Text = "Н";
                 gridColumn_name.Visible = true;
                 gridColumn_artist.Visible = false;
                 gridColumn_name.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
@@ -419,6 +437,8 @@ namespace PPlayer
         // установка фокуса на плейлист при наведении
         private void grid_PlayList_MouseEnter(object sender, EventArgs e)
         {
+            list_is_focused = true;
+            gv_PlayList.Focus();
         }
 
         private void grid_PlayList_MouseClick(object sender, MouseEventArgs e)
@@ -459,12 +479,32 @@ namespace PPlayer
         
         // активация фильтрации на списке
         private void gv_PlayList_KeyPress(object sender, KeyPressEventArgs e)
-        {            
+        {
+                if (search_clear_dt < DateTime.Now) // очистка поиска после интервала ожидания
+                    btnEdit_Find.Text = "";
+                
                 btnEdit_Find.DeselectAll();
+
                 if (!char.IsControl(e.KeyChar))
                     btnEdit_Find.Text += e.KeyChar;
                 else
-                    if (e.KeyChar == '\b' && btnEdit_Find.Text.Length > 0) btnEdit_Find.Text = btnEdit_Find.Text.Substring(0, btnEdit_Find.Text.Length - 1);
+                    if (e.KeyChar == '\b' && btnEdit_Find.Text.Length > 0) // бэкспейс - очистка последнего символа
+                        btnEdit_Find.Text = btnEdit_Find.Text.Substring(0, btnEdit_Find.Text.Length - 1);
+                    else
+                        if (e.KeyChar == 27 && btnEdit_Find.Text.Length > 0) // эскейп - очистка всего поиска
+                            btnEdit_Find.Text = "";
+
+                if (btnEdit_Find.Text == "" && panelControl_Filter.Visible)
+                {
+                    checkButton_Toggle_FindPanel.Checked = false;
+                    panelControl_Filter.Visible = false;                    
+                }
+                else
+                {                    
+                    checkButton_Toggle_FindPanel.Checked = true;
+                    panelControl_Filter.Visible = true;
+                }
+
         }
 
         #region Наличие файлов на диске
