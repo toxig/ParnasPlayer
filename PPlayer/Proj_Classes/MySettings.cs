@@ -5,6 +5,19 @@ namespace PPlayer
 {
     public class MySettings : ApplicationSettingsBase
     {
+
+        /// <summary>
+        /// Признак необходимости обновление настроек (один раз после обновления)
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Необходимо обновление настроек")]
+        [global::System.Configuration.DefaultSettingValue("true")]
+        public bool p_update_settings
+        {
+            get { return ((bool)(this["p_update_settings"])); }
+            set { this["p_update_settings"] = value; }
+        }
+
         /// <summary>
         /// Проверять обновления при запуске программы
         /// </summary>
@@ -313,6 +326,24 @@ namespace PPlayer
             set
             {
                 this["p_HotList_Position"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Версия программы (версия настроек)
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Папка плейлистов")]
+        [global::System.Configuration.DefaultSettingValue("")]
+        public string p_App_Version
+        {
+            get
+            {
+                return ((string)this["p_App_Version"]);
+            }
+            set
+            {
+                this["p_App_Version"] = value;
             }
         }
     }

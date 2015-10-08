@@ -32,15 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.mFile = new DevExpress.XtraBars.BarSubItem();
-            this.iExit = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.iFullScreen = new DevExpress.XtraBars.BarCheckItem();
             this.iProgSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.iExit = new DevExpress.XtraBars.BarButtonItem();
             this.mHelp = new DevExpress.XtraBars.BarSubItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
+            this.iHomePage = new DevExpress.XtraBars.BarButtonItem();
+            this.iSupportPage = new DevExpress.XtraBars.BarButtonItem();
             this.iCheckUpdates = new DevExpress.XtraBars.BarButtonItem();
-            this.bar1 = new DevExpress.XtraBars.Bar();
             this.iPlayBack2 = new DevExpress.XtraBars.BarButtonItem();
             this.iEQ_Open2 = new DevExpress.XtraBars.BarButtonItem();
             this.iPause_Logo = new DevExpress.XtraBars.BarButtonItem();
@@ -55,6 +55,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.imageCollection_16 = new DevExpress.Utils.ImageCollection(this.components);
+            this.mFile = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.iOpen = new DevExpress.XtraBars.BarButtonItem();
             this.iClose = new DevExpress.XtraBars.BarButtonItem();
@@ -195,8 +196,7 @@
             // barManager
             // 
             this.barManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar1});
+            this.bar2});
             this.barManager.DockControls.Add(this.barDockControlTop);
             this.barManager.DockControls.Add(this.barDockControlBottom);
             this.barManager.DockControls.Add(this.barDockControlLeft);
@@ -274,9 +274,11 @@
             this.iToggle_PL_Show,
             this.iCheckUpdates,
             this.iFindFilter,
-            this.iPList_Width});
+            this.iPList_Width,
+            this.iHomePage,
+            this.iSupportPage});
             this.barManager.MainMenu = this.bar2;
-            this.barManager.MaxItemId = 85;
+            this.barManager.MaxItemId = 87;
             this.barManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             // 
@@ -288,32 +290,20 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Right;
             this.bar2.FloatLocation = new System.Drawing.Point(1172, 199);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.mFile),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mHelp)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.mHelp),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iPlayBack2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iEQ_Open2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iPause_Logo),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iOpen_PlayList, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iEdit_Text_Data),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iTagsEditor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iToggle_PL_Show, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iPList_Width)});
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DisableClose = true;
-            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.DrawBorder = false;
             this.bar2.Text = "Главное меню";
-            // 
-            // mFile
-            // 
-            this.mFile.Border = DevExpress.XtraEditors.Controls.BorderStyles.Default;
-            this.mFile.Caption = "Файл";
-            this.mFile.Id = 0;
-            this.mFile.ImageIndex = 19;
-            this.mFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.iExit)});
-            this.mFile.Name = "mFile";
-            this.mFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
-            // iExit
-            // 
-            this.iExit.Caption = "Выход";
-            this.iExit.Id = 9;
-            this.iExit.ImageIndex = 5;
-            this.iExit.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4));
-            this.iExit.Name = "iExit";
-            this.iExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iExit_ItemClick);
             // 
             // barSubItem1
             // 
@@ -323,7 +313,8 @@
             this.barSubItem1.ImageIndex = 16;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.iFullScreen),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iProgSettings)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.iProgSettings),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iExit, true)});
             this.barSubItem1.Name = "barSubItem1";
             this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
@@ -344,6 +335,15 @@
             this.iProgSettings.Name = "iProgSettings";
             this.iProgSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iProgSettings_ItemClick);
             // 
+            // iExit
+            // 
+            this.iExit.Caption = "Выход";
+            this.iExit.Id = 9;
+            this.iExit.ImageIndex = 25;
+            this.iExit.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4));
+            this.iExit.Name = "iExit";
+            this.iExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iExit_ItemClick);
+            // 
             // mHelp
             // 
             this.mHelp.Border = DevExpress.XtraEditors.Controls.BorderStyles.Default;
@@ -352,7 +352,9 @@
             this.mHelp.ImageIndex = 12;
             this.mHelp.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.iAbout),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iCheckUpdates)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.iHomePage, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iSupportPage),
+            new DevExpress.XtraBars.LinkPersistInfo(this.iCheckUpdates, true)});
             this.mHelp.Name = "mHelp";
             this.mHelp.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
@@ -360,34 +362,35 @@
             // 
             this.iAbout.Caption = "О программе";
             this.iAbout.Id = 11;
+            this.iAbout.ImageIndex = 3;
             this.iAbout.Name = "iAbout";
             this.iAbout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iAbout_ItemClick);
+            // 
+            // iHomePage
+            // 
+            this.iHomePage.Caption = "Домашняя страница";
+            this.iHomePage.Description = "Перейти на сайт программы";
+            this.iHomePage.Id = 85;
+            this.iHomePage.ImageIndex = 27;
+            this.iHomePage.Name = "iHomePage";
+            this.iHomePage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iHomePage_ItemClick);
+            // 
+            // iSupportPage
+            // 
+            this.iSupportPage.Caption = "Поддержка";
+            this.iSupportPage.Description = "Сообщить об ошибке";
+            this.iSupportPage.Id = 86;
+            this.iSupportPage.ImageIndex = 28;
+            this.iSupportPage.Name = "iSupportPage";
+            this.iSupportPage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iSupportPage_ItemClick);
             // 
             // iCheckUpdates
             // 
             this.iCheckUpdates.Caption = "Проверка обновления";
             this.iCheckUpdates.Id = 81;
+            this.iCheckUpdates.ImageIndex = 26;
             this.iCheckUpdates.Name = "iCheckUpdates";
             this.iCheckUpdates.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iCheckUpdates_ItemClick);
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Инструменты";
-            this.bar1.DockCol = 1;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Right;
-            this.bar1.FloatLocation = new System.Drawing.Point(1160, 682);
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.iPlayBack2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iEQ_Open2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iPause_Logo),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iOpen_PlayList, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iEdit_Text_Data),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iTagsEditor),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iToggle_PL_Show, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.iPList_Width)});
-            this.bar1.Offset = 147;
-            this.bar1.Text = "Инструменты";
             // 
             // iPlayBack2
             // 
@@ -419,7 +422,7 @@
             // 
             this.iOpen_PlayList.Caption = "Загрузить Плейлист";
             this.iOpen_PlayList.Id = 28;
-            this.iOpen_PlayList.ImageIndex = 7;
+            this.iOpen_PlayList.ImageIndex = 31;
             this.iOpen_PlayList.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O));
             this.iOpen_PlayList.Name = "iOpen_PlayList";
             this.iOpen_PlayList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iOpen_PlayList_ItemClick);
@@ -453,7 +456,7 @@
             // 
             this.iPList_Width.Caption = "Расширение списка";
             this.iPList_Width.Id = 84;
-            this.iPList_Width.ImageIndex = 1;
+            this.iPList_Width.ImageIndex = 32;
             this.iPList_Width.Name = "iPList_Width";
             this.iPList_Width.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.iPList_Width_CheckedChanged);
             // 
@@ -506,7 +509,7 @@
             this.imageCollection_16.Images.SetKeyName(0, "Copy_ClipAll.png");
             this.imageCollection_16.Images.SetKeyName(1, "Keyboard Shortcuts.gif");
             this.imageCollection_16.Images.SetKeyName(2, "pc_one.bmp");
-            this.imageCollection_16.Images.SetKeyName(3, "Info.bmp");
+            this.imageCollection_16.Images.SetKeyName(3, "info.png");
             this.imageCollection_16.Images.SetKeyName(4, "Edit_Catch.png");
             this.imageCollection_16.Images.SetKeyName(5, "App_Close.bmp");
             this.imageCollection_16.Images.SetKeyName(6, "See3.bmp");
@@ -526,8 +529,25 @@
             this.imageCollection_16.Images.SetKeyName(20, "logo2.png");
             this.imageCollection_16.Images.SetKeyName(21, "Edit_Edit.png");
             this.imageCollection_16.Images.SetKeyName(22, "Edit_Edit3.png");
-            this.imageCollection_16.Images.SetKeyName(23, "Connect_opt_16.bmp");
+            this.imageCollection_16.Images.SetKeyName(23, "rotate.png");
             this.imageCollection_16.Images.SetKeyName(24, "Tab_Docs.png");
+            this.imageCollection_16.Images.SetKeyName(25, "close.png");
+            this.imageCollection_16.Images.SetKeyName(26, "update.png");
+            this.imageCollection_16.Images.SetKeyName(27, "Home.png");
+            this.imageCollection_16.Images.SetKeyName(28, "support3.png");
+            this.imageCollection_16.Images.SetKeyName(29, "support2.png");
+            this.imageCollection_16.Images.SetKeyName(30, "support4.png");
+            this.imageCollection_16.Images.SetKeyName(31, "open.png");
+            this.imageCollection_16.Images.SetKeyName(32, "double.png");
+            // 
+            // mFile
+            // 
+            this.mFile.Border = DevExpress.XtraEditors.Controls.BorderStyles.Default;
+            this.mFile.Caption = "Файл";
+            this.mFile.Id = 0;
+            this.mFile.ImageIndex = 19;
+            this.mFile.Name = "mFile";
+            this.mFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
             // barButtonItem2
             // 
@@ -1294,9 +1314,9 @@
             // pbc_analizer_L
             // 
             this.pbc_analizer_L.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbc_analizer_L.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.pbc_analizer_L.Cursor = System.Windows.Forms.Cursors.Default;
             this.pbc_analizer_L.EditValue = 1000;
-            this.pbc_analizer_L.Location = new System.Drawing.Point(51, 21);
+            this.pbc_analizer_L.Location = new System.Drawing.Point(46, 20);
             this.pbc_analizer_L.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbc_analizer_L.Name = "pbc_analizer_L";
             this.pbc_analizer_L.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
@@ -1309,7 +1329,7 @@
             this.pbc_analizer_L.Properties.ProgressKind = DevExpress.XtraEditors.Controls.ProgressKind.Vertical;
             this.pbc_analizer_L.Properties.StartColor = System.Drawing.Color.Chartreuse;
             this.pbc_analizer_L.Properties.Step = 100;
-            this.pbc_analizer_L.Size = new System.Drawing.Size(21, 65);
+            this.pbc_analizer_L.Size = new System.Drawing.Size(30, 65);
             this.pbc_analizer_L.TabIndex = 1000;
             this.pbc_analizer_L.Tag = "11";
             this.pbc_analizer_L.ToolTipController = this.toolTipController;
@@ -1317,9 +1337,9 @@
             // pbc_analizer_R
             // 
             this.pbc_analizer_R.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbc_analizer_R.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.pbc_analizer_R.Cursor = System.Windows.Forms.Cursors.Default;
             this.pbc_analizer_R.EditValue = 1000;
-            this.pbc_analizer_R.Location = new System.Drawing.Point(73, 21);
+            this.pbc_analizer_R.Location = new System.Drawing.Point(81, 20);
             this.pbc_analizer_R.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbc_analizer_R.Name = "pbc_analizer_R";
             this.pbc_analizer_R.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
@@ -1332,7 +1352,7 @@
             this.pbc_analizer_R.Properties.ProgressKind = DevExpress.XtraEditors.Controls.ProgressKind.Vertical;
             this.pbc_analizer_R.Properties.StartColor = System.Drawing.Color.Chartreuse;
             this.pbc_analizer_R.Properties.Step = 100;
-            this.pbc_analizer_R.Size = new System.Drawing.Size(21, 65);
+            this.pbc_analizer_R.Size = new System.Drawing.Size(30, 65);
             this.pbc_analizer_R.TabIndex = 67;
             this.pbc_analizer_R.Tag = "11";
             this.pbc_analizer_R.ToolTipController = this.toolTipController;
@@ -1663,7 +1683,6 @@
         private DevExpress.XtraBars.PopupMenu popup_MainMenu;
         private DevExpress.XtraBars.BarButtonItem im_Open_PP_List;
         private DevExpress.XtraEditors.LabelControl lbc_time_back;
-        private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem iPlayBack2;
         private DevExpress.Utils.ImageCollection imageCollection_16;
         private DevExpress.XtraBars.BarButtonItem iEQ_Open2;
@@ -1752,7 +1771,9 @@
         private DevExpress.XtraBars.BarButtonItem iFindFilter;
         private DevExpress.XtraBars.BarCheckItem iPList_Width;
         public DevExpress.XtraTab.XtraTabControl xTabCtrl_PlayLists;
-        public System.Windows.Forms.OpenFileDialog openFileDialog;        
+        public System.Windows.Forms.OpenFileDialog openFileDialog;
+        private DevExpress.XtraBars.BarButtonItem iHomePage;
+        private DevExpress.XtraBars.BarButtonItem iSupportPage;        
 
     }
 }

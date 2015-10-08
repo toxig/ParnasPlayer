@@ -427,7 +427,7 @@ namespace PPlayer
 
             if (checkButton_Toggle_PLColumns.Checked)
             {
-                checkButton_Toggle_PLColumns.Text = "И";
+                checkButton_Toggle_PLColumns.Text = "А";
                 gridColumn_name.Visible = false;
                 gridColumn_artist.Visible = true;
                 gridColumn_artist.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
@@ -998,6 +998,8 @@ namespace PPlayer
             int file_music = 0;
             int file_none = 0;
             int file_folder = 0;
+
+            if (files == null) return;
 
             foreach (string file in files)
             {

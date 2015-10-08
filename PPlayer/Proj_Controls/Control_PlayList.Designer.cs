@@ -80,7 +80,7 @@
             this.grid_PlayList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_PlayList});
             this.grid_PlayList.DragDrop += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragDrop);
-            this.grid_PlayList.DragEnter += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragEnter);            
+            this.grid_PlayList.DragEnter += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragEnter);
             this.grid_PlayList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grid_PlayList_MouseClick);
             this.grid_PlayList.MouseEnter += new System.EventHandler(this.grid_PlayList_MouseEnter);
             // 
@@ -180,7 +180,7 @@
             this.gridColumn_name.AppearanceHeader.Options.UseFont = true;
             this.gridColumn_name.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn_name.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn_name.Caption = "Песня - Артист";
+            this.gridColumn_name.Caption = "Название - Артист";
             this.gridColumn_name.FieldName = "Name";
             this.gridColumn_name.Name = "gridColumn_name";
             this.gridColumn_name.OptionsColumn.AllowEdit = false;
@@ -196,7 +196,7 @@
             this.gridColumn_artist.AppearanceHeader.Options.UseFont = true;
             this.gridColumn_artist.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn_artist.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn_artist.Caption = "Артист - Песня";
+            this.gridColumn_artist.Caption = "Артист - Название";
             this.gridColumn_artist.FieldName = "Artist";
             this.gridColumn_artist.Name = "gridColumn_artist";
             this.gridColumn_artist.OptionsColumn.AllowEdit = false;
@@ -291,7 +291,7 @@
             this.checkButton_Toggle_PLColumns.Size = new System.Drawing.Size(24, 19);
             this.checkButton_Toggle_PLColumns.TabIndex = 2;
             this.checkButton_Toggle_PLColumns.Text = "Н";
-            this.checkButton_Toggle_PLColumns.ToolTip = "Название - Исполниетль";
+            this.checkButton_Toggle_PLColumns.ToolTip = "Название - Артист";
             this.checkButton_Toggle_PLColumns.ToolTipTitle = "Переключение списка";
             this.checkButton_Toggle_PLColumns.CheckedChanged += new System.EventHandler(this.checkButton_Toggle_PLColumn);
             // 

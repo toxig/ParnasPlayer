@@ -34,6 +34,8 @@
             this.lbCopyright = new DevExpress.XtraEditors.LabelControl();
             this.lbVersion = new DevExpress.XtraEditors.LabelControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureEdit_close = new DevExpress.XtraEditors.PictureEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_close.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // linkMailTo
@@ -42,9 +44,9 @@
             this.linkMailTo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.linkMailTo.ForeColor = System.Drawing.Color.Transparent;
             this.linkMailTo.LinkColor = System.Drawing.Color.SkyBlue;
-            this.linkMailTo.Location = new System.Drawing.Point(14, 169);
+            this.linkMailTo.Location = new System.Drawing.Point(12, 137);
             this.linkMailTo.Name = "linkMailTo";
-            this.linkMailTo.Size = new System.Drawing.Size(306, 27);
+            this.linkMailTo.Size = new System.Drawing.Size(262, 22);
             this.linkMailTo.TabIndex = 13;
             this.linkMailTo.TabStop = true;
             this.linkMailTo.Tag = "chernikov.a.s@yandex.ru";
@@ -64,10 +66,9 @@
             this.lbAbout.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.lbAbout.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lbAbout.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lbAbout.Location = new System.Drawing.Point(14, 124);
-            this.lbAbout.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbAbout.Location = new System.Drawing.Point(12, 101);
             this.lbAbout.Name = "lbAbout";
-            this.lbAbout.Size = new System.Drawing.Size(306, 44);
+            this.lbAbout.Size = new System.Drawing.Size(262, 36);
             this.lbAbout.TabIndex = 14;
             this.lbAbout.Text = "Название программы";
             this.lbAbout.Click += new System.EventHandler(this.AboutForm_Close);
@@ -80,10 +81,9 @@
             this.lbCopyright.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.lbCopyright.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lbCopyright.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lbCopyright.Location = new System.Drawing.Point(12, 199);
-            this.lbCopyright.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbCopyright.Location = new System.Drawing.Point(10, 162);
             this.lbCopyright.Name = "lbCopyright";
-            this.lbCopyright.Size = new System.Drawing.Size(306, 28);
+            this.lbCopyright.Size = new System.Drawing.Size(262, 23);
             this.lbCopyright.TabIndex = 15;
             this.lbCopyright.Text = "© Копирайт 2013 Черников А.С.";
             this.lbCopyright.Click += new System.EventHandler(this.AboutForm_Close);
@@ -96,23 +96,38 @@
             this.lbVersion.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.lbVersion.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.lbVersion.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lbVersion.Location = new System.Drawing.Point(5, 10);
-            this.lbVersion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbVersion.Location = new System.Drawing.Point(4, 8);
             this.lbVersion.Name = "lbVersion";
-            this.lbVersion.Size = new System.Drawing.Size(106, 52);
+            this.lbVersion.Size = new System.Drawing.Size(91, 42);
             this.lbVersion.TabIndex = 16;
             this.lbVersion.Text = "Версия";
             this.lbVersion.Click += new System.EventHandler(this.AboutForm_Close);
+            // 
+            // pictureEdit_close
+            // 
+            this.pictureEdit_close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureEdit_close.EditValue = global::PPlayer.Properties.Resources.close2;
+            this.pictureEdit_close.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.pictureEdit_close.Location = new System.Drawing.Point(254, 5);
+            this.pictureEdit_close.Name = "pictureEdit_close";
+            this.pictureEdit_close.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit_close.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit_close.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit_close.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.pictureEdit_close.Size = new System.Drawing.Size(20, 20);
+            this.pictureEdit_close.TabIndex = 18;
+            this.pictureEdit_close.Click += new System.EventHandler(this.AboutForm_Close);
             // 
             // Form_About
             // 
             this.Appearance.BackColor = System.Drawing.Color.DimGray;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Stretch;
             this.BackgroundImageStore = global::PPlayer.Properties.Resources.About;
-            this.ClientSize = new System.Drawing.Size(326, 233);
+            this.ClientSize = new System.Drawing.Size(279, 189);
+            this.Controls.Add(this.pictureEdit_close);
             this.Controls.Add(this.lbVersion);
             this.Controls.Add(this.lbCopyright);
             this.Controls.Add(this.lbAbout);
@@ -120,7 +135,6 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form_About";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -128,6 +142,7 @@
             this.Text = "О программе";
             this.Click += new System.EventHandler(this.AboutForm_Close);
             this.Leave += new System.EventHandler(this.AboutForm_Close);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_close.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -139,6 +154,7 @@
         private DevExpress.XtraEditors.LabelControl lbCopyright;
         private DevExpress.XtraEditors.LabelControl lbVersion;
         private System.Windows.Forms.ToolTip toolTip;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit_close;
 
     }
 }
