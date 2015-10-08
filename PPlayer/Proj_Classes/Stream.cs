@@ -45,7 +45,7 @@ namespace PPlayer
                 v_stream = Bass.BASS_StreamCreateFile(fileName, 0, 0, BASSFlag.BASS_STREAM_DECODE); // BASSFlag.BASS_DEFAULT
                 v_stream = BassFx.BASS_FX_TempoCreate(v_stream, BASSFlag.BASS_FX_FREESOURCE);
                 //BASS_StreamCreateFile(FALSE, file, 0, 0, BASS_STREAM_DECODE);
-                _v_stream_status = StreamStatus.STOP;
+                _v_stream_status = StreamStatus.STOP; // фактическое состояние потока - остановлен
             }
         }
         /// <summary>

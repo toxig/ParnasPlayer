@@ -30,7 +30,16 @@ namespace PPlayer
                 }
             }
 
-            SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, IntPtr.Zero, IntPtr.Zero);
+            try
+            {
+                SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST, IntPtr.Zero, IntPtr.Zero);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
         public bool IsAssociated

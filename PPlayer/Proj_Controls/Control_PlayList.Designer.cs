@@ -116,25 +116,19 @@
             this.gridColumn_exists,
             this.gridColumn_date});
             this.gv_PlayList.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Black;
             styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Salmon;
-            styleFormatCondition1.Appearance.Options.UseBackColor = true;
             styleFormatCondition1.Appearance.Options.UseForeColor = true;
             styleFormatCondition1.ApplyToRow = true;
             styleFormatCondition1.Column = this.gridColumn_exists;
             styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
             styleFormatCondition1.Value1 = "100";
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Black;
             styleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Salmon;
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
             styleFormatCondition2.Appearance.Options.UseForeColor = true;
             styleFormatCondition2.ApplyToRow = true;
             styleFormatCondition2.Column = this.gridColumn_exists;
             styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
             styleFormatCondition2.Value1 = "101";
-            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.Black;
             styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.DarkGray;
-            styleFormatCondition3.Appearance.Options.UseBackColor = true;
             styleFormatCondition3.Appearance.Options.UseForeColor = true;
             styleFormatCondition3.ApplyToRow = true;
             styleFormatCondition3.Column = this.gridColumn_exists;

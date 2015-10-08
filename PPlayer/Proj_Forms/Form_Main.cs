@@ -115,9 +115,11 @@ namespace PPlayer
                 + curVersion.Build.ToString() + "."
                 + curVersion.Revision.ToString();
 
-            FWorking.Text = "Программа запускается...\n" + AboutInfo + " v." + AboutVersion;
-            
+            FWorking.Text = "Программа запускается...\n" + AboutInfo + " v." + AboutVersion;            
+
             FWorking.Start(); // Запуск потока оповещений            
+            
+            Thread.SpinWait(1500);
 
             try
             {
@@ -143,13 +145,13 @@ namespace PPlayer
                 XtraMessageBox.Show("Не удалось иниициировать звуковое устройство!", "Инициализация звука", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
             #endregion
-
+            
             // Обновление настроек старых версий
-            if (Settings.p_update_settings)
+            if (Settings.p_update_settings) // для каждого нового обновления - будет загружен default - true
             {
-                Settings.Upgrade();
-                Settings.p_update_settings = false;
-                Settings.p_App_Version = AboutVersion;
+                Settings.Upgrade(); // загружаем настройки старой версии программы
+                Settings.p_update_settings = false; // необходимость дальнейшего обновления - выкл
+                Settings.p_App_Version = AboutVersion; // версия настроек
                 Settings.Save();
             }
 
@@ -250,6 +252,16 @@ namespace PPlayer
             if (!FUpdate.Start_Update()) e.Cancel = true;
         }
 
+        /// <summary>Загрузка пользовательских настроек </summary>
+        private void Load_Prog_User_Settings()
+        {
+            // палитра плей листов
+            for (int i = 0; i < All_PlayLists.Length; i++)
+            {
+                if (All_PlayLists[i] != null) All_PlayLists[i].PM_Load_Design(Settings);                
+            }            
+        }
+
         /// <summary>Загрузка настроек </summary>
         private void Load_Prog_Settings()
         {
@@ -323,9 +335,11 @@ namespace PPlayer
                 if (Settings.p_Form_Maximized) this.WindowState = FormWindowState.Maximized;
                 else this.WindowState = FormWindowState.Normal;
 
-                panelControl_Right.Width = Settings.p_PL_PanelWidth;
-                iCheck_Tags_Files.Checked = Settings.p_Check_Tags;
+                panelControl_Right.Width = Settings.p_PL_PanelWidth;                
                 panelControl_Hot_PL.Height = Settings.p_HotList_Height;
+                iCheck_Tags_Files.Checked = Settings.p_Check_Tags;
+
+                Load_Prog_User_Settings();
             }
             catch (Exception e)
             {
@@ -1042,7 +1056,7 @@ namespace PPlayer
                 MainStream.v_FileNameSrt = Path.GetFileName(MainStream.v_FileName); // муз файл
 
                 MainStream.p_Init_NewPlayStream(MainStream.v_FileName, v_initDefaultDevice); // инициализация звукового потока                    
-                MainStream.v_streem_need_free = true;
+                MainStream.v_streem_need_free = true; // поток занят (необходимо освобождать после использования)
 
                 // иниц эквалайзера для потока
                 EQ_Main.MainStream = MainStream;
@@ -1146,7 +1160,9 @@ namespace PPlayer
                 int max = EQ_Main.pbc_equal_main.Properties.Maximum;
 
                 MainStream.v_stream_volume = (float)pos / max;
-                MainStream.p_fade_channel(MainStream.v_stream_volume, 0, 0); //v_FadeTime_Pause
+                //запуск трека
+                MainStream.p_fade_channel(MainStream.v_stream_volume, 0, 0);                
+                if (!MainStream.v_FadeActive) MainStream.v_FadePostAction = StreamStatus.NONE; 
             }
             else MainStream.v_FadePostAction = StreamStatus.FREE;
 
@@ -1471,8 +1487,8 @@ namespace PPlayer
                 if (MainStream.v_FadeStopTime > 0) // начать обработку
                 {
                     MainStream.v_FadeStopTime -= timer_playng.Interval;
-                    if (MainStream.v_FadeStopTime <= 0) 
-                        timer_playng.Interval = 1000; // возвращаем частоту таймера
+                    if (MainStream.v_FadeStopTime <= 0) timer_playng.Interval = 1000; // возвращаем частоту таймера
+                    string tmp = MainStream.v_FadePostAction.ToString();
                 }                
             }
 
@@ -2470,6 +2486,7 @@ namespace PPlayer
         {
             FSettings.InitSettings(Settings);
             FSettings.ShowDialog();
+            if (FSettings.v_settings_updated) Load_Prog_User_Settings();
         }
 
         private void iEdit_Text_Data_ItemClick(object sender, ItemClickEventArgs e)

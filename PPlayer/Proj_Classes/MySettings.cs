@@ -43,6 +43,42 @@ namespace PPlayer
         }
 
         /// <summary>
+        /// Жирный шрифт для плейлиста
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Шрифт для плейлиста")]
+        [global::System.Configuration.DefaultSettingValue("true")]
+        public bool p_PL_FontBold
+        {
+            get
+            {
+                return ((bool)(this["p_PL_FontBold"]));
+            }
+            set
+            {
+                this["p_PL_FontBold"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Шрифт для плейлиста
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Шрифт для плейлиста")]
+        [global::System.Configuration.DefaultSettingValue("Tahoma")]
+        public string p_PL_FontName
+        {
+            get
+            {
+                return ((string)(this["p_PL_FontName"]));
+            }
+            set
+            {
+                this["p_PL_FontName"] = value;
+            }
+        }
+
+        /// <summary>
         /// Размер шрифта для плейлиста
         /// </summary>
         [global::System.Configuration.UserScopedSetting()]
@@ -57,6 +93,114 @@ namespace PPlayer
             set
             {
                 this["p_PL_FontSize"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Цвет - фон списка (плейлист)
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Цвет - фон списка (плейлист)")]
+        [global::System.Configuration.DefaultSettingValue("-16777216")]
+        public int p_PL_FontColor_back
+        {
+            get
+            {
+                return ((int)(this["p_PL_FontColor_back"]));
+            }
+            set
+            {
+                this["p_PL_FontColor_back"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Цвет - фон выделения (плейлист)
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Цвет - фон выделения (плейлист)")]
+        [global::System.Configuration.DefaultSettingValue("-16776961")]
+        public int p_PL_FontColor_back_select
+        {
+            get
+            {
+                return ((int)(this["p_PL_FontColor_back_select"]));
+            }
+            set
+            {
+                this["p_PL_FontColor_back_select"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Цвет - текст (плейлист)
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Цвет - текст (плейлист)")]
+        [global::System.Configuration.DefaultSettingValue("-16711936")]
+        public int p_PL_FontColor_text
+        {
+            get
+            {
+                return ((int)(this["p_PL_FontColor_text"]));
+            }
+            set
+            {
+                this["p_PL_FontColor_text"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Цвет - текст выделение (плейлист)
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Цвет - текст выделение (плейлист)")]
+        [global::System.Configuration.DefaultSettingValue("-1")]
+        public int p_PL_FontColor_text_select
+        {
+            get
+            {
+                return ((int)(this["p_PL_FontColor_text_select"]));
+            }
+            set
+            {
+                this["p_PL_FontColor_text_select"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Цвет - текст нет mp3 (плейлист)
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Цвет - текст нет mp3 (плейлист)")]
+        [global::System.Configuration.DefaultSettingValue("-360334")]
+        public int p_PL_FontColor_text_no_mp3
+        {
+            get
+            {
+                return ((int)(this["p_PL_FontColor_text_no_mp3"]));
+            }
+            set
+            {
+                this["p_PL_FontColor_text_no_mp3"] = value;
+            }
+        }
+
+        /// <summary>
+        /// Цвет - текст нет rtf (плейлист)
+        /// </summary>
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Цвет - текст нет rtf (плейлист)")]
+        [global::System.Configuration.DefaultSettingValue("-4144960")]
+        public int p_PL_FontColor_text_no_rtf
+        {
+            get
+            {
+                return ((int)(this["p_PL_FontColor_text_no_rtf"]));
+            }
+            set
+            {
+                this["p_PL_FontColor_text_no_rtf"] = value;
             }
         }
 
@@ -344,6 +488,22 @@ namespace PPlayer
             set
             {
                 this["p_App_Version"] = value;
+            }
+        }
+
+        /// <summary>Иконки и Ассоциация файлов с программой</summary>        
+        [global::System.Configuration.UserScopedSetting()]
+        [global::System.Configuration.SettingsDescription("Иконки и Ассоциация файлов с программой")]
+        [global::System.Configuration.DefaultSettingValue("true")]
+        public bool p_file_associate
+        {
+            get
+            {
+                return ((bool)this["p_file_associate"]);
+            }
+            set
+            {
+                this["p_file_associate"] = value;
             }
         }
     }

@@ -222,7 +222,7 @@ namespace PPlayer
             if (e.X > gv_PlayList.ViewRect.Width || // выход за края справа
                 e.X < gv_PlayList.ViewRect.Width * 0.5) // не показывать подсказку на первой половине трека, только на второй //e.X <= 0
             {
-                toolTipController.HideHint();
+                if (timer_tooltip.Tag == null || timer_tooltip.Tag == "") toolTipController.HideHint();
                 return;                
             }
 
@@ -300,6 +300,7 @@ namespace PPlayer
             {
                 timer_tooltip.Stop();
                 toolTipController.HideHint();
+                timer_tooltip.Tag = "";
             }
            
         }
@@ -488,8 +489,9 @@ namespace PPlayer
             {
                 tooltip_wait_dt = DateTime.Now.AddMilliseconds(tooltip_wait_ms - timer_tooltip.Interval);
                 tooltip_hide_dt = tooltip_wait_dt.AddMilliseconds(tooltip_hide_ms);
+                timer_tooltip.Tag = "NoHide";
                 tooltip_started = false;
-                timer_tooltip.Start();
+                timer_tooltip.Start();                
             }
 
             timer_add_row.Enabled = false;
@@ -1135,6 +1137,26 @@ namespace PPlayer
             }
 
             return true;
+        }
+
+        public void PM_Load_Design(MySettings CurSettings)
+        {
+            gv_PlayList.Appearance.Row.Font = new Font(CurSettings.p_PL_FontName, // тип шрифта
+                                                       CurSettings.p_PL_FontSize, // Размер шрифта
+                                                      (CurSettings.p_PL_FontBold ? FontStyle.Bold : FontStyle.Regular)); // жирный
+
+            gv_PlayList.Appearance.FocusedRow.Font = gv_PlayList.Appearance.Row.Font;
+
+            // загрузка цветов из настроек
+            gv_PlayList.Appearance.Empty.BackColor = Color.FromArgb(CurSettings.p_PL_FontColor_back); // цвет - фон списка
+            gv_PlayList.Appearance.FocusedRow.BackColor = Color.FromArgb(CurSettings.p_PL_FontColor_back_select); // фон выделение        
+            gv_PlayList.Appearance.Row.ForeColor = Color.FromArgb(CurSettings.p_PL_FontColor_text); // цвет текста
+            gv_PlayList.Appearance.FocusedRow.ForeColor = Color.FromArgb(CurSettings.p_PL_FontColor_text_select); // цвет текста - выделение
+            gv_PlayList.FormatConditions[0].Appearance.ForeColor = Color.FromArgb(CurSettings.p_PL_FontColor_text_no_mp3); // цвет текста - нет mp3
+            gv_PlayList.FormatConditions[1].Appearance.ForeColor = Color.FromArgb(CurSettings.p_PL_FontColor_text_no_mp3); // цвет текста - нет mp3
+            gv_PlayList.FormatConditions[2].Appearance.ForeColor = Color.FromArgb(CurSettings.p_PL_FontColor_text_no_rtf); // цвет текста - нет rtf
+
+            row_color_default = gv_PlayList.Appearance.FocusedRow.BackColor;
         }
     }
 
