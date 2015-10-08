@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.linkMailTo = new System.Windows.Forms.LinkLabel();
             this.lbAbout = new DevExpress.XtraEditors.LabelControl();
             this.lbCopyright = new DevExpress.XtraEditors.LabelControl();
             this.lbVersion = new DevExpress.XtraEditors.LabelControl();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip();
             this.pictureEdit_close = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit_close.Properties)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +84,7 @@
             this.lbCopyright.Name = "lbCopyright";
             this.lbCopyright.Size = new System.Drawing.Size(262, 23);
             this.lbCopyright.TabIndex = 15;
-            this.lbCopyright.Text = "© Копирайт 2013 Черников А.С.";
+            this.lbCopyright.Text = "© Копирайт 2014 Черников А.С.";
             this.lbCopyright.Click += new System.EventHandler(this.AboutForm_Close);
             // 
             // lbVersion

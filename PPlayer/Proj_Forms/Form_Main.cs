@@ -564,7 +564,8 @@ namespace PPlayer
         #endregion
 
         #region Операции с файлом плейлиста
-
+        
+        // История запуска треков
         private void gv_PlayList_AddHistory(int list_id, int row_id)
         {
             if (All_PlayLists[list_id].gv_PlayList.FocusedRowHandle < 0) return;
@@ -572,25 +573,35 @@ namespace PPlayer
             DataRow FRow = All_PlayLists[list_id].dt_FileData.Rows[row_id];
             DataRow LRow = All_PlayLists[list_id].dt_ListData.Rows[row_id];
 
+            #region Добавление трека в последний Плей лист (История)
+            /*
             int max_pl = xTabCtrl_PlayLists.TabPages.Count - 1;
             int row_max = All_PlayLists[max_pl].dt_ListData.Rows.Count;
 
             All_PlayLists[max_pl].dt_FileData.Rows.Add(FRow.ItemArray);
             All_PlayLists[max_pl].dt_ListData.Rows.Add(LRow.ItemArray);
 
-            All_PlayLists[max_pl].dt_ListData.Rows[row_max]["Date"] = System.DateTime.Now;
-                        
-            System.IO.File.AppendAllText(v_file_log,
-                                         String.Format("{0} {1}\r\n",System.DateTime.Now.ToString(),LRow[0].ToString()),
-                                         System.Text.Encoding.GetEncoding(1251));
+            All_PlayLists[max_pl].dt_ListData.Rows[row_max]["Date"] = System.DateTime.Now; 
+            */
+            #endregion
             
-            //FileInfo file_log = new FileInfo(v_file_log);
-            //if (!file_log.Exists) file_log.Create();
+            #region Запись данных в файл (альтернативный способ)
 
-            //StreamWriter sw = new StreamWriter(v_file_log); //(@".\arSYCalendars.txt")
-            //StreamWriter sw = file_log.AppendText();
-            //sw.WriteLine("{0}  {1}\n", System.DateTime.Now.ToString(), LRow[0].ToString());
-            //sw.Close();
+            /*
+            FileInfo file_log = new FileInfo(v_file_log);
+            if (!file_log.Exists) file_log.Create();
+
+            StreamWriter sw = new StreamWriter(v_file_log); //(@".\arSYCalendars.txt")
+            StreamWriter sw = file_log.AppendText();
+            sw.WriteLine("{0}  {1}\n", System.DateTime.Now.ToString(), LRow[0].ToString());
+            sw.Close();
+            */
+            #endregion
+
+            // Добавление трека в лог файл - v_file_log
+            System.IO.File.AppendAllText(v_file_log,
+                                         String.Format("{0} {1}\r\n", System.DateTime.Now.ToString(), LRow[0].ToString()),
+                                         System.Text.Encoding.GetEncoding(1251));
         }
 
         private void gv_PlayList_KeyDown(object sender, KeyEventArgs e)
@@ -1145,7 +1156,7 @@ namespace PPlayer
             All_PlayLists[list_id].btnEdit_Find.Text = "";
 
             // Добавляем в историю
-            // gv_PlayList_AddHistory(list_id, Row_ID);
+            gv_PlayList_AddHistory(list_id, Row_ID);
         }
 
         //Запуск воспроизведения
@@ -1700,6 +1711,7 @@ namespace PPlayer
 
             return arg_line.Trim().Split( charSeparators, StringSplitOptions.RemoveEmptyEntries);
         }
+        
         #endregion        
 
         #region Эквалайзер
@@ -2381,7 +2393,15 @@ namespace PPlayer
         }
 
         private void iEdit_DelMuzFile_ItemClick(object sender, ItemClickEventArgs e)
-        {            
+        {
+            if (XtraMessageBox.Show("Удалить трек из списка?", 
+                                    "Вопрос", 
+                                    MessageBoxButtons.OKCancel, 
+                                    MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+
             int Row_ID = All_PlayLists[v_play_list_id_active].dt_ListData.Rows.IndexOf(
                          All_PlayLists[v_play_list_id_active].gv_PlayList.GetFocusedDataRow()
                          );
@@ -2480,7 +2500,7 @@ namespace PPlayer
         // Обновление элементов списка
         private void Check_PL_Status(int pl_check_id)
         {
-            if (All_PlayLists[v_play_list_id_active].pl_FilePath != "")
+            if (All_PlayLists[pl_check_id].pl_FilePath != "")
             {
                 //iSave_PlayList.Enabled = All_PlayLists[v_play_list_id].is_Changed;
                 iSave_PlayList.Enabled = true; // всегда доступен

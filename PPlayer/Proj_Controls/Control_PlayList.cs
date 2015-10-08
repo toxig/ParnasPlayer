@@ -255,7 +255,7 @@ namespace PPlayer
             if (e.X > gv_PlayList.ViewRect.Width || // выход за края справа
                 e.X < gv_PlayList.ViewRect.Width * 0.5) // не показывать подсказку на первой половине трека, только на второй //e.X <= 0
             {
-                if (timer_tooltip.Tag == null || timer_tooltip.Tag == "") toolTipController.HideHint();
+                if (timer_tooltip.Tag == null || timer_tooltip.Tag.ToString() == "") toolTipController.HideHint();
                 return;                
             }
 

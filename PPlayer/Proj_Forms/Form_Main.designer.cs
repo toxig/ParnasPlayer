@@ -1111,7 +1111,7 @@
             this.textEdit_FadeTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit_FadeTime.Cursor = System.Windows.Forms.Cursors.NoMoveVert;
             this.textEdit_FadeTime.EditValue = "3";
-            this.textEdit_FadeTime.Location = new System.Drawing.Point(13, 31);
+            this.textEdit_FadeTime.Location = new System.Drawing.Point(25, 32);
             this.textEdit_FadeTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textEdit_FadeTime.Name = "textEdit_FadeTime";
             this.textEdit_FadeTime.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1140,10 +1140,10 @@
             this.sbt_FadeTime_Up.ImageIndex = 5;
             this.sbt_FadeTime_Up.ImageList = this.imageList_32;
             this.sbt_FadeTime_Up.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbt_FadeTime_Up.Location = new System.Drawing.Point(51, 30);
+            this.sbt_FadeTime_Up.Location = new System.Drawing.Point(67, 32);
             this.sbt_FadeTime_Up.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbt_FadeTime_Up.Name = "sbt_FadeTime_Up";
-            this.sbt_FadeTime_Up.Size = new System.Drawing.Size(30, 18);
+            this.sbt_FadeTime_Up.Size = new System.Drawing.Size(20, 18);
             this.sbt_FadeTime_Up.TabIndex = 100;
             this.sbt_FadeTime_Up.Tag = "1";
             this.sbt_FadeTime_Up.ToolTip = "Фейдер (+)";
@@ -1167,10 +1167,10 @@
             this.sbt_FadeTime_Down.ImageIndex = 4;
             this.sbt_FadeTime_Down.ImageList = this.imageList_32;
             this.sbt_FadeTime_Down.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbt_FadeTime_Down.Location = new System.Drawing.Point(51, 49);
+            this.sbt_FadeTime_Down.Location = new System.Drawing.Point(67, 49);
             this.sbt_FadeTime_Down.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbt_FadeTime_Down.Name = "sbt_FadeTime_Down";
-            this.sbt_FadeTime_Down.Size = new System.Drawing.Size(30, 17);
+            this.sbt_FadeTime_Down.Size = new System.Drawing.Size(20, 17);
             this.sbt_FadeTime_Down.TabIndex = 99;
             this.sbt_FadeTime_Down.Tag = "-1";
             this.sbt_FadeTime_Down.ToolTip = "Фейдер (-)";
@@ -1185,7 +1185,7 @@
             this.sbtn_Repeat.ImageIndex = 5;
             this.sbtn_Repeat.ImageList = this.imageCollection_30;
             this.sbtn_Repeat.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_Repeat.Location = new System.Drawing.Point(86, 32);
+            this.sbtn_Repeat.Location = new System.Drawing.Point(93, 32);
             this.sbtn_Repeat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtn_Repeat.Name = "sbtn_Repeat";
             this.sbtn_Repeat.Size = new System.Drawing.Size(32, 32);
@@ -1219,7 +1219,7 @@
             this.sbtn_FadeNow.ImageIndex = 6;
             this.sbtn_FadeNow.ImageList = this.imageCollection_30;
             this.sbtn_FadeNow.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_FadeNow.Location = new System.Drawing.Point(125, 32);
+            this.sbtn_FadeNow.Location = new System.Drawing.Point(129, 32);
             this.sbtn_FadeNow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtn_FadeNow.Name = "sbtn_FadeNow";
             this.sbtn_FadeNow.Size = new System.Drawing.Size(32, 32);
@@ -1236,7 +1236,7 @@
             this.sbtn_Pause.ImageIndex = 0;
             this.sbtn_Pause.ImageList = this.imageCollection_30;
             this.sbtn_Pause.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbtn_Pause.Location = new System.Drawing.Point(163, 32);
+            this.sbtn_Pause.Location = new System.Drawing.Point(165, 32);
             this.sbtn_Pause.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sbtn_Pause.Name = "sbtn_Pause";
             this.sbtn_Pause.Size = new System.Drawing.Size(32, 32);
