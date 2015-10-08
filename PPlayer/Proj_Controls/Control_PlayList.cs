@@ -120,7 +120,7 @@ namespace PPlayer
             }
         }
 
-        public Class_Working FWorking;
+        public Working FWorking;
         public Form_History FChangeLog;
         private Loader_FileList FLoader = new Loader_FileList(); // загрузчик файлов         
         public Thread FW_Thread;        

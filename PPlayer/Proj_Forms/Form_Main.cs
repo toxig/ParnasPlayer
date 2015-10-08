@@ -42,7 +42,7 @@ namespace PPlayer
         private int v_MainWindowTread = Thread.CurrentThread.ManagedThreadId; // ID главного потока
 
         //string v_PlaingFileName;                                  // название проигрываемого трека                
-        Class_Working            FWorking = new Class_Working();              // Отображение статуса выполнения
+        Working            FWorking = new Working();              // Отображение статуса выполнения
         Form_TagEditor      FTags = new Form_TagEditor();           // Редактор Тэгов
         Form_Settings       FSettings = new Form_Settings();        // Редактор настроек
         FormView            FView = new FormView();                 // настройки отображения формы                  
@@ -154,6 +154,7 @@ namespace PPlayer
             // Парсинг входящих аргументов
             v_arg_pl = Parse_arguments_PL(args); // поиск плейлистов
 
+            Init_Icon();
         }
 
         #region Проверка обновлений
@@ -473,6 +474,18 @@ namespace PPlayer
             this.panelControl_All.Dock = DockStyle.Fill;
 
             Text_RTEditor.sbtn_Close.Click += new EventHandler(sbtn_TextEditor_Close_Click);
+        }
+
+        // Асоциация файлов
+        private void Init_Icon()
+        {
+            FileAssociation FIcon = new FileAssociation();
+
+            if (!FIcon.IsAssociated)
+            {
+                FIcon.Remove();
+                FIcon.Associate("Плейлист для Парнас Плеера", Path.GetDirectoryName(Application.ExecutablePath) + "\\pm_file.ico");
+            }
         }
         #endregion
 

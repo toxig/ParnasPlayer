@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace PPlayer
 {
@@ -39,6 +34,22 @@ namespace PPlayer
         private void btn_Close_form_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkEdit_FileAssociate_CheckedChanged(object sender, EventArgs e)
+        {
+            FileAssociation FIcon = new FileAssociation();
+
+            if (checkEdit_FileAssociate.Checked)
+            {
+                FIcon.Remove();
+                FIcon.Associate("Плейлист для Парнас Плеера", System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\pm_file.ico");
+            }
+            else
+            {
+                FIcon.Remove();
+            }
+             
         }
 
     }

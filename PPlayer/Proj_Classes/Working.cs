@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
-using System.Text;
 
 namespace PPlayer
 {
-    public class Class_Working
+    public class Working
     {
         public Thread           FW_Thread; // Поток - отображение выполняющихся операций
         public Form_Working     FW_Form = new Form_Working();          // Фоновое окно операций        

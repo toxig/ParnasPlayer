@@ -19,7 +19,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\WORK\PPlayer_Setup\</PublishUrl>
+    <PublishUrl>c:\WORK\PPlayer\PPlayer_Setup\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -171,7 +171,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Proj_Classes\ClassWorking.cs" />
+    <Compile Include="Proj_Classes\FileAssociation.cs" />
+    <Compile Include="Proj_Classes\Working.cs" />
     <Compile Include="Proj_Classes\GridViewFilter.cs" />
     <Compile Include="Proj_Classes\MySettings.cs" />
     <Compile Include="Proj_Controls\Mod_Rich_Edit.cs">
@@ -315,8 +316,13 @@
     <Content Include="bass_fx.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="icon.ico" />
+    <Content Include="icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="change_log.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pm_file.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Updater.exe">
