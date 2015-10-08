@@ -52,6 +52,7 @@
             this.panelControl_header = new DevExpress.XtraEditors.PanelControl();
             this.checkButton_Toggle_FindPanel = new DevExpress.XtraEditors.CheckButton();
             this.labelControl_header = new DevExpress.XtraEditors.LabelControl();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grid_PlayList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_PlayList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_Filter)).BeginInit();
@@ -82,7 +83,10 @@
             this.grid_PlayList.DragDrop += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragDrop);
             this.grid_PlayList.DragEnter += new System.Windows.Forms.DragEventHandler(this.grid_PlayList_DragEnter);
             this.grid_PlayList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grid_PlayList_MouseClick);
+            this.grid_PlayList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grid_PlayList_MouseDown);
             this.grid_PlayList.MouseEnter += new System.EventHandler(this.grid_PlayList_MouseEnter);
+            this.grid_PlayList.MouseMove += new System.Windows.Forms.MouseEventHandler(this.grid_PlayList_MouseMove);
+            this.grid_PlayList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.grid_PlayList_MouseUp);
             // 
             // gv_PlayList
             // 
@@ -346,6 +350,18 @@
             this.labelControl_header.Text = "новый плейлист";
             this.labelControl_header.ToolTipController = this.toolTipController;
             // 
+            // toolTipController1
+            // 
+            this.toolTipController1.Appearance.Font = new System.Drawing.Font("Tahoma", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolTipController1.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.toolTipController1.Appearance.Options.UseFont = true;
+            this.toolTipController1.Appearance.Options.UseForeColor = true;
+            this.toolTipController1.AppearanceTitle.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.toolTipController1.AppearanceTitle.Options.UseForeColor = true;
+            this.toolTipController1.InitialDelay = 1000;
+            this.toolTipController1.ReshowDelay = 1000;
+            this.toolTipController1.ToolTipLocation = DevExpress.Utils.ToolTipLocation.TopRight;
+            // 
             // Control_PlayList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,5 +404,6 @@
         private DevExpress.XtraEditors.CheckButton checkButton_Toggle_FindPanel;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn_date;
         public DevExpress.XtraEditors.CheckButton checkButton_Filter_Plus;
+        public DevExpress.Utils.ToolTipController toolTipController1;
     }
 }

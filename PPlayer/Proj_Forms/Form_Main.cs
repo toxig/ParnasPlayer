@@ -52,7 +52,7 @@ namespace PPlayer
         Form_Settings       FSettings = new Form_Settings();        // Редактор настроек
         FormView            FView = new FormView();                 // настройки отображения формы                  
         Control_EQ          EQ_Main;                                // настройки эквалайзера
-        Control_PlayList[]  All_PlayLists = new Control_PlayList[10]; // массив плейлистов
+        Control_PlayList[]  All_PlayLists = new Control_PlayList[16]; // массив плейлистов
         StreamClass         MainStream = new StreamClass();         // основной поток
         StreamClass         SlaveStream = new StreamClass();        // поток для сведения фейдера
         Mod_Rich_Edit       Text_RTEditor = new Mod_Rich_Edit();    // редактор текстов
@@ -146,14 +146,20 @@ namespace PPlayer
             } 
             #endregion
             
-            // Обновление настроек старых версий
-            if (Settings.p_update_settings) // для каждого нового обновления - будет загружен default - true
-            {
-                Settings.Upgrade(); // загружаем настройки старой версии программы
-                Settings.p_update_settings = false; // необходимость дальнейшего обновления - выкл
-                Settings.p_App_Version = AboutVersion; // версия настроек
-                Settings.Save();
-            }
+            try 
+	        {
+                // Обновление настроек старых версий
+                if (Settings.p_update_settings) // для каждого нового обновления - будет загружен default - true
+                {
+                    Settings.Upgrade(); // загружаем настройки старой версии программы
+                    Settings.p_update_settings = false; // необходимость дальнейшего обновления - выкл
+                    Settings.p_App_Version = AboutVersion; // версия настроек
+                    Settings.Save();
+                }
+	        }
+	        catch (Exception)
+	        {                                
+            }            
 
             // Инициализация таблиц для плейлистов
             //FW.param_Operation_Text = "Загрузка плейлистов...";
@@ -201,8 +207,7 @@ namespace PPlayer
                 CheckUpdates(true);
             }
             catch (Exception)
-            {
-                
+            {                
                 throw;
             }                           
 
@@ -303,32 +308,44 @@ namespace PPlayer
                 v_FadeTime_Pause = Settings.p_Fade_time * 1000; // затухание при паузе
                 v_FadeTime_Hot = Settings.p_Fade_time * 1000; // затухание при горячем пуске
 
-                // загрузка плейлистов
-                string[] PL_List_Path = Settings.p_PL_OpenFiles.Split('\n'); //список файлов                                
-                for (int i = 0; i < xTabCtrl_PlayLists.TabPages.Count; i++)
-                {
-                    if (i < PL_List_Path.Length && PL_List_Path[i].Trim() != "")
-                    {
-                        All_PlayLists[i].PM_Load_List(PL_List_Path[i]);
-                    }
-                }
-                
-                // активный плей лист
-                if (Settings.p_PL_ActiveListID < xTabCtrl_PlayLists.TabPages.Count)
-                    if (Settings.p_PL_ActiveListID == 0 && xTabCtrl_PlayLists.TabPages.Count > 1)
-                        v_play_list_id_active = 1;
-                    else
-                        v_play_list_id_active = Settings.p_PL_ActiveListID;
-                xTabCtrl_PlayLists.SelectedTabPageIndex = v_play_list_id_active;
-
                 // загружаем арг плейлист в горячий список
                 if (v_arg_pl.Length > 0)
-                {                    
+                {
                     All_PlayLists[0].PM_Load_List(v_arg_pl[0]);
                     if (xTabCtrl_PlayLists.TabPages[0].PageVisible) xTabCtrl_PlayLists.SelectedTabPageIndex = 0;
                     //v_play_list_id_active = Settings.p_PL_ActiveListID;
                     //xTabCtrl_PlayLists.SelectedTabPageIndex = v_play_list_id_active;
                 }
+
+                // загрузка плейлистов
+                string[] PL_List_Path = Settings.p_PL_OpenFiles.Split('\n'); //список файлов
+
+                v_play_list_id_active = 0;
+
+                int pl_num = 0;
+                for (int i = 0; i < PL_List_Path.Length; i++) // парсинг ранее открытых ПЛ из настроек
+                {
+                    if (i == 0 && PL_List_Path[i].Trim() == "") pl_num++; // первый для горячего листа
+
+                    if (PL_List_Path[i].Trim() != "" && All_PlayLists.Length > pl_num)
+                    {                                               
+                        // создаем вкладку                        
+                        if (xTabCtrl_PlayLists.TabPages.Count < pl_num+1) // нет вкладок - создаем
+                        {
+                            xTabCtrl_PlayLists.TabPages.Add("[" + (pl_num) + "]");
+                            Init_New_PlayList(pl_num);
+                        }
+
+                        All_PlayLists[pl_num].PM_Load_List(PL_List_Path[i]);
+
+                        if (Settings.p_PL_ActiveListID == i) v_play_list_id_active = pl_num;
+
+                        pl_num++; 
+                    }
+                }
+
+                // активный плей лист
+                xTabCtrl_PlayLists.SelectedTabPageIndex = v_play_list_id_active;               
 
                 FWorking.Text = "Загрузка настроек:\nРазмер окна";
 
@@ -461,22 +478,24 @@ namespace PPlayer
                 
                 xTabCtrl_PlayLists.TabPages[i].Text = "[!]";
                 PL.labelControl_header.Text = "Горячий список";
+
+                All_PlayLists[i].pl_HotList = true;
             }
 
             // остальные листы
-            if (i > 0 && i != max_pl)            
+            if (i > 0 /*&& i != max_pl*/)
             {
                 xTabCtrl_PlayLists.TabPages[i].Controls.Add(All_PlayLists[i]);                
                 xTabCtrl_PlayLists.TabPages[i].Text = "[" + (i) + "]";
             }
 
-            if (i == max_pl)
+            /*if (i == max_pl)
             {
                 xTabCtrl_PlayLists.TabPages[i].Controls.Add(All_PlayLists[i]);
                 All_PlayLists[i].labelControl_header.Text = "История треков";
                 xTabCtrl_PlayLists.TabPages[i].Text = "[H]";
                 All_PlayLists[i].pl_History = true;
-            }
+            }*/
 
             // события списка
             All_PlayLists[i].grid_PlayList.DoubleClick += new System.EventHandler(this.grid_PlayList_DoubleClick);                        
@@ -532,7 +551,7 @@ namespace PPlayer
             }
         }
         
-        // Лог воспроизведения
+        // Лог воспроизведения - txt
         private void Init_PlayLog()
         {
             v_dir_program = System.IO.Directory.GetCurrentDirectory(); // текущая папка программы;
@@ -739,7 +758,22 @@ namespace PPlayer
         // СТОП
         private void buttonStop_Click(object sender, EventArgs e)
         {            
-            MainStream.v_stream_status = StreamStatus.FREE;
+            if (MainStream.v_stream_status == StreamStatus.FREE)
+            {                            
+                // registering BASS.NET API
+                try
+                {
+                    Bass.BASS_Free();
+                    v_initDefaultDevice = Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
+                    Label_InfoLine.Text = "Ининциализация звуковой карты (default)";
+                }
+                catch (NullReferenceException)
+                {
+                    XtraMessageBox.Show("Не удалось иниициировать звуковое устройство!", "Инициализация звука", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
+            }
+
+            MainStream.v_stream_status = StreamStatus.FREE;            
 
             Label_InfoLine.Text = "Остановлено"; v_WaytDelay = 3;                        
             //sbtn_Pause.Text = "Play";
@@ -1111,7 +1145,7 @@ namespace PPlayer
             All_PlayLists[list_id].btnEdit_Find.Text = "";
 
             // Добавляем в историю
-            gv_PlayList_AddHistory(list_id, Row_ID);
+            // gv_PlayList_AddHistory(list_id, Row_ID);
         }
 
         //Запуск воспроизведения
@@ -2611,6 +2645,8 @@ namespace PPlayer
         }
         #endregion       
 
+        #region Кнопки\меню
+
         private void iToggle_PL_Show_ItemClick(object sender, ItemClickEventArgs e)
         {
             Settings.p_HotList_Position = Settings.p_HotList_Position ? false : true;
@@ -2670,12 +2706,12 @@ namespace PPlayer
 
         private void iCheck_Tags_Files_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-                for (int i = 0; i < xTabCtrl_PlayLists.TabPages.Count; i++)
-                {
-                    All_PlayLists[i].v_Check_Exist = true; // нет в меню, всегда вкл
-                    All_PlayLists[i].v_Check_Tags = iCheck_Tags_Files.Checked;
-                    if (iCheck_Tags_Files.Checked) All_PlayLists[i].Check_Exists_Data();
-                }
+            for (int i = 0; i < xTabCtrl_PlayLists.TabPages.Count; i++)
+            {
+                All_PlayLists[i].v_Check_Exist = true; // нет в меню, всегда вкл
+                All_PlayLists[i].v_Check_Tags = iCheck_Tags_Files.Checked;
+                if (iCheck_Tags_Files.Checked) All_PlayLists[i].Check_Exists_Data();
+            }
 
 
         }
@@ -2726,8 +2762,8 @@ namespace PPlayer
         {
             int Row_ID = All_PlayLists[v_play_list_id_active].dt_ListData.Rows.IndexOf(
              All_PlayLists[v_play_list_id_active].gv_PlayList.GetFocusedDataRow()
-             );            
-                        
+             );
+
             string FilePath = All_PlayLists[v_play_list_id_active].dt_ListData.Rows[Row_ID][0].ToString();
 
             ShowInExplorer(FilePath);
@@ -2763,8 +2799,85 @@ namespace PPlayer
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show(e.Message, "Ошибка запуска проводника", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }                   
-    }    
+        }                    
+        #endregion
+
+        private void xTabCtrl_PlayLists_CustomHeaderButtonClick(object sender, DevExpress.XtraTab.ViewInfo.CustomHeaderButtonEventArgs e)
+        {
+            int PagesCount = xTabCtrl_PlayLists.TabPages.Count;
+
+            if (e.Button.Index == 0) // добавить вкладку
+            {
+                if (All_PlayLists.Length == PagesCount)
+                {
+                    XtraMessageBox.Show("Создано максимальное количество ПЛистов!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                xTabCtrl_PlayLists.TabPages.Add("["+ (PagesCount) + "]");
+                Init_New_PlayList(PagesCount);
+                xTabCtrl_PlayLists.SelectedTabPageIndex = PagesCount;
+                Update_Visual_List_Color();
+            }
+
+            if (e.Button.Index == 1) // закрыть вкладку
+            {
+                int remove_pl = v_play_list_id_active;
+
+                if (remove_pl == 0) // Hot List - только очистка
+                {
+                    if (XtraMessageBox.Show("Очистить Горячий список?",
+                        "Подтверждение",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Question)
+                    == System.Windows.Forms.DialogResult.OK)
+                    {
+                        All_PlayLists[0].PL_CloseList();
+                    }
+                    return;
+                }
+                else // другие плей листы
+                {
+
+                    if (All_PlayLists[remove_pl].pl_FilePath != "" &&
+                        XtraMessageBox.Show("Закрыть " + xTabCtrl_PlayLists.TabPages[remove_pl].Text + " " + All_PlayLists[remove_pl].labelControl_header.Text + " ?", 
+                            "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) 
+                            != System.Windows.Forms.DialogResult.OK
+                        )
+                    {
+                        return; // отмена
+                    }
+
+                    // попытка сохранения изменений ПЛ
+                    if (!PL_PlayLists_Save(remove_pl)) 
+                    {
+                        FUpdate.NeedUpdate = false;
+                        return;
+                    }
+
+                    // закрываем ПЛ
+                    xTabCtrl_PlayLists.TabPages.RemoveAt(remove_pl);
+
+                    for (int i = remove_pl; i < xTabCtrl_PlayLists.TabPages.Count; i++)
+                    {
+                        xTabCtrl_PlayLists.TabPages[i].Text = "[" + (i) + "]";
+                        All_PlayLists[i] = All_PlayLists[i + 1]; // сдвиг массивов
+
+                        // перелинковка переменных
+                        All_PlayLists[i].v_PList_ID = i;
+                        All_PlayLists[i].grid_PlayList.Tag = i;
+                        if (MainStream.v_PL_List_ID_played == i + 1) MainStream.v_PL_List_ID_played = i;
+                    }
+
+                    All_PlayLists[xTabCtrl_PlayLists.TabPages.Count] = null; // очистка последнего
+
+                    xTabCtrl_PlayLists.SelectedTabPageIndex = remove_pl;
+                }
+
+            }
+    
+        }   
+    }
 
     public class FormView
     {

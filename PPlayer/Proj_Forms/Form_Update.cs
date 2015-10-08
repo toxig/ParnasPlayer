@@ -607,7 +607,7 @@ namespace PPlayer
             {
                 label_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 label_info.Text = "Загрузка обновления завершена";
-                sbtn_Close.Text = "Закрыть";
+                sbtn_Close.Text = "Перезапуск";
             }
         }
 
@@ -695,8 +695,12 @@ namespace PPlayer
         // закрыть окно обновления
         private void sbtn_Close_Click(object sender, EventArgs e)
         {
-            if (sbtn_Close.Text == "Отмена") NeedUpdate = false;
+            if (sbtn_Close.Text == "Отмена")
+            {
+                NeedUpdate = false;
+            }
             else NeedUpdate = true;
+
             this.Close();
         }
 
@@ -732,6 +736,14 @@ namespace PPlayer
             }
 
             return true;
+        }
+
+        private void Form_Update_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (sbtn_Close.Text == "Отмена") // запущена загрузка
+            {
+                NeedUpdate = false;
+            }
         }
     }
 }

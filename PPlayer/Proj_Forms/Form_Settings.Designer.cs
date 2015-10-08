@@ -602,7 +602,7 @@
             this.checkEdit_FileAssociate.StyleController = this.layoutControl2;
             this.checkEdit_FileAssociate.TabIndex = 4;
             this.checkEdit_FileAssociate.ToolTip = "Открывать плейлисты по умолчанию данной программой";
-            this.checkEdit_FileAssociate.CheckedChanged += new System.EventHandler(this.checkEdit_FileAssociate_CheckedChanged);
+            this.checkEdit_FileAssociate.CheckedChanged += new System.EventHandler(this.Settings_Need_Reload);
             // 
             // checkEdit_updates
             // 
@@ -613,6 +613,7 @@
             this.checkEdit_updates.Size = new System.Drawing.Size(638, 19);
             this.checkEdit_updates.StyleController = this.layoutControl2;
             this.checkEdit_updates.TabIndex = 0;
+            this.checkEdit_updates.CheckStateChanged += new System.EventHandler(this.Settings_Need_Reload);
             // 
             // layoutControlGroup2
             // 

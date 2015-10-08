@@ -50,14 +50,21 @@ namespace PPlayer
             #region Запуск основной программы
             //Application.Run(new Form_Main(args));
 
-            try
+            Application.Run(new Form_Main(args));
+
+            /*try
             {
                 Application.Run(new Form_Main(args));
             }
+            catch (System.Threading.ThreadAbortException abortException)
+            {
+                MessageBox.Show("Ошибка остановки процесса: " + (string)abortException.ExceptionState);
+            }
             catch (Exception e)
             {
-                DevExpress.XtraEditors.XtraMessageBox.Show(e.Message + "\r\n" + e.StackTrace, "Ошибка запуска приложения", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                DevExpress.XtraEditors.XtraMessageBox.Show(e.Message + "\r\n\r\n" + 
+                    e.StackTrace, "Ошибка запуска приложения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
             #endregion
         }
     }

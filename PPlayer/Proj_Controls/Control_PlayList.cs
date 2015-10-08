@@ -30,14 +30,22 @@ namespace PPlayer
                 {
                     string tName = Path.GetFileNameWithoutExtension(value);
                     tName = tName[0].ToString().ToUpper() + tName.Substring(1, tName.Length - 1);
-                    labelControl_header.Text = tName;
-                    labelControl_header.ToolTip = value;
+                    try 
+                    { 
+                        labelControl_header.Text = tName;
+                        labelControl_header.ToolTip = value;
+                    }
+                    catch (Exception) { }                                            
                     pl_FolderPath = Path.GetDirectoryName(value);
                 }
                 else
                 {
-                    labelControl_header.Text = "Новый плейлист";
-                    labelControl_header.ToolTip = "";
+                    try 
+                    {
+                        labelControl_header.Text = "Новый плейлист";
+                        labelControl_header.ToolTip = "";
+                    }
+                    catch (Exception) { }   
                 }
             }
         }
@@ -68,6 +76,28 @@ namespace PPlayer
             }
         }
 
+        public bool _pl_HotList = false; // горячий список
+        public bool pl_HotList
+        {
+          get
+          {
+            return _pl_HotList;
+          }
+          set
+          {
+            if (_pl_HotList == value) return;
+            _pl_HotList = value;
+
+            if (_pl_HotList)
+            {
+                // отключаем сортировку в горячем списке
+                gridColumn_name.SortOrder = DevExpress.Data.ColumnSortOrder.None;
+                gridColumn_artist.SortOrder = DevExpress.Data.ColumnSortOrder.None;
+                gv_PlayList.OptionsCustomization.AllowSort = false;
+            }
+          }
+        }                              
+
         public DataTable dt_FileData;
         public DataTable dt_ListData;
         public GridViewFilterHelper filterHelper;
@@ -90,10 +120,12 @@ namespace PPlayer
         private int timer_type = 0;
         private Color row_color_default;     // цвет мигания ok/error
         private Color row_color_blink;
-        private Color row_color_err_blink;       
+        private Color row_color_err_blink;        
  
         private string tooltip_text = "";     // подсказка для трека
         private int Row_Handle = -1;          // последняя выделенная запись
+        private int Row_Handle_ManualSort = -1; // ручная сотрировка
+        private int Row_Count_ManualSort = 0; // ручная сотрировка
         private MouseEventArgs e_last;
         private bool is_scroll = false;       // актиен скролл
         private bool list_is_focused = false; // активный лист
@@ -115,7 +147,8 @@ namespace PPlayer
                 _is_Changed = value;
                 if (value == false)
                 {
-                    PLog_history.clear(); 
+                    PLog_history.clear();
+                    Row_Count_ManualSort = 0;
                 }                
             }
         }
@@ -545,6 +578,58 @@ namespace PPlayer
             {
                 list_is_focused = true;
                 gv_PlayList.Focus();
+            }            
+        }
+
+        // Сортировка - Захвачен трек
+        private void grid_PlayList_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (pl_HotList && e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                if (e == null) return;
+                
+                DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo hti = gv_PlayList.CalcHitInfo(e.X, e.Y);
+                Row_Handle_ManualSort = hti.RowHandle;
+            }
+        }
+
+        // Сортировка - Перетаскивание трека
+        private void grid_PlayList_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e == null || Row_Handle_ManualSort < 0) return; // ошибка при скроле в другой области при активном плейлисте            
+
+            if (e.X > gv_PlayList.ViewRect.Width ) {return;}
+
+            DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo hti = gv_PlayList.CalcHitInfo(e.X, e.Y);
+
+            grid_PlayList.Cursor = Cursors.NoMoveVert;
+            //toolTipController1.ShowHint("CatchRow: " + Row_Handle_ManualSort.ToString()  + " CurRow: " + hti.RowHandle.ToString());
+
+            if (hti.RowHandle >= 0 && (hti.RowHandle != Row_Handle_ManualSort)) // меняем строки местами
+            {
+                DT_Change_Rows_Pos(dt_ListData, Row_Handle_ManualSort, hti.RowHandle);
+                DT_Change_Rows_Pos(dt_FileData, Row_Handle_ManualSort, hti.RowHandle);               
+
+                gv_PlayList.FocusedRowHandle = hti.RowHandle;
+                Row_Handle_ManualSort = hti.RowHandle; // новая позиция
+
+                if (v_PList_ID != 0)
+                {
+                    is_Changed = true;
+                    if (Row_Count_ManualSort == 0) PLog_history.add("Сортировка: \"изменение списка\"");
+                }
+
+                Row_Count_ManualSort++;
+            } 
+        }
+
+        // Сортировка - фиксация перетаскивания трека
+        private void grid_PlayList_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (pl_HotList) // очистка ручной сортировки
+            {
+                Row_Handle_ManualSort = -1;
+                grid_PlayList.Cursor = Cursors.Default;
             }
         }
 
@@ -554,6 +639,12 @@ namespace PPlayer
             list_is_focused = false;
             timer_tooltip.Stop();
             toolTipController.HideHint();
+
+            if (pl_HotList)
+            {
+                Row_Handle_ManualSort = -1;
+                grid_PlayList.Cursor = Cursors.Default;
+            }
         }
 
         // установка фокуса
@@ -573,8 +664,8 @@ namespace PPlayer
             find_is_focused = false;
         }
 
-        #endregion
-                
+        #endregion                
+
         #region Наличие файлов на диске
         /// <summary>
         /// Проверка наличия файлов на диске для списка
@@ -644,15 +735,17 @@ namespace PPlayer
         {
             Init_Table_Data();
             pl_FilePath = "";
-            is_Changed = false;
+            
+            is_Changed = false;            
         }
 
         // Очистка списка
         public void PL_ClearList()
         {
             Init_Table_Data();
+
             is_Changed = true;
-            PLog_history.add("Список [ОЧИЩЕН]");
+            PLog_history.add("Внимание!!! Список был [ОЧИЩЕН] (сохранить изменения в файл?)");
         }
 
         // набор данных для сохранения в формате PM
@@ -842,7 +935,27 @@ namespace PPlayer
             }
 
             PL.Rows.Add(Drow);
-        }  
+        }
+
+        // Замена строк местами - для сортировки
+        private void DT_Change_Rows_Pos(DataTable DTable, int Pos, int PosNew)
+        {
+            // Копия записи
+            DataRow Row = DTable.Rows[Pos];
+            DataRow Row_New = DTable.NewRow();
+            Row_New.ItemArray = Row.ItemArray;
+
+            if (PosNew < Pos) // Перенос вверх - к началу списка
+            {
+                DTable.Rows.InsertAt(Row_New, PosNew);
+                DTable.Rows.Remove(Row);
+            }
+            else // перенос к концу списка
+            {
+                DTable.Rows.Remove(Row);
+                DTable.Rows.InsertAt(Row_New, PosNew);
+            }
+        }
 
         // Сохранение в указанный файл
         public bool PL_SaveDataAs(string FilePath)
@@ -1067,9 +1180,13 @@ namespace PPlayer
                         // !! Перенести обработчики в класс PL
                         if (!PL_Save_Changes()) return;
                         PL_CloseList();
+                        
                         FWorking.Start();
+                                                
                         PM_Load_List(file); // загрузка плей листа ПМ 
-                        FWorking.Abort();
+                        
+                        FWorking.Abort();                        
+
                         this.Refresh(); 
                         break;
                     case ".mp3": PL_AddMuz(file); 
@@ -1158,6 +1275,7 @@ namespace PPlayer
 
             row_color_default = gv_PlayList.Appearance.FocusedRow.BackColor;
         }
+
     }
 
     // Класс - История изменений списка

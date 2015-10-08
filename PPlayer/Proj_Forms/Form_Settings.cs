@@ -159,9 +159,9 @@ namespace PPlayer
         #endregion
 
         #region События элементов формы
-        private void checkEdit_FileAssociate_CheckedChanged(object sender, EventArgs e)
-        {            
-            v_need_save = false;
+        private void Settings_Need_Reload(object sender, EventArgs e)
+        {
+            v_need_save = true;
         }
 
         // выбор шрифта
