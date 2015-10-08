@@ -33,8 +33,8 @@ namespace PPlayer
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.label_Operatipon = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.marqueeProgressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -43,47 +43,47 @@ namespace PPlayer
             // 
             // marqueeProgressBarControl1
             // 
-            this.marqueeProgressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.marqueeProgressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.marqueeProgressBarControl1.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.marqueeProgressBarControl1.EditValue = "подключение";
-            this.marqueeProgressBarControl1.Location = new System.Drawing.Point(14, 78);
-            this.marqueeProgressBarControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.marqueeProgressBarControl1.Location = new System.Drawing.Point(18, 93);
+            this.marqueeProgressBarControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1";
             this.marqueeProgressBarControl1.Properties.MarqueeAnimationSpeed = 40;
             this.marqueeProgressBarControl1.Properties.ProgressAnimationMode = DevExpress.Utils.Drawing.ProgressAnimationMode.Cycle;
             this.marqueeProgressBarControl1.Properties.ProgressViewStyle = DevExpress.XtraEditors.Controls.ProgressViewStyle.Solid;
-            this.marqueeProgressBarControl1.Size = new System.Drawing.Size(305, 26);
+            this.marqueeProgressBarControl1.Size = new System.Drawing.Size(392, 31);
             this.marqueeProgressBarControl1.TabIndex = 0;
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.simpleButton1.Location = new System.Drawing.Point(78, 124);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.simpleButton1.Location = new System.Drawing.Point(102, 134);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(172, 34);
+            this.simpleButton1.Size = new System.Drawing.Size(221, 40);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "отмена";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // label_Operatipon
             // 
-            this.label_Operatipon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_Operatipon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label_Operatipon.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_Operatipon.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.label_Operatipon.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.label_Operatipon.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.label_Operatipon.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label_Operatipon.Location = new System.Drawing.Point(14, 10);
-            this.label_Operatipon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.label_Operatipon.Location = new System.Drawing.Point(18, 12);
+            this.label_Operatipon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.label_Operatipon.Name = "label_Operatipon";
-            this.label_Operatipon.Size = new System.Drawing.Size(305, 60);
+            this.label_Operatipon.Size = new System.Drawing.Size(392, 71);
             this.label_Operatipon.TabIndex = 2;
             this.label_Operatipon.Text = "Текущая операция";
             // 
@@ -96,35 +96,36 @@ namespace PPlayer
             this.panelControl1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(330, 180);
+            this.panelControl1.Size = new System.Drawing.Size(424, 185);
             this.panelControl1.TabIndex = 3;
+            // 
+            // progressBarControl1
+            // 
+            this.progressBarControl1.Location = new System.Drawing.Point(18, 91);
+            this.progressBarControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBarControl1.Name = "progressBarControl1";
+            this.progressBarControl1.Properties.ShowTitle = true;
+            this.progressBarControl1.Size = new System.Drawing.Size(391, 32);
+            this.progressBarControl1.TabIndex = 3;
+            this.progressBarControl1.Visible = false;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // progressBarControl1
-            // 
-            this.progressBarControl1.Location = new System.Drawing.Point(14, 77);
-            this.progressBarControl1.Name = "progressBarControl1";
-            this.progressBarControl1.Properties.ShowTitle = true;
-            this.progressBarControl1.Size = new System.Drawing.Size(304, 27);
-            this.progressBarControl1.TabIndex = 3;
-            this.progressBarControl1.Visible = false;
-            // 
             // Form_Working
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 180);
+            this.ClientSize = new System.Drawing.Size(424, 185);
             this.Controls.Add(this.panelControl1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.LookAndFeel.SkinName = "Office 2010 Blue";
             this.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form_Working";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

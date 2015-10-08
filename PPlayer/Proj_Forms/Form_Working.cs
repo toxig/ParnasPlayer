@@ -16,10 +16,10 @@ namespace PPlayer
         public bool param_Show_Cansel = false;
         public bool param_Form_Close = false;
         public bool param_Form_Cansel = false;
-        private String Operation_OLD_Text;        
+        private String Operation_OLD_Text;
 
-        private int Height_noCancel = 100; // без кнопки отмена
-        private int Height_wCancel = 180; // высота с кнопкой отмена
+        private int Height_noCancel = 135; // без кнопки отмена - с учетом windows крупный текст - 150%
+        private int Height_wCancel = 185; // высота с кнопкой отмена
 
         public int val_max = 0;
         public int val_min = 0;
